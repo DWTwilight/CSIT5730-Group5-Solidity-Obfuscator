@@ -120,7 +120,7 @@ function createJunkCode(complexity, tagIndex, depth, outerFlag) {
       return [createInstruction(Opcode.PUSH, getRandomHexNumber())];
     }
     if (op == Opcode.DUP) {
-      return [createInstruction(dup(getRandomNumber(1, 2 + depth)))];
+      return [createInstruction(dup(getRandomNumber(1, depth)))];
     }
     return [createInstruction(op)];
   }
@@ -139,11 +139,9 @@ function createJunkCode(complexity, tagIndex, depth, outerFlag) {
   } else if (structure == STRUCT_TYPE.IF) {
     const tagI = tagIndex.value;
     tagIndex.value++;
-    code = [
-      createInstruction(Opcode.PUSH, getRandomHexNumber()),
-      createInstruction(dup(2)),
-      createInstruction(getRandomObjectByWeight(COMP_OPCODE)),
-    ];
+    code = code.concat(createJunkCode(0, tagIndex, depth));
+    code = code.concat(createJunkCode(0, tagIndex, depth + 1));
+    code.push(createInstruction(getRandomObjectByWeight(COMP_OPCODE)));
     if (getRandomNumber(0, 1) == 0) {
       code.push(createInstruction(Opcode.ISZERO));
     }
@@ -167,21 +165,21 @@ function createJunkCode(complexity, tagIndex, depth, outerFlag) {
   if (getRandomNumber(0, 3) == 0 && !outerFlag) {
     // do assignment
     code.push(createInstruction(dup(1)));
-    code.push(createInstruction(swap(getRandomNumber(3, 3 + depth))));
+    code.push(createInstruction(swap(getRandomNumber(2, 1 + depth))));
     code.push(createInstruction(Opcode.POP));
   } else if (outerFlag) {
-    code.push(createInstruction(swap(getRandomNumber(2, 2 + depth))));
+    code.push(createInstruction(swap(1)));
     code.push(createInstruction(Opcode.POP));
   }
 
   return code;
 }
 
-console.log(createJunkCode(7, { value: 0 }, 0, true));
-
 module.exports = {
   Opcode,
   offsetDup,
   dup,
   createInstruction,
+  getRandomNumber,
+  createJunkCode,
 };
