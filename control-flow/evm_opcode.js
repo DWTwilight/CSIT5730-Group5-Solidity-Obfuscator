@@ -6,6 +6,7 @@ const Opcode = {
   EQ: "EQ",
   ISZERO: "ISZERO",
   JUMPI: "JUMPI",
+  JUMP: "JUMP",
   PUSH: "PUSH",
   PUSH_TAG: "PUSH [tag]",
   DUP: "DUP",
@@ -51,7 +52,7 @@ function createInstruction(opcode, value) {
 }
 
 const C0_OPCODE = [
-  [Opcode.PUSH, 10],
+  [Opcode.PUSH, 5],
   [Opcode.DUP, 5],
   [Opcode.ADDRESS, 1],
 ];
@@ -66,8 +67,8 @@ const BI_OPCODE = [
 ];
 
 const COMP_OPCODE = [
-  [Opcode.LT, 2],
-  [Opcode.GT, 2],
+  [Opcode.LT, 3],
+  [Opcode.GT, 3],
   [Opcode.EQ, 1],
 ];
 
@@ -79,8 +80,8 @@ const STRUCT_TYPE = {
 
 const STRUCTURE = [
   [STRUCT_TYPE.SEQ, 10],
-  [STRUCT_TYPE.IF, 2],
-  // [STRUCT_TYPE.LOOP, 1],
+  [STRUCT_TYPE.IF, 4],
+  [STRUCT_TYPE.LOOP, 2],
 ];
 
 function getRandomObjectByWeight(weightedObjects) {
@@ -126,7 +127,10 @@ function createJunkCode(complexity, tagIndex, depth, outerFlag) {
   }
 
   let code = [];
-  const structure = getRandomObjectByWeight(STRUCTURE);
+  let structure = getRandomObjectByWeight(STRUCTURE);
+  while (complexity < 2 && structure == STRUCT_TYPE.LOOP) {
+    structure = getRandomObjectByWeight(STRUCTURE);
+  }
   if (structure == STRUCT_TYPE.SEQ) {
     code = code.concat(
       createJunkCode(getRandomNumber(0, complexity - 1), tagIndex, depth)
@@ -139,8 +143,8 @@ function createJunkCode(complexity, tagIndex, depth, outerFlag) {
   } else if (structure == STRUCT_TYPE.IF) {
     const tagI = tagIndex.value;
     tagIndex.value++;
-    code = code.concat(createJunkCode(0, tagIndex, depth));
-    code = code.concat(createJunkCode(0, tagIndex, depth + 1));
+    code.push(createInstruction(Opcode.PUSH, getRandomHexNumber()));
+    code.push(createInstruction(dup(getRandomNumber(2, depth + 1))));
     code.push(createInstruction(getRandomObjectByWeight(COMP_OPCODE)));
     if (getRandomNumber(0, 1) == 0) {
       code.push(createInstruction(Opcode.ISZERO));
@@ -160,14 +164,34 @@ function createJunkCode(complexity, tagIndex, depth, outerFlag) {
     code = code.concat(
       createJunkCode(getRandomNumber(0, complexity - 1), tagIndex, depth)
     );
+  } else if (structure == STRUCT_TYPE.LOOP) {
+    const tagI1 = tagIndex.value++;
+    const tagI2 = tagIndex.value++;
+
+    code.push(createInstruction(Opcode.TAG, `${tagI1}`));
+    code.push(createInstruction(Opcode.JUMPDEST));
+    code.push(createInstruction(Opcode.PUSH, getRandomHexNumber()));
+    code.push(createInstruction(dup(getRandomNumber(2, depth + 1))));
+    code.push(createInstruction(getRandomObjectByWeight(COMP_OPCODE)));
+    if (getRandomNumber(0, 1) == 0) {
+      code.push(createInstruction(Opcode.ISZERO));
+    }
+    code.push(createInstruction(Opcode.PUSH_TAG, `${tagI2}`));
+    code.push(createInstruction(Opcode.JUMPI));
+    // Loop body
+    code = code.concat(
+      createJunkCode(getRandomNumber(1, complexity - 1), tagIndex, depth)
+    );
+    code.push(createInstruction(swap(getRandomNumber(1, depth))));
+    code.push(createInstruction(Opcode.POP));
+    code.push(createInstruction(Opcode.PUSH_TAG, `${tagI1}`));
+    code.push(createInstruction(Opcode.JUMP));
+    code.push(createInstruction(Opcode.TAG, `${tagI2}`));
+    code.push(createInstruction(Opcode.JUMPDEST));
+    code.push(createInstruction(dup(getRandomNumber(1, depth))));
   }
 
-  if (getRandomNumber(0, 3) == 0 && !outerFlag) {
-    // do assignment
-    code.push(createInstruction(dup(1)));
-    code.push(createInstruction(swap(getRandomNumber(2, 1 + depth))));
-    code.push(createInstruction(Opcode.POP));
-  } else if (outerFlag) {
+  if (outerFlag) {
     code.push(createInstruction(swap(1)));
     code.push(createInstruction(Opcode.POP));
   }

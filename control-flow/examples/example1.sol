@@ -18,10 +18,18 @@ contract Loop {
             }
         }
 
+        if (s > 5) {
+            s -= 5;
+        }
+
         // while loop
         uint256 j;
-        while (j < 10) {
+        while (j <= 10) {
             j++;
+        }
+
+        if (j >= 20) {
+            j += 9;
         }
         return (s, j);
     }
