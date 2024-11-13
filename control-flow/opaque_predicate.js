@@ -60,26 +60,26 @@ function createOpaquePredicate(a, b, op, tagIndex) {
       : Math.ceil(Math.random() * 100) + b1;
 
   let code = [];
-  code.push(createInstruction(Opcode.PUSH, (b1 * b2).toString(16)));
+  code.push(createInstruction(Opcode.PUSH, (b1 + b2).toString(16)));
   code.push(createInstruction(a.name));
   code.push(createInstruction(Opcode.MUL));
   code.push(createInstruction(a.name));
   code.push(createInstruction(dup(1)));
   code.push(createInstruction(Opcode.MUL));
-  code.push(createInstruction(Opcode.PUSH, (b1 + b2).toString(16)));
+  code.push(createInstruction(Opcode.PUSH, (b1 * b2).toString(16)));
   code.push(createInstruction(Opcode.ADD));
   if (op == ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.LT) {
-    code.push(createInstruction(Opcode.GT));
+    code.push(createInstruction(Opcode.LT));
     code.push(createInstruction(Opcode.ISZERO));
   } else {
-    code.push(createInstruction(Opcode.LT));
+    code.push(createInstruction(Opcode.GT));
   }
   code.push(createInstruction(Opcode.PUSH_TAG, `${tagI}`));
   tagIndex.value++;
   code.push(createInstruction(Opcode.JUMPI));
 
   // insert junk code:
-  code = code.concat(createJunkCode(getRandomNumber(4, 8), tagIndex, 1, true));
+  code = code.concat(createJunkCode(getRandomNumber(8, 12), tagIndex, 1, true));
   // jump tag
   code.push(createInstruction(Opcode.TAG, `${tagI}`));
   code.push(createInstruction(Opcode.JUMPDEST));
