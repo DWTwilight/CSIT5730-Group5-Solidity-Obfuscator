@@ -1,5 +1,12 @@
 const fs = require("fs").promises;
-const { Opcode, createInstruction, dup, offsetDup } = require("./evm_opcode");
+const {
+  Opcode,
+  createInstruction,
+  dup,
+  offsetDup,
+  createJunkCode,
+  getRandomNumber,
+} = require("./evm_opcode");
 
 const ARITHMETIC_COMP_OPCODE = [Opcode.LT, Opcode.GT];
 
@@ -51,7 +58,6 @@ function createOpaquePredicate(a, b, op, tagIndex) {
     op == ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.GTE
       ? Math.floor(Math.random() * (b1 + 1))
       : Math.ceil(Math.random() * 100) + b1;
-  console.log(b1, b2);
 
   let code = [];
   code.push(createInstruction(Opcode.PUSH, (b1 * b2).toString(16)));
@@ -73,7 +79,7 @@ function createOpaquePredicate(a, b, op, tagIndex) {
   code.push(createInstruction(Opcode.JUMPI));
 
   // insert junk code:
-
+  code = code.concat(createJunkCode(getRandomNumber(4, 8), tagIndex, 1, true));
   // jump tag
   code.push(createInstruction(Opcode.TAG, `${tagI}`));
   code.push(createInstruction(Opcode.JUMPDEST));
@@ -81,16 +87,18 @@ function createOpaquePredicate(a, b, op, tagIndex) {
   console.log("--------start opaque predicate ---------");
   console.log(code);
   console.log("--------end opaque predicate ---------");
+  return code;
 }
 
 function injectOpaquePredicates(asm, startIndex, tagIndex) {
-  while (startIndex <= asm.length - 6) {
+  let res = [...asm];
+  while (startIndex <= res.length - 6) {
     let jump = 1;
-    if (ARITHMETIC_COMP_OPCODE.includes(asm[startIndex].name)) {
+    if (ARITHMETIC_COMP_OPCODE.includes(res[startIndex].name)) {
       // constant
-      let b = asm[startIndex - 2];
+      let b = res[startIndex - 2];
       // variable
-      let a = asm[startIndex - 1];
+      let a = res[startIndex - 1];
       let swap = false;
       let reverse = false;
 
@@ -107,14 +115,14 @@ function injectOpaquePredicates(asm, startIndex, tagIndex) {
       }
 
       if (
-        asm[startIndex + 1].name == Opcode.ISZERO &&
-        asm[startIndex + 2].name == Opcode.PUSH_TAG &&
-        asm[startIndex + 3].name == Opcode.JUMPI
+        res[startIndex + 1].name == Opcode.ISZERO &&
+        res[startIndex + 2].name == Opcode.PUSH_TAG &&
+        res[startIndex + 3].name == Opcode.JUMPI
       ) {
         jump += 3;
       } else if (
-        asm[startIndex + 1].name == Opcode.PUSH_TAG &&
-        asm[startIndex + 2].name == Opcode.JUMPI
+        res[startIndex + 1].name == Opcode.PUSH_TAG &&
+        res[startIndex + 2].name == Opcode.JUMPI
       ) {
         // reverse arithmetic comp
         reverse = true;
@@ -125,28 +133,29 @@ function injectOpaquePredicates(asm, startIndex, tagIndex) {
       }
 
       // create and insert opaque predicate
-      console.log(
-        a.name,
-        parseInt(b.value, 16),
-        getArithmeticComp(asm[startIndex].name, reverse, swap),
-        reverse,
-        swap
-      );
-      createOpaquePredicate(
+      const opaquePredicateCode = createOpaquePredicate(
         a,
         b,
-        getArithmeticComp(asm[startIndex].name, reverse, swap),
+        getArithmeticComp(res[startIndex].name, reverse, swap),
         tagIndex
       );
+      res = [
+        ...res.slice(0, startIndex + jump),
+        ...opaquePredicateCode,
+        ...res.slice(startIndex + jump),
+      ];
+      jump += opaquePredicateCode.length;
     }
     startIndex += jump;
   }
+  return res;
 }
 
-const filePath = process.argv[2];
+const inputPath = process.argv[2];
+const outputPath = process.argv[3];
 
 (async () => {
-  let bytecodeJson = JSON.parse(await fs.readFile(filePath, "utf8"));
+  let bytecodeJson = JSON.parse(await fs.readFile(inputPath, "utf8"));
 
   const runtimeAsm = bytecodeJson[".data"]["0"][".code"];
   // get the target code section
@@ -159,5 +168,12 @@ const filePath = process.argv[2];
         .map((opcode) => Number(opcode.value))
     ) + 1;
 
-  injectOpaquePredicates(sourceAsm, 2, { value: tagIndex });
+  const obfuscatedAsm = injectOpaquePredicates(sourceAsm, 2, {
+    value: tagIndex,
+  });
+  bytecodeJson[".data"]["0"][".code"] = [
+    ...obfuscatedAsm,
+    ...runtimeAsm.filter((opcode) => opcode.source == 1),
+  ];
+  await fs.writeFile(outputPath, JSON.stringify(bytecodeJson));
 })();
