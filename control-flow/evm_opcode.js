@@ -203,6 +203,7 @@ module.exports = {
   Opcode,
   offsetDup,
   dup,
+  swap,
   createInstruction,
   getRandomNumber,
   createJunkCode,
