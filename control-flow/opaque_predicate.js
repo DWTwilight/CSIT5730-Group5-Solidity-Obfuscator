@@ -84,17 +84,17 @@ function createOpaquePredicate(a, b, op, tagIndex) {
   code.push(createInstruction(Opcode.TAG, `${tagI}`));
   code.push(createInstruction(Opcode.JUMPDEST));
 
-  console.log("--------start opaque predicate ---------");
-  console.log(code);
-  console.log("--------end opaque predicate ---------");
   return code;
 }
 
-function injectOpaquePredicates(asm, startIndex, tagIndex) {
+function injectOpaquePredicates(asm, startIndex, tagIndex, ratio) {
   let res = [...asm];
   while (startIndex <= res.length - 6) {
     let jump = 1;
-    if (ARITHMETIC_COMP_OPCODE.includes(res[startIndex].name)) {
+    if (
+      ARITHMETIC_COMP_OPCODE.includes(res[startIndex].name) &&
+      Math.random() < ratio
+    ) {
       // constant
       let b = res[startIndex - 2];
       // variable
@@ -153,6 +153,7 @@ function injectOpaquePredicates(asm, startIndex, tagIndex) {
 
 const inputPath = process.argv[2];
 const outputPath = process.argv[3];
+const ratio = parseFloat(process.argv[4]) || 0.5;
 
 (async () => {
   let bytecodeJson = JSON.parse(await fs.readFile(inputPath, "utf8"));
@@ -168,9 +169,14 @@ const outputPath = process.argv[3];
         .map((opcode) => Number(opcode.value))
     ) + 1;
 
-  const obfuscatedAsm = injectOpaquePredicates(sourceAsm, 2, {
-    value: tagIndex,
-  });
+  const obfuscatedAsm = injectOpaquePredicates(
+    sourceAsm,
+    2,
+    {
+      value: tagIndex,
+    },
+    ratio
+  );
   bytecodeJson[".data"]["0"][".code"] = [
     ...obfuscatedAsm,
     ...runtimeAsm.filter((opcode) => opcode.source == 1),
