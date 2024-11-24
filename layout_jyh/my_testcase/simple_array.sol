@@ -8,7 +8,7 @@ contract MyContract{
     uint256 constant p = l1 * l2 + l1 / l3 - (l2 - (l3 - l1)) % 20 + 3 ** l3;
     
     uint256[p] public value_1;
-    uint256[l1+l2] public value_2;
+    uint256[(((l1)+l2))] public value_2;
     uint256[10] public value_3;
     uint256[] public dynamic_value;
 
