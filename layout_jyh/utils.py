@@ -51,26 +51,23 @@ def cal_expression(left, right, op, constant_dict):
         op (str): BinaryOperation
         constant_dict (dict): known values of constants
     """
+    left = extract_expression(left)  # remove cracks(tuple expression)
     if "value" in left.keys():
         left = str(left["value"])
     elif "name" in left.keys():
         left = str(constant_dict[left["name"]])
     else:
-        # if left.get("nodeType", "") == "TupleExpression":
-        #     left = left["components"][0]
-        left = extract_expression(left)
         sub_left = left["leftExpression"]
         sub_op = left["operator"]
         sub_right = left["rightExpression"]
         left = str(cal_expression(sub_left, sub_right, sub_op, constant_dict))
+    right = extract_expression(right)  # remove cracks(tuple expression)
     if "value" in right.keys():
         right = str(right["value"])
     elif "name" in right.keys():
         right = str(constant_dict[right["name"]])
     else:
-        # if right.get("nodeType", "") == "TupleExpression":
-        #     right = right["components"][0]
-        right = extract_expression(right)
+
         sub_left = right["leftExpression"]
         sub_op = right["operator"]
         sub_right = right["rightExpression"]
