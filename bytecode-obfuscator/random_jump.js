@@ -60,7 +60,7 @@ function randomJump(source, tagIndex) {
   }
 
   bytecodeJson[".data"]["0"][".code"] = [
-    ...obfuscatedAsm,
+    ...sourceAsm,
     ...runtimeAsm.filter((opcode) => opcode.source == 1),
   ];
   await fs.writeFile(outputPath, JSON.stringify(bytecodeJson));
