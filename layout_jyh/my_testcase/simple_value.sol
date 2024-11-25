@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract MyContract{
     uint256 public value;
     uint256 public trash;
+    int256[10] public a;
 
     function set_value(uint256 _value) public {
         value = _value;
