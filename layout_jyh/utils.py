@@ -235,7 +235,7 @@ def in_view_function(content, func_start_):
 
 
 def is_array_declaration(array_name, line):
-    pattern = rf"(uint(\d*)?|int(\d*)?|bool)\[(.*)\](.*){array_name}"
+    pattern = rf"(uint\d+|int\d+|bool)\[(\d+)\]\s+(\w+)\s+({array_name});"
     return re.match(pattern, line.strip())
 
 
