@@ -4,8 +4,7 @@ pragma solidity ^0.8.0;
 contract MyContract{
     uint256 constant l1 = 10;
     uint256 constant l2 = 20;
-    uint256 constant l3 = l1 / l2;
-    uint256 constant p = l1 * l2 % 20 + 3 ** l3;
+    uint256 constant p = l1 * l2 % 20 + 3 ** l2;
     bool constant abcd = true;
     uint256[p] public value_1;
     uint256[(((l1)+l2))] public value_2;
@@ -18,12 +17,11 @@ contract MyContract{
             value_1[idx] = _value + p + value_3[4];
         }
         dynamic_value.push(_value);
-        
     }
 
     function get_value(uint128 idx) public view returns (uint256){
         if(value_3.length > 5)
-            return value_1[idx] * l3;
+            return value_1[idx] * l2;
         else
             return value_1[idx];
     }
