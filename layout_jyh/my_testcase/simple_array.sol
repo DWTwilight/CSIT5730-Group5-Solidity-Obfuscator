@@ -10,19 +10,22 @@ contract MyContract{
     uint256[p] public value_1;
     uint256[(((l1)+l2))] public value_2;
     uint256[p][l1][l1+l2+p-p+1] public multi_array;
-    uint256[10] public value_3;
+    uint256[10] public value_3 = [1,2,3,4,5,6,7,8,9,10];
     uint256[] public dynamic_value;
 
     function set_value(uint256 _value, uint128 idx) public {
         if(idx < value_1.length - 1){
-            value_1[idx] = _value + p;
+            value_1[idx] = _value + p + value_3[4];
         }
         dynamic_value.push(_value);
         
     }
 
     function get_value(uint128 idx) public view returns (uint256){
-        return value_1[idx] * l3;
+        if(value_3.length > 5)
+            return value_1[idx] * l3;
+        else
+            return value_1[idx];
     }
 
     function replace_value(uint[10] memory data, uint idx) public returns (uint256[10] memory){

@@ -169,6 +169,7 @@ def split_array(content, array_list, constant_list):
             for i in structure.keys()
             if structure[i]["type"] == "function"
         ]
+        array_type = None
         for i in range(len(content)):
             # skip in parameters
             if i in functions_start:
@@ -179,18 +180,20 @@ def split_array(content, array_list, constant_list):
             matches = utils.is_array_declaration(array_name, line)
             # replace content
             if matches:
-
-                old_l = reduce(lambda x, y: x * y, length)
-                new_l_1 = old_l // 2
-                new_l_2 = old_l - new_l_1
-                d_type = matches.group(1)
+                array_type = matches.group(1)  # 数组类型
+                length = int(matches.group(2))  # 原数组长度
+                visibility = matches.group(3)  # 可见性修饰符
+                name = matches.group(4)  # 数组名
+                new_l_1 = length // 2
+                new_l_2 = length - new_l_1
+                array_type = matches.group(1)
                 p_property = matches
-                content[i] = f"{d_type}[{new_l_1}]"
+                content[i] = f"{array_type}[{new_l_1}]"
                 # skip this line
                 continue
 
 
-def split_constant_array(content, constant_array_list, constant_list):
+def split_constant_array(content, constant_array_list):
     for array in constant_array_list:
         array_name = list(array.keys())[0]
         length = array[array_name]
@@ -229,8 +232,14 @@ def split_constant_array(content, constant_array_list, constant_list):
                 part2_code = f"{array_type}[{len(values_list) - mid}] {visibility} {name}Part2 = [{part2}];\n"
                 content[i] = f"    {part1_code}    {part2_code}"
                 continue
+
             if not array_type:
                 continue
+            if f"{array_name}.length" in line:
+                content[i] = content[i].replace(
+                    f"{array_name}.length",
+                    f"({array_name}Part1.length+{array_name}Part2.length)",
+                )
             pattern = rf"({array_name})\[(.*)\]"
             matches = re.search(pattern, line)
             if matches:
@@ -240,7 +249,7 @@ def split_constant_array(content, constant_array_list, constant_list):
                 precise_match = re.search(pattern, exp)
                 idx = precise_match.group(2)
                 array_select_line = (
-                    f"{array_type} memory {array_name}PartValue;\n"
+                    f"{array_type} {array_name}PartValue;\n"
                     f"if({idx} < {array_name}Part1.length)\n"
                     + "{"
                     + f"{array_name}PartValue = {array_name}Part1[{idx}];"
@@ -278,5 +287,5 @@ if __name__ == "__main__":
         name = list(array.keys())[0]
         length = array[name]
         content = squeeze_array(content, name, length)
-    content = split_constant_array(content, array_list, constant_dict)
+    # content = split_constant_array(content, array_list)
     utils.save_sol_lines(content, save_path, filename)
