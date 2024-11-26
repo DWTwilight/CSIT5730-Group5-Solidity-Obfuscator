@@ -34,6 +34,15 @@ def save_sol(sol_str, save_path, filename):
     print(f"Generated {save_path}/{filename}")
 
 
+def save_sol_lines(content, save_path, filename):
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+    with open(os.path.join(save_path, filename), "w", encoding="utf-8") as f:
+        for line in content:
+            f.write(line)
+    print(f"Generated {save_path}/{filename}")
+
+
 def find_useful_nodes(json_dict):
     var_nodes = []
     function_nodes = []
@@ -226,5 +235,25 @@ def in_view_function(content, func_start_):
 
 
 def is_array_declaration(array_name, line):
-    pattern = rf"(\w+)\[(.*)?\](.*){array_name}"
+    pattern = rf"(uint(\d*)?|int(\d*)?|bool)\[(.*)\](.*){array_name}"
     return re.match(pattern, line.strip())
+
+
+def is_constant_array_declaration(array_name, line):
+    pattern = (
+        rf"(uint\d+|int\d+|bool)\[(\d+)\]\s+(\w+)\s+({array_name})\s*=\s*\[(.*?)\];"
+    )
+    return re.match(pattern, line.strip())
+
+
+def handle_nested_brackets(line, start):
+    l = 0
+    r = 0
+    for i in range(start, len(line)):
+        if line[i] == "[":
+            l += 1
+        elif line[i] == "]":
+            r += 1
+        if l > 0 and l == r:
+            return i
+    return None
