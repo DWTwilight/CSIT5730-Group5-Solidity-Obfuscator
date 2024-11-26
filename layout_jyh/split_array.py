@@ -308,10 +308,10 @@ def test_split_array(sol_file, ast_file):
 
 
 if __name__ == "__main__":
-    sol_file = "layout_jyh/my_testcase/simple_array.sol"
-    ast_file = "layout_jyh/my_testcase/simple_array_output/simple_array.sol_json.ast"
+    sol_file = "layout_jyh/my_testcase/sample.sol"
+    ast_file = "layout_jyh/my_testcase/sample_output/sample.sol_json.ast"
     save_path = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols"
-    filename = "new_array.sol"
+    filename = "new.sol"
     # test_split_array(sol_file, ast_file)
     content = utils.load_sol_lines(sol_file)
     ast_json = utils.load_json(ast_file)
