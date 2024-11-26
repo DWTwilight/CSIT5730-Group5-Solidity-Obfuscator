@@ -160,7 +160,7 @@ def generate_new_idx(line, array_name, length):
     return matches.group(), new_idx
 
 
-def split_array(content, array_list, constant_list):
+def split_array(content, array_list):
     for array in array_list:
         array_name = list(array.keys())[0]
         structure = utils.get_structure(content)
@@ -186,11 +186,44 @@ def split_array(content, array_list, constant_list):
                 name = matches.group(4)  # 数组名
                 new_l_1 = length // 2
                 new_l_2 = length - new_l_1
-                array_type = matches.group(1)
-                p_property = matches
-                content[i] = f"{array_type}[{new_l_1}]"
+                content[i] = (
+                    f"{array_type}[{new_l_1}] {visibility} {array_name}Part1;\n"
+                    + f"{array_type}[{new_l_2}] {visibility} {array_name}Part2;\n "
+                )
                 # skip this line
                 continue
+            if not array_type:
+                continue
+            if f"{array_name}.length" in line:
+                content[i] = content[i].replace(
+                    f"{array_name}.length",
+                    f"({array_name}Part1.length+{array_name}Part2.length)",
+                )
+            # normal use of the array
+            pattern = rf"({array_name})\[(.*)\]"
+            matches = re.search(pattern, line)
+            if matches:
+                start = matches.span()[0]
+                end_ = utils.handle_nested_brackets(line, start)
+                exp = line[start : end_ + 1]
+                precise_match = re.search(pattern, exp)
+                idx = precise_match.group(2)
+                array_select_line = (
+                    f"if({idx} < {array_name}Part1.length)\n"
+                    + "{"
+                    + line.replace(precise_match.group(), f"{array_name}Part1[{idx}]")
+                    + "}\n"
+                    + "else\n"
+                    + "{"
+                    + line.replace(
+                        precise_match.group(),
+                        f"{array_name}Part2[{idx}-{array_name}Part1.length]",
+                    )
+                    + "}\n"
+                )
+                content[i] = array_select_line
+
+    return content
 
 
 def split_constant_array(content, constant_array_list):
@@ -287,5 +320,6 @@ if __name__ == "__main__":
         name = list(array.keys())[0]
         length = array[name]
         content = squeeze_array(content, name, length)
-    # content = split_constant_array(content, array_list)
+    content = split_array(content, array_list)
+    content = split_constant_array(content, array_list)
     utils.save_sol_lines(content, save_path, filename)
