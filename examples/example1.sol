@@ -46,7 +46,6 @@ contract Loop {
         if(idx < value_1.length - 1){
             value_1[idx] = _value + p + value_3[4];
         }
-        dynamic_value.push(_value);
         
     }
 
