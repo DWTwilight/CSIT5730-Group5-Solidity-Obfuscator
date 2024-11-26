@@ -111,8 +111,6 @@ def squeeze_array(content, array_name, length):
         list: updated content
     """
     # one-dimensional arrays don't need to be squeezed
-    if len(length) == 1:
-        return content
     structure = utils.get_structure(content)
     functions_start = [
         structure[i]["start"]
@@ -130,16 +128,16 @@ def squeeze_array(content, array_name, length):
         # replace content
         if matches:
             l = reduce(lambda x, y: x * y, length)
-            old_pattern = r"\[(.*)\]"
+            old_pattern = r"\[([^\]]*)\](\[[^\]]*\])*"
             old = re.search(old_pattern, line)
             if old:
                 old = old[0]
             content[i] = content[i].replace(old, f"[{l}]")
             # skip this line
             continue
-        # if it's not the declaration line
-        # array pattern
-        # assignment or comparison(at the left side)(ignore bool type which is considered later)
+            # if it's not the declaration line
+            # array pattern
+            # assignment or comparison(at the left side)(ignore bool type which is considered later)
         old_idx, new_idx = generate_new_idx(line, array_name, length)
         if old_idx and new_idx:
             content[i] = content[i].replace(old_idx, new_idx)
@@ -164,8 +162,100 @@ def generate_new_idx(line, array_name, length):
 
 def split_array(content, array_list, constant_list):
     for array in array_list:
-        # split single
-        pass
+        array_name = list(array.keys())[0]
+        structure = utils.get_structure(content)
+        functions_start = [
+            structure[i]["start"]
+            for i in structure.keys()
+            if structure[i]["type"] == "function"
+        ]
+        for i in range(len(content)):
+            # skip in parameters
+            if i in functions_start:
+                continue
+            # set current line
+            line = content[i]
+            # whether it's the declaration line
+            matches = utils.is_array_declaration(array_name, line)
+            # replace content
+            if matches:
+
+                old_l = reduce(lambda x, y: x * y, length)
+                new_l_1 = old_l // 2
+                new_l_2 = old_l - new_l_1
+                d_type = matches.group(1)
+                p_property = matches
+                content[i] = f"{d_type}[{new_l_1}]"
+                # skip this line
+                continue
+
+
+def split_constant_array(content, constant_array_list, constant_list):
+    for array in constant_array_list:
+        array_name = list(array.keys())[0]
+        length = array[array_name]
+        structure = utils.get_structure(content)
+        functions_start = [
+            structure[i]["start"]
+            for i in structure.keys()
+            if structure[i]["type"] == "function"
+        ]
+        array_type = None
+        length = None
+        for i in range(len(content)):
+            # skip in parameters
+            if i in functions_start:
+                continue
+            # set current line
+            line = content[i]
+            # whether it's the declaration line
+            matches = utils.is_constant_array_declaration(array_name, line)
+            # replace content
+            if matches:
+                array_type = matches.group(1)  # 数组类型
+                length = int(matches.group(2))  # 原数组长度
+                visibility = matches.group(3)  # 可见性修饰符
+                name = matches.group(4)  # 数组名
+                values = matches.group(5).strip()  # 数组值（可能包含空格）
+                values_list = [v.strip() for v in values.split(",")]
+                mid = len(values_list) // 2
+                part1 = ", ".join(values_list[:mid])
+                part2 = ", ".join(values_list[mid:])
+
+                # 构造新的数组声明
+                part1_code = (
+                    f"{array_type}[{mid}] {visibility} {name}Part1 = [{part1}];\n"
+                )
+                part2_code = f"{array_type}[{len(values_list) - mid}] {visibility} {name}Part2 = [{part2}];\n"
+                content[i] = f"    {part1_code}    {part2_code}"
+                continue
+            if not array_type:
+                continue
+            pattern = rf"({array_name})\[(.*)\]"
+            matches = re.search(pattern, line)
+            if matches:
+                start = matches.span()[0]
+                end_ = utils.handle_nested_brackets(line, start)
+                exp = line[start : end_ + 1]
+                precise_match = re.search(pattern, exp)
+                idx = precise_match.group(2)
+                array_select_line = (
+                    f"{array_type} memory {array_name}PartValue;\n"
+                    f"if({idx} < {array_name}Part1.length)\n"
+                    + "{"
+                    + f"{array_name}PartValue = {array_name}Part1[{idx}];"
+                    + "}\n"
+                    + "else\n"
+                    + "{"
+                    + f"{array_name}PartValue = {array_name}Part2[{idx}-{array_name}Part1.length];"
+                    + "}\n"
+                )
+                content.insert(i, array_select_line)
+                content[i + 1] = content[i + 1].replace(
+                    precise_match.group(), f"{array_name}PartValue"
+                )
+
+    return content
 
 
 def test_split_array(sol_file, ast_file):
@@ -178,6 +268,8 @@ def test_split_array(sol_file, ast_file):
 if __name__ == "__main__":
     sol_file = "layout_jyh/my_testcase/simple_array.sol"
     ast_file = "layout_jyh/my_testcase/simple_array_output/simple_array.sol_json.ast"
+    save_path = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols"
+    filename = "new_array.sol"
     # test_split_array(sol_file, ast_file)
     content = utils.load_sol_lines(sol_file)
     ast_json = utils.load_json(ast_file)
@@ -185,4 +277,6 @@ if __name__ == "__main__":
     for array in array_list:
         name = list(array.keys())[0]
         length = array[name]
-        content = squeeze_array(content, name, length, constant_dict)
+        content = squeeze_array(content, name, length)
+    content = split_constant_array(content, array_list, constant_dict)
+    utils.save_sol_lines(content, save_path, filename)
