@@ -122,6 +122,7 @@ The Random Jump technique is designed to obscure the control flow of EVM bytecod
 codePartA
 codePartB
 codePartC
+JUMP [OUT]
 ```
 
 ```asm
@@ -290,8 +291,80 @@ value-consumer:
 
 ### Potency
 
+rattle
+
 ### Stealth
 
 ### Resilience
 
 ### Cost
+
+- Instruction Insertion for Binary Operators: 11 gas each
+
+```asm
+DUP2    ; 3 gas
+SWAP1   ; 3 gas
+SUB     ; --
+SWAP1   ; 3 gas
+POP     ; 2 gas
+```
+
+- Random Jump: 36 gas each
+
+```asm
+codePartA
+
+PUSH Tag 1      ; 3 gas
+JUMP            ; 8 gas
+
+Tag 2:
+JUMPDEST        ; 1 gas
+codePartC       ; --
+PUSH Tag 3      ; 3 gas
+JUMP            ; 8 gas
+
+Tag 1:
+JUMPDEST        ; 1 gas
+codePartB       ; --
+PUSH Tag 2      ; 3 gas
+JUMP            ; 8 gas
+
+Tag 3:
+JUMPDEST        ; 1 gas
+JUMP [OUT]
+```
+
+- Opaque Predicate: ~ 48 gas each
+
+```asm
+PUSH constantA
+DUP1
+GT
+ISZERO (optional)
+PUSH Tag 1
+JUMPI
+
+PUSH (b1 + b2) b1, b2 > constantA   ; 3 gas
+DUP1                                ; 3 gas
+MUL                                 ; 5 gas
+DUP1                                ; 3 gas
+DUP1                                ; 3 gas
+MUL                                 ; 5 gas
+PUSH (b1 * b2)                      ; 3 gas
+ADD                                 ; 3 gas
+LT                                  ; 3 gas
+ISZERO                              ; 3 gas
+PUSH Tag 2                          ; 3 gas
+JUMPI                               ; 10 gas
+
+junk code
+
+Tag 2:
+JUMPDEST                            ; 1 gas
+codePart A
+
+Tag 1:
+JUMPDEST
+
+codePart B
+```
