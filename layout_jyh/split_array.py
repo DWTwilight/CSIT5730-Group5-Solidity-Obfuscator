@@ -1,6 +1,8 @@
+from functools import reduce
 import re
-from layout_jyh import utils
-from layout_jyh.replace_var_name import find_var
+import utils
+
+# s
 
 
 def find_constant_var(node, constant_dict):
@@ -31,7 +33,11 @@ def find_constant_var(node, constant_dict):
 def get_array_length_by_typeString(node):
     type_string = node.get("typeDescriptions", {}).get("typeString", "")
     if type_string != "":
-        return utils.extract_length_from_parentheses(type_string)
+        lengths = utils.extract_length_from_parentheses(type_string)
+        array_name = node.get("name", "")
+        if array_name and lengths:
+            return {array_name: lengths}
+    return None
 
 
 def get_array_length(node, constant_dict):
@@ -86,7 +92,97 @@ def find_array(json_dict):
     for node in useful_nodes["var_nodes"]:
         constant_dict = find_constant_var(node, constant_dict)
         array_list += find_array_in_node(node, constant_dict)
-    print(constant_dict)
+    # print(constant_dict)
     for func in useful_nodes["function_nodes"]:
         array_list += find_array_in_function(func)
-    return array_list
+    return array_list, constant_dict
+
+
+def squeeze_array(content, array_name, length):
+    """lengths: variables -> numbers;
+    multi dimensional array -> one dimension;
+
+    Args:
+        content (list): lines of the file
+        array_name (str): current array name
+        lengths (list): lengths of each dimension
+        constant_list (list): list of declared constants
+    Returns:
+        list: updated content
+    """
+    # one-dimensional arrays don't need to be squeezed
+    if len(length) == 1:
+        return content
+    structure = utils.get_structure(content)
+    functions_start = [
+        structure[i]["start"]
+        for i in structure.keys()
+        if structure[i]["type"] == "function"
+    ]
+    for i in range(len(content)):
+        # skip in parameters
+        if i in functions_start:
+            continue
+        # set current line
+        line = content[i]
+        # whether it's the declaration line
+        matches = utils.is_array_declaration(array_name, line)
+        # replace content
+        if matches:
+            l = reduce(lambda x, y: x * y, length)
+            old_pattern = r"\[(.*)\]"
+            old = re.search(old_pattern, line)
+            if old:
+                old = old[0]
+            content[i] = content[i].replace(old, f"[{l}]")
+            # skip this line
+            continue
+        # if it's not the declaration line
+        # array pattern
+        # assignment or comparison(at the left side)(ignore bool type which is considered later)
+        old_idx, new_idx = generate_new_idx(line, array_name, length)
+        if old_idx and new_idx:
+            content[i] = content[i].replace(old_idx, new_idx)
+    return content
+
+
+def generate_new_idx(line, array_name, length):
+    pattern = rf"({array_name})\[([^\]]*)\](\[[^\]]*\])*"
+    matches = re.search(pattern, line)
+    # there is no this array
+    if not matches:
+        return None, None
+    # matches
+    dimensions = re.findall(r"\[([^\]]*)\]", matches.group())
+    new_idx = dimensions[-1]
+    for j in range(len(length) - 1):
+        new_idx = f"({dimensions[-j-2]})*{length[-j-2]}+" + new_idx
+    new_idx = f"{array_name}[{new_idx}]"
+    # new_array = f"{array_name}[{new_idx}]"
+    return matches.group(), new_idx
+
+
+def split_array(content, array_list, constant_list):
+    for array in array_list:
+        # split single
+        pass
+
+
+def test_split_array(sol_file, ast_file):
+    sol_str = utils.load_sol(sol_file)
+    ast_json = utils.load_json(ast_file)
+    array_list = find_array(ast_json)
+    print(array_list)
+
+
+if __name__ == "__main__":
+    sol_file = "layout_jyh/my_testcase/simple_array.sol"
+    ast_file = "layout_jyh/my_testcase/simple_array_output/simple_array.sol_json.ast"
+    # test_split_array(sol_file, ast_file)
+    content = utils.load_sol_lines(sol_file)
+    ast_json = utils.load_json(ast_file)
+    array_list, constant_dict = find_array(ast_json)
+    for array in array_list:
+        name = list(array.keys())[0]
+        length = array[name]
+        content = squeeze_array(content, name, length, constant_dict)

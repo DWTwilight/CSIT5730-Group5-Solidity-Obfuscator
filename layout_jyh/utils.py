@@ -94,8 +94,7 @@ def extract_expression(expression):
 
 
 def extract_length_from_parentheses(s):
-    length_dict = {}
-    d = 1
+    length_dict = []
     for i in range(len(s)):
         if s[i] == "[":
             for j in range(i, len(s)):
@@ -103,8 +102,7 @@ def extract_length_from_parentheses(s):
                     if s[i + 1 : j] == "":
                         break
                     l = int(s[i + 1 : j])
-                    length_dict[d] = l
-                    d += 1
+                    length_dict.append(l)
                     break
     return length_dict
 
@@ -225,3 +223,8 @@ def in_view_function(content, func_start_):
         return True
     else:
         return False
+
+
+def is_array_declaration(array_name, line):
+    pattern = rf"(\w+)\[(.*)?\](.*){array_name}"
+    return re.match(pattern, line.strip())
