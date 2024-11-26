@@ -23,6 +23,7 @@ function randomJump(source, tagIndex) {
 
   const tag1 = tagIndex.value++;
   const tag2 = tagIndex.value++;
+  const tag3 = tagIndex.value++;
 
   return [
     ...source.slice(0, cutA),
@@ -30,12 +31,17 @@ function randomJump(source, tagIndex) {
     createInstruction(Opcode.JUMP),
     createInstruction(Opcode.TAG, `${tag2}`),
     createInstruction(Opcode.JUMPDEST),
-    ...source.slice(cutB),
+    ...source.slice(cutB, source.length),
+    createInstruction(Opcode.PUSH_TAG, `${tag3}`),
+    createInstruction(Opcode.JUMP),
     createInstruction(Opcode.TAG, `${tag1}`),
     createInstruction(Opcode.JUMPDEST),
     ...source.slice(cutA, cutB),
     createInstruction(Opcode.PUSH_TAG, `${tag2}`),
     createInstruction(Opcode.JUMP),
+    createInstruction(Opcode.TAG, `${tag3}`),
+    createInstruction(Opcode.JUMPDEST),
+    source[source.length - 1],
   ];
 }
 
