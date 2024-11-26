@@ -15,13 +15,6 @@ def test_replace_var(sol_file, ast_file):
     save_sol(new_file, "new_sols", "new.sol")
 
 
-def test_split_array(sol_file, ast_file):
-    sol_str = load_sol(sol_file)
-    ast_json = load_json(ast_file)
-    array_list = find_array(ast_json)
-    print(array_list)
-
-
 if __name__ == "__main__":
     sol_file = "layout_jyh/my_testcase/simple_array.sol"
     ast_file = "layout_jyh/my_testcase/simple_array_output/simple_array.sol_json.ast"
