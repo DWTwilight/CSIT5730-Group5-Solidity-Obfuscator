@@ -52,7 +52,7 @@ function getArithmeticComp(opcode, reverse, swap) {
 }
 
 function createOpaquePredicate(a, b, op, tagIndex) {
-  const tagI = tagIndex.value;
+  const tagI = tagIndex.value++;
   const b1 = parseInt(b.value, 16);
   const b2 =
     op == ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.GTE
@@ -70,12 +70,11 @@ function createOpaquePredicate(a, b, op, tagIndex) {
   code.push(createInstruction(Opcode.ADD));
   if (op == ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.LT) {
     code.push(createInstruction(Opcode.LT));
-    code.push(createInstruction(Opcode.ISZERO));
   } else {
     code.push(createInstruction(Opcode.GT));
+    code.push(createInstruction(Opcode.ISZERO));
   }
   code.push(createInstruction(Opcode.PUSH_TAG, `${tagI}`));
-  tagIndex.value++;
   code.push(createInstruction(Opcode.JUMPI));
 
   // insert junk code:
@@ -102,14 +101,7 @@ function injectOpaquePredicates(asm, startIndex, tagIndex, ratio) {
       let swap = false;
       let reverse = false;
 
-      if (a.name == Opcode.PUSH && b.name.startsWith(Opcode.DUP)) {
-        let t = a;
-        a = b;
-        b = t;
-        swap = true;
-        // a: DUP%d -> DUP%d+1
-        a.name = offsetDup(a.name, 1);
-      } else if (!a.name.startsWith(Opcode.DUP) || b.name != Opcode.PUSH) {
+      if (!a.name.startsWith(Opcode.DUP) || b.name != Opcode.PUSH) {
         startIndex += 1;
         continue;
       }
