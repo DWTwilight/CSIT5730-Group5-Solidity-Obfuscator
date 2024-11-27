@@ -55,7 +55,9 @@ def insert_codes(content, insert_points):
         if len(safe_lines) == 0:
             # directly skip
             return content
+        # print("current", line_number)
         line_number = random.sample(safe_lines, k=1)[0]
+        # print("after", line_number)
         if utils.in_view_function(content, select_function["start"]):
             content[select_function["start"]] = content[
                 select_function["start"]
@@ -82,7 +84,7 @@ def insert_codes(content, insert_points):
     # else
     safe_lines = utils.find_safe_positions(
         content,
-        max(line_number + 1, select_function["start"]),
+        max(line_number + 2, select_function["start"]),
         select_function["end"],
         select_function["start"],
     )
@@ -108,7 +110,7 @@ def insert_codes(content, insert_points):
         new_exp = generate_useless_expression(declared_variables)
         code_line = f"{new_variable['name']} = {new_variable['type']}({new_exp});"
         content.insert(line_number, f"{code_line}\n")
-        print(line_number, new_exp)
+        print(line_number, new_variable["name"], "=", new_exp)
     return content
 
 
@@ -146,14 +148,16 @@ def generate_useless_expression(declared_variables):
 
 
 if __name__ == "__main__":
-    sol_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/layout_jyh/my_testcase/simple_array.sol"
+    sol_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/layout_jyh/my_testcase/sample.sol"
+
+    ast_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/layout_jyh/my_testcase/sample_output/sample.sol_json.ast"
     n = 5  # insert times
     content = utils.load_sol_lines(sol_file)
     for _ in range(n):
         positions = search_positions(content)
         content = insert_codes(content, positions)
     with open(
-        "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/new_v.sol",
+        "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/new.sol",
         "w",
     ) as f:
         for line in content:

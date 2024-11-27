@@ -258,3 +258,75 @@ def handle_nested_brackets(line, start):
         if l > 0 and l == r:
             return i
     return None
+
+
+def find_array(json_dict):
+    array_list = []
+    constant_dict = {}
+    useful_nodes = find_useful_nodes(json_dict)
+
+    for node in useful_nodes["var_nodes"]:
+        constant_dict = find_constant_var(node, constant_dict)
+        array_list += find_array_in_node(node, constant_dict)
+    # print(constant_dict)
+    for func in useful_nodes["function_nodes"]:
+        array_list += find_array_in_function(func)
+    return array_list, constant_dict
+
+
+def find_array_in_node(node, constant_dict=None):
+    array_list = []
+    if node.get("nodeType", "") == "VariableDeclaration":
+        var_name = node.get("name", "")
+        if var_name != "":
+            if node.get("typeName", {}):
+                if node["typeName"].get("nodeType", "") == "ArrayTypeName":
+                    # array_list += get_array_length(node, constant_dict)
+                    # use type string to get length
+                    length_dict = get_array_length_by_typeString(node)
+                    if length_dict:
+                        array_list.append(length_dict)
+    return array_list
+
+
+def find_array_in_function(func):
+    array_list = []
+
+    return array_list
+
+
+def find_constant_var(node, constant_dict):
+    if node.get("nodeType", "") == "VariableDeclaration":
+        var_name = node.get("name", "")
+        c = node.get("constant", False)
+        if (var_name != "") and c:
+            value = node.get("value", {}).get("value", "")
+            # directly assign value to the constant
+            if value != "":
+                if value in ["true", "false"]:
+                    value = value.capitalize()
+                constant_dict[var_name] = eval(value)
+            # assign another var to the constant
+            elif node.get("value", {}).get("name", ""):
+                assign_var = node["value"]["name"]
+                constant_dict[var_name] = constant_dict[assign_var]
+            # use expression to assign the constant
+            else:
+                node = node["value"]
+                left = node["leftExpression"]
+                op = node["operator"]
+                right = node["rightExpression"]
+                value = cal_expression(left, right, op, constant_dict)
+                constant_dict[var_name] = value
+
+    return constant_dict
+
+
+def get_array_length_by_typeString(node):
+    type_string = node.get("typeDescriptions", {}).get("typeString", "")
+    if type_string != "":
+        lengths = extract_length_from_parentheses(type_string)
+        array_name = node.get("name", "")
+        if array_name and lengths:
+            return {array_name: lengths}
+    return None
