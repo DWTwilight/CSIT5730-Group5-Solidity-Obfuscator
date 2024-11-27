@@ -2,8 +2,8 @@ import re
 import random
 import hashlib
 import string
-from layout_jyh import utils
-from layout_jyh.utils import find_useful_nodes
+import utils
+
 
 value_types = ["uint", "int"]
 
@@ -14,7 +14,10 @@ def find_var_in_node(node):
         var_name = node.get("name", "")
         if var_name != "":
             string_type = node.get("typeDescriptions", {}).get("typeString", "")
-            var_dict = var_dict.update({var_name: string_type})
+            if var_dict:
+                var_dict.update({var_name: string_type})
+            else:
+                var_dict[var_name] = string_type
     return var_dict
 
 
@@ -27,7 +30,7 @@ def find_var_in_statement(statement: list):
                     string_type = dict_var.get("typeDescriptions", {}).get(
                         "typeString", ""
                     )
-                    var_dict = var_dict.update({dict_var["name"]: string_type})
+                    var_dict.update({dict_var["name"]: string_type})
     return var_dict
 
 
@@ -41,7 +44,7 @@ def find_var_in_param(param: list):
             if not var_dict:
                 var_dict[dict_param["name"]] = string_type
             else:
-                var_dict = var_dict.update({dict_param["name"]: string_type})
+                var_dict.update({dict_param["name"]: string_type})
     return var_dict
 
 
@@ -52,22 +55,31 @@ def find_var_in_function(func):
         var_dict = var_dict.update(var_statement)
     var_param = find_var_in_param(func.get("parameters", {}))
     if var_param:
-        var_dict = var_dict.update(var_param)
+        if var_dict:
+            var_dict.update(var_param)
+        else:
+            var_dict = var_param
     return var_dict
 
 
 def find_var(json_dict):
     var_dict = {}
-    useful_nodes = find_useful_nodes(json_dict)
+    useful_nodes = utils.find_useful_nodes(json_dict)
     # print(useful_nodes["function_nodes"])
     for node in useful_nodes["var_nodes"]:
         var = find_var_in_node(node)
         if var:
-            var_dict = var_dict.update(var)
+            if var_dict:
+                var_dict.update(var)
+            else:
+                var_dict = var
     for node in useful_nodes["function_nodes"]:
         var = find_var_in_function(node)
         if var:
-            var_dict = var_dict.update(var)
+            if var_dict:
+                var_dict = var_dict.update(var)
+            else:
+                var_dict = var
     return var_dict
 
 
@@ -90,3 +102,20 @@ def replace_var(sol_file: str, var_list: list):
         new_var = new_var_list[i]
         sol_file = re.sub(pattern, new_var, sol_file)
     return sol_file
+
+
+if __name__ == "__main__":
+    sol_file = (
+        "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/new.sol"
+    )
+    ast_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/output/new.sol_json.ast"
+
+    sol_str = utils.load_sol(sol_file)
+    ast_json = utils.load_json(ast_file)
+    var_dict = find_var(ast_json)
+    array_list, constant_dict = utils.find_array(ast_json)
+    print(f"Find Variables:{var_dict}, Find Arrays: {array_list}")
+    new_file = replace_var(
+        sol_str, list(var_dict.keys()) + [list(array.keys())[0] for array in array_list]
+    )
+    utils.save_sol(new_file, "new_sols", "new.sol")
