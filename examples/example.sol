@@ -7,7 +7,7 @@ contract Example {
     uint256 constant l3 = l1 / l2;
     uint256 constant p = ((l1 * l2) % 20) + 3 ** l3;
     bool constant abcd = true;
-    uint256[p] public value_1;
+    uint256[p+10] public value_1;
     uint256[(((l1) + l2))] public value_2;
     uint256[p][l1][l1 + l2 + p - p + 1] public multi_array;
     uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
