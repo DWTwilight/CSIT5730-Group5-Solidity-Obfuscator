@@ -157,11 +157,20 @@ The Opaque Predicate technique introduces misleading conditional logic into the 
 In a simple conditional structure, the original logic and EVM bytecode might look like this:
 
 ```solidity
-if (x > constantA) {
-  // codePart A
-} else {
-  // codePart B
+if (x > a) {
+  // ...
 }
+
+if (f(x, y...) > a) {
+  // ...
+}
+
+while (x > a) {
+  // ...
+}
+
+require(x > a);
+
 ```
 
 ```asm
@@ -172,12 +181,10 @@ ISZERO (optional)
 PUSH Tag 1
 JUMPI
 
-codePart A
+{code}
 
 Tag 1:
 JUMPDEST
-
-codePart B
 ```
 
 After Adding Opaque Predicate
@@ -203,24 +210,21 @@ ISZERO                              ; may change according to the original opran
 PUSH Tag 2
 JUMPI
 
-junk code
+{junk code}
 
 Tag 2:
 JUMPDEST
-codePart A
+
+{code}
 
 Tag 1:
 JUMPDEST
-
-codePart B
 ```
 
 ```solidity
 if (x > constantA) {
   if ((b1 + b2) * x < x * x + b1 * b2) {
     // junk code
-  } else {
-    // codePart A
   }
 } else {
   // codePart B
