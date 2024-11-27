@@ -148,9 +148,11 @@ def generate_useless_expression(declared_variables):
 
 
 if __name__ == "__main__":
-    sol_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/layout_jyh/my_testcase/sample.sol"
+    sol_file = (
+        "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/new.sol"
+    )
 
-    ast_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/layout_jyh/my_testcase/sample_output/sample.sol_json.ast"
+    ast_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/output/new_array.sol_json.json"
     n = 5  # insert times
     content = utils.load_sol_lines(sol_file)
     for _ in range(n):
