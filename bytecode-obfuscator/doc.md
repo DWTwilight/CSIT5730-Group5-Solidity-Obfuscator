@@ -246,7 +246,7 @@ To introduce more complexity to the code, we use a simplified AST to construct c
 ```txt
 junk-stat: stat; value-consumer
 
-stat:     if-else
+stat:     cond
         | loop
         | singleOp
         | binaryOp
@@ -258,7 +258,7 @@ binaryOp: stat; stat; BinaryOpcode (e.g. ADD, SUB...)
 tenaryOp: stat; stat; stat; TenaryOpcode (e.g. ADDMOD, MULMOD...)
 load:     stat; MLOAD/SLOAD/CALLDATALOAD
 
-if-else:  stat;
+cond:     stat;
           stat;
           comp Opcode(e.g. GT, LT...);
           ISZERO(optional);
