@@ -17,47 +17,35 @@ const ARITHMETIC_COMP = {
   GTE: "GTE",
 };
 
-function getSwapedArithmeticComp(op, swap) {
-  if (swap) {
-    switch (op) {
-      case ARITHMETIC_COMP.LT:
-        return ARITHMETIC_COMP.GT;
-      case ARITHMETIC_COMP.GT:
-        return ARITHMETIC_COMP.LT;
-      case ARITHMETIC_COMP.LTE:
-        return ARITHMETIC_COMP.GTE;
-      case ARITHMETIC_COMP.GTE:
-        return ARITHMETIC_COMP.LTE;
-    }
-  }
-  return op;
-}
-
-function getArithmeticComp(opcode, reverse, swap) {
+function getArithmeticComp(opcode, reverse) {
   if (reverse) {
     switch (opcode) {
       case Opcode.LT:
-        return getSwapedArithmeticComp(ARITHMETIC_COMP.GTE, swap);
+        return ARITHMETIC_COMP.GTE;
       case Opcode.GT:
-        return getSwapedArithmeticComp(ARITHMETIC_COMP.LTE, swap);
+        return ARITHMETIC_COMP.LTE;
     }
   } else {
     switch (opcode) {
       case Opcode.LT:
-        return getSwapedArithmeticComp(ARITHMETIC_COMP.LT, swap);
+        return ARITHMETIC_COMP.LT;
       case Opcode.GT:
-        return getSwapedArithmeticComp(ARITHMETIC_COMP.GT, swap);
+        return ARITHMETIC_COMP.GT;
     }
   }
 }
 
 function createOpaquePredicate(a, b, op, tagIndex) {
   const tagI = tagIndex.value++;
-  const b1 = parseInt(b.value, 16);
-  const b2 =
-    op == ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.GTE
-      ? Math.floor(Math.random() * (b1 + 1))
-      : Math.ceil(Math.random() * 100) + b1;
+  let b1 = parseInt(b.value, 16);
+  let b2 =
+    op == (ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.GTE)
+      ? Math.floor(Math.random() * b1)
+      : Math.ceil(Math.random() * 100) + b1 + 1;
+  b1 =
+    op == (ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.GTE)
+      ? Math.floor(Math.random() * b1)
+      : Math.ceil(Math.random() * 100) + b1 + 1;
 
   let code = [];
   code.push(createInstruction(Opcode.PUSH, (b1 + b2).toString(16)));
@@ -68,17 +56,15 @@ function createOpaquePredicate(a, b, op, tagIndex) {
   code.push(createInstruction(Opcode.MUL));
   code.push(createInstruction(Opcode.PUSH, (b1 * b2).toString(16)));
   code.push(createInstruction(Opcode.ADD));
-  if (op == ARITHMETIC_COMP.GT || op == ARITHMETIC_COMP.LT) {
-    code.push(createInstruction(Opcode.LT));
-  } else {
-    code.push(createInstruction(Opcode.GT));
-    code.push(createInstruction(Opcode.ISZERO));
-  }
+  console.log(op);
+  code.push(createInstruction(Opcode.GT));
+  // code.push(createInstruction(Opcode.POP));
+  // code.push(createInstruction(Opcode.PUSH, "1"));
   code.push(createInstruction(Opcode.PUSH_TAG, `${tagI}`));
   code.push(createInstruction(Opcode.JUMPI));
 
   // insert junk code:
-  code = code.concat(createJunkCode(getRandomNumber(8, 12), tagIndex, 1, true));
+  code = code.concat(createJunkCode(20, tagIndex, 1, true));
   // jump tag
   code.push(createInstruction(Opcode.TAG, `${tagI}`));
   code.push(createInstruction(Opcode.JUMPDEST));
@@ -98,7 +84,6 @@ function injectOpaquePredicates(asm, startIndex, tagIndex, ratio) {
       let b = res[startIndex - 2];
       // variable
       let a = res[startIndex - 1];
-      let swap = false;
       let reverse = false;
 
       if (!a.name.startsWith(Opcode.DUP) || b.name != Opcode.PUSH) {
@@ -128,7 +113,7 @@ function injectOpaquePredicates(asm, startIndex, tagIndex, ratio) {
       const opaquePredicateCode = createOpaquePredicate(
         a,
         b,
-        getArithmeticComp(res[startIndex].name, reverse, swap),
+        getArithmeticComp(res[startIndex].name, reverse),
         tagIndex
       );
       res = [

@@ -39,12 +39,16 @@ function swap(index) {
 function createInstruction(opcode, value) {
   if (value) {
     return {
+      begin: 855,
+      end: 875,
       name: opcode,
       value: value,
       source: 0,
     };
   } else {
     return {
+      begin: 855,
+      end: 875,
       name: opcode,
       source: 0,
     };

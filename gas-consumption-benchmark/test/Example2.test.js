@@ -19,6 +19,6 @@ describe("Example2 Test", function () {
     const { target, users } = await loadFixture(deployContract);
 
     await target.loop();
-    // expect(await target.loop()).to.be.revertedWith("aaa");
+    // expect(await target.loop()).to.equal(5);
   });
 });

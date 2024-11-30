@@ -175,7 +175,7 @@ require(x > a);
 
 ```asm
 PUSH constantA
-DUP1
+DUP2
 GT
 ISZERO (optional)
 PUSH Tag 1
@@ -191,16 +191,16 @@ After Adding Opaque Predicate
 
 ```asm
 PUSH constantA
-DUP1
+DUP2
 GT
 ISZERO (optional)
 PUSH Tag 1
 JUMPI
 
 PUSH (b1 + b2) b1, b2 > constantA   ; may change according to the original oprand
-DUP1
+DUP2
 MUL
-DUP1
+DUP2
 DUP1
 MUL
 PUSH (b1 * b2)
