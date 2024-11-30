@@ -16,6 +16,7 @@
 ## Test with Obfuscated Binary
 
 - go to `/gas-consumption-benchmark`
+- put original contract file to `/gas-consumption-benchmark/contracts`
 - use `npx hardhat clean; npx hardhat compile` to build original contract
 - run `solidity_obfuscator.sh` on original contract and get obfusacted binary
 - go to `/gas-consumption-benchmark/artifacts/contracts` and find target contract folder
