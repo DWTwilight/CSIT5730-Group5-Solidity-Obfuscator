@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 contract ControlFlowExample {
-    function loop() public pure returns (uint256, uint256) {
+    function loop() public returns (uint256, uint256) {
         // for loop
         uint256 s;
         for (uint256 i = 0; i < 10; i++) {
