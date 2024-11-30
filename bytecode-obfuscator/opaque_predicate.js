@@ -56,10 +56,8 @@ function createOpaquePredicate(a, b, op, tagIndex) {
   code.push(createInstruction(Opcode.MUL));
   code.push(createInstruction(Opcode.PUSH, (b1 * b2).toString(16)));
   code.push(createInstruction(Opcode.ADD));
-  console.log(op);
+
   code.push(createInstruction(Opcode.GT));
-  // code.push(createInstruction(Opcode.POP));
-  // code.push(createInstruction(Opcode.PUSH, "1"));
   code.push(createInstruction(Opcode.PUSH_TAG, `${tagI}`));
   code.push(createInstruction(Opcode.JUMPI));
 
