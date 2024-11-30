@@ -50,7 +50,7 @@ function randomJump(source, tagIndex) {
 
   const runtimeAsm = bytecodeJson[".data"]["0"][".code"];
   // get the target code section
-  let sourceAsm = runtimeAsm.filter((opcode) => opcode.source == 0);
+  let sourceAsm = [...runtimeAsm];
 
   const tagIndex = {
     value:
@@ -65,9 +65,6 @@ function randomJump(source, tagIndex) {
     sourceAsm = randomJump(sourceAsm, tagIndex);
   }
 
-  bytecodeJson[".data"]["0"][".code"] = [
-    ...sourceAsm,
-    ...runtimeAsm.filter((opcode) => opcode.source == 1),
-  ];
+  bytecodeJson[".data"]["0"][".code"] = [...sourceAsm];
   await fs.writeFile(outputPath, JSON.stringify(bytecodeJson));
 })();

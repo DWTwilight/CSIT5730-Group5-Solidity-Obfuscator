@@ -42,14 +42,9 @@ function injectInstruction(asm, ratio) {
   let bytecodeJson = JSON.parse(await fs.readFile(inputPath, "utf8"));
 
   const runtimeAsm = bytecodeJson[".data"]["0"][".code"];
-  // get the target code section
-  let sourceAsm = runtimeAsm.filter((opcode) => opcode.source == 0);
 
-  const obfuscatedAsm = injectInstruction(sourceAsm, ratio);
+  const obfuscatedAsm = injectInstruction(runtimeAsm, ratio);
 
-  bytecodeJson[".data"]["0"][".code"] = [
-    ...obfuscatedAsm,
-    ...runtimeAsm.filter((opcode) => opcode.source == 1),
-  ];
+  bytecodeJson[".data"]["0"][".code"] = [...obfuscatedAsm];
   await fs.writeFile(outputPath, JSON.stringify(bytecodeJson));
 })();
