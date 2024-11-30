@@ -2,6 +2,8 @@
 pragma solidity ^0.8.26;
 
 contract ControlFlowExample {
+    uint256 public res;
+
     function loop() public returns (uint256, uint256) {
         // for loop
         uint256 s;
@@ -31,6 +33,6 @@ contract ControlFlowExample {
         if (j >= 20) {
             j += 9;
         }
-        return (s, j);
+        res = s + j;
     }
 }

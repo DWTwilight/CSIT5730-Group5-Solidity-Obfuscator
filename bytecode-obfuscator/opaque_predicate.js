@@ -134,8 +134,6 @@ const ratio = parseFloat(process.argv[4]) || 0.5;
   let bytecodeJson = JSON.parse(await fs.readFile(inputPath, "utf8"));
 
   const runtimeAsm = bytecodeJson[".data"]["0"][".code"];
-  // get the target code section
-  let sourceAsm = runtimeAsm.filter((opcode) => opcode.source == 0);
   // get the next tag index
   const tagIndex =
     Math.max(
@@ -145,16 +143,13 @@ const ratio = parseFloat(process.argv[4]) || 0.5;
     ) + 1;
 
   const obfuscatedAsm = injectOpaquePredicates(
-    sourceAsm,
+    runtimeAsm,
     2,
     {
       value: tagIndex,
     },
     ratio
   );
-  bytecodeJson[".data"]["0"][".code"] = [
-    ...obfuscatedAsm,
-    ...runtimeAsm.filter((opcode) => opcode.source == 1),
-  ];
+  bytecodeJson[".data"]["0"][".code"] = [...obfuscatedAsm];
   await fs.writeFile(outputPath, JSON.stringify(bytecodeJson));
 })();
