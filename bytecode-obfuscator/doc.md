@@ -222,12 +222,10 @@ JUMPDEST
 ```
 
 ```solidity
-if (x > constantA) {
+if (x >= constantA) {
   if ((b1 + b2) * x < x * x + b1 * b2) {
     // junk code
   }
-} else {
-  // codePart B
 }
 ```
 
