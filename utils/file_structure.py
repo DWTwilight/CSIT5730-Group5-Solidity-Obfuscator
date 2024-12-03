@@ -1,46 +1,6 @@
-import os
-import json
 import re
-import string
-import random
-import hashlib
 
-
-def load_json(json_file):
-    jsonStr = str()
-    with open(json_file, "r", encoding="utf-8") as f:
-        jsonStr = f.read()
-    jsonDict = json.loads(jsonStr)
-    return jsonDict
-
-
-def load_sol(sol_file):
-    with open(sol_file, "r", encoding="utf-8") as f:
-        return f.read()
-    return str()
-
-
-def load_sol_lines(sol_file):
-    with open(sol_file, "r", encoding="utf-8") as f:
-        return f.readlines()
-    return str()
-
-
-def save_sol(sol_str, save_path, filename):
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-    with open(os.path.join(save_path, filename), "w", encoding="utf-8") as f:
-        f.write(sol_str)
-    print(f"Generated {save_path}/{filename}")
-
-
-def save_sol_lines(content, save_path, filename):
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-    with open(os.path.join(save_path, filename), "w", encoding="utf-8") as f:
-        for line in content:
-            f.write(line)
-    print(f"Generated {save_path}/{filename}")
+from utils.expression import cal_expression
 
 
 def find_useful_nodes(json_dict):
@@ -58,50 +18,6 @@ def find_useful_nodes(json_dict):
     return {"var_nodes": var_nodes, "function_nodes": function_nodes}
 
 
-def cal_expression(left, right, op, constant_dict):
-    """Recursively calculate the value of the expression.
-    Can only handle simple binary operators: +,-,*,/,%,**.
-    Ignore "immutable"
-
-    Args:
-        left (dict): leftExpression
-        right (dict): rightExpression
-        op (str): BinaryOperation
-        constant_dict (dict): known values of constants
-    """
-    left = extract_expression(left)  # remove cracks(tuple expression)
-    if "value" in left.keys():
-        left = str(left["value"])
-    elif "name" in left.keys():
-        left = str(constant_dict[left["name"]])
-    else:
-        sub_left = left["leftExpression"]
-        sub_op = left["operator"]
-        sub_right = left["rightExpression"]
-        left = str(cal_expression(sub_left, sub_right, sub_op, constant_dict))
-    right = extract_expression(right)  # remove cracks(tuple expression)
-    if "value" in right.keys():
-        right = str(right["value"])
-    elif "name" in right.keys():
-        right = str(constant_dict[right["name"]])
-    else:
-
-        sub_left = right["leftExpression"]
-        sub_op = right["operator"]
-        sub_right = right["rightExpression"]
-        right = str(cal_expression(sub_left, sub_right, sub_op, constant_dict))
-    expression = f"{left} {op} {right}"
-    n = int(eval(expression))
-    assert n >= 0, "Error: arithmetic underflow"
-    return n
-
-
-def extract_expression(expression):
-    while expression.get("nodeType", "") == "TupleExpression":
-        expression = expression["components"][0]
-    return expression
-
-
 def extract_length_from_parentheses(s):
     length_dict = []
     for i in range(len(s)):
@@ -116,38 +32,6 @@ def extract_length_from_parentheses(s):
     return length_dict
 
 
-def generate_random_var():
-    length = random.randint(5, 16)
-    x = str(random.random())
-    var = hashlib.md5(x.encode()).hexdigest()
-    header = random.choice(string.ascii_lowercase)
-    return header + var[: length - 1]
-
-
-def generate_random_expression(declared_variables):
-    # random operator numbers
-    num_operations = random.randint(1, 3)
-
-    # available operators
-    operators = ["+", "-", "*", "/"]
-
-    # init expression
-    expression = random.choice(declared_variables)["name"]
-
-    for _ in range(num_operations):
-        operator = random.choice(operators)
-        operand = random.choice(
-            declared_variables + [{"name": random.randint(1, 10000)}]
-        )["name"]
-        if random.randint(1, 2) == 1:
-            expression += f" {operator} {operand}"
-        else:
-            expression = f"{operand} {operator} " + expression
-
-    # return
-    return expression
-
-
 def get_structure(content):
     contract_pattern = re.compile(r"\bcontract\s+\w+\s*{")
     function_pattern = re.compile(
@@ -155,6 +39,9 @@ def get_structure(content):
     )
     constructor_pattern = re.compile(
         r"\bconstructor\s*\(.*?\)\s*(public|private|internal|external)?"
+    )
+    modifier_pattern = re.compile(
+        r"\bmodifier\s+\w+\s*\(.*?\)\s*(public|private|internal|external)?"
     )
     structure = {}
     for i in range(len(content)):
@@ -167,6 +54,9 @@ def get_structure(content):
             structure[i] = {"type": "function", "start": start_line, "end": end_line}
             # print(content[start_line])
         elif re.search(constructor_pattern, line):
+            start_line, end_line = find_end_brackets(content, i)
+            structure[i] = {"type": "constructor", "start": start_line, "end": end_line}
+        elif re.search(modifier_pattern, line):
             start_line, end_line = find_end_brackets(content, i)
             structure[i] = {"type": "constructor", "start": start_line, "end": end_line}
     return structure
@@ -186,22 +76,52 @@ def find_end_brackets(content, start_line):
         right_ = line.count("}")
         left += left_
         right += right_
-        if left == right:
+        if left == right > 0:
             return (start, i)
     return None
 
 
-def find_safe_positions(content, start_, end_, func_start_, soft=True):
+def between_if_else(content, start_, end_):
+    if_ = 0
+    else_ = 0
+    for i in range(start_, end_):
+        if_ += content[i].count("if")
+        else_ += content[i].count("else")
+        if else_ != if_:
+            return True
+    return False
+
+
+def find_safe_positions(content, start_, end_):
     safe_lines = []
-    for i in range(start_, end_ + 1):
+    left_ = 0
+    right_ = 0
+    stop = False
+    for i in range(start_, end_):
         line = content[i]
-        if line.count("{") + line.count("}") == 0 and line.endswith(";\n"):
-            if soft:
-                safe_lines.append(i)
-            else:
-                # whether in a for loop or while loop
-                if not in_loop(content, start_, func_start_):
-                    safe_lines.append(i)
+        for s in line:
+            if s == "}":
+                right_ += 1
+            if right_ > left_:
+                stop = True
+                break
+            if s == "{":
+                left_ += 1
+
+        if stop:
+            break
+        if not in_round_brackets(content, i, end_) and not between_if_else(
+            content, i, end_
+        ):
+            safe_lines.append(i)
+
+        # if line.count("{") + line.count("}") == 0 and line.endswith(";\n"):
+        #     if soft:
+        #         safe_lines.append(i)
+        #     else:
+        #         # whether in a for loop or while loop
+        #         if not in_loop(content, start_, func_start_):
+        #             safe_lines.append(i)
 
     return safe_lines
 
@@ -227,11 +147,34 @@ def in_loop(content, start_, func_start_):
         return False
 
 
+def in_round_brackets(content, start_, end_):
+    left_ = 0
+    right_ = 0
+    for i in range(start_, end_):
+        left_ += content[i].count("(")
+        right_ += content[i].count(")")
+        if right_ != left_:
+            return True
+    return False
+
+
 def in_view_function(content, func_start_):
-    if " view " in content[func_start_]:
-        return True
-    else:
-        return False
+    for i in range(func_start_, 0, -1):
+        if " view" in content[i]:
+            return True, i
+        if "function" in content[i]:
+            return False, -1
+
+    return False, -1
+
+
+def in_pure_function(content, func_start_):
+    for i in range(func_start_, 0, -1):
+        if " pure" in content[i]:
+            return True, i
+        if "function" in content[i]:
+            return False, -1
+    return False, -1
 
 
 def is_array_declaration(array_name, line):

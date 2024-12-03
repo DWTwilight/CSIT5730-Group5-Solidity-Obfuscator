@@ -1,6 +1,6 @@
-    /* "example.sol":58:6785  contract Example {... */
+    /* "example.sol":57:6784  contract Example {... */
   mstore(0x40, 0x80)
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   mload(0x40)
   dup1
   0x0140
@@ -8,90 +8,90 @@
   0x40
   mstore
   dup1
-    /* "example.sol":427:428  1 */
+    /* "example.sol":426:427  1 */
   0x01
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":430:431  2 */
+    /* "example.sol":429:430  2 */
   0x02
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":433:434  3 */
+    /* "example.sol":432:433  3 */
   0x03
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":436:437  4 */
+    /* "example.sol":435:436  4 */
   0x04
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":439:440  5 */
+    /* "example.sol":438:439  5 */
   0x05
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":442:443  6 */
+    /* "example.sol":441:442  6 */
   0x06
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":445:446  7 */
+    /* "example.sol":444:445  7 */
   0x07
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":448:449  8 */
+    /* "example.sol":447:448  8 */
   0x08
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":451:452  9 */
+    /* "example.sol":450:451  9 */
   0x09
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
   mstore
   0x20
   add
-    /* "example.sol":454:456  10 */
+    /* "example.sol":453:455  10 */
   0x0a
-    /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+    /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   0xff
   and
   dup2
@@ -108,7 +108,7 @@
   jump	// in
 tag_1:
   pop
-    /* "example.sol":736:902  constructor(uint256 durationMinutes) {... */
+    /* "example.sol":735:901  constructor(uint256 durationMinutes) {... */
   callvalue
   dup1
   iszero
@@ -137,12 +137,12 @@ tag_3:
   tag_5
   jump	// in
 tag_4:
-    /* "example.sol":791:801  msg.sender */
+    /* "example.sol":790:800  msg.sender */
   caller
-    /* "example.sol":783:788  admin */
+    /* "example.sol":782:787  admin */
   0x016d
   0x00
-    /* "example.sol":783:801  admin = msg.sender */
+    /* "example.sol":782:800  admin = msg.sender */
   0x0100
   exp
   dup2
@@ -161,39 +161,39 @@ tag_4:
   swap1
   sstore
   pop
-    /* "example.sol":860:869  1 minutes */
+    /* "example.sol":859:868  1 minutes */
   0x3c
-    /* "example.sol":842:857  durationMinutes */
+    /* "example.sol":841:856  durationMinutes */
   dup2
-    /* "example.sol":842:869  durationMinutes * 1 minutes */
+    /* "example.sol":841:868  durationMinutes * 1 minutes */
   tag_8
   swap2
   swap1
   tag_9
   jump	// in
 tag_8:
-    /* "example.sol":823:838  block.timestamp */
+    /* "example.sol":822:837  block.timestamp */
   timestamp
-    /* "example.sol":823:870  block.timestamp + (durationMinutes * 1 minutes) */
+    /* "example.sol":822:869  block.timestamp + (durationMinutes * 1 minutes) */
   tag_10
   swap2
   swap1
   tag_11
   jump	// in
 tag_10:
-    /* "example.sol":811:820  votingEnd */
+    /* "example.sol":810:819  votingEnd */
   0x016e
-    /* "example.sol":811:870  votingEnd = block.timestamp + (durationMinutes * 1 minutes) */
+    /* "example.sol":810:869  votingEnd = block.timestamp + (durationMinutes * 1 minutes) */
   dup2
   swap1
   sstore
   pop
-    /* "example.sol":891:895  true */
+    /* "example.sol":890:894  true */
   0x01
-    /* "example.sol":880:888  isActive */
+    /* "example.sol":879:887  isActive */
   0x016f
   0x00
-    /* "example.sol":880:895  isActive = true */
+    /* "example.sol":879:894  isActive = true */
   0x0100
   exp
   dup2
@@ -212,9 +212,9 @@ tag_10:
   swap1
   sstore
   pop
-    /* "example.sol":736:902  constructor(uint256 durationMinutes) {... */
+    /* "example.sol":735:901  constructor(uint256 durationMinutes) {... */
   pop
-    /* "example.sol":58:6785  contract Example {... */
+    /* "example.sol":57:6784  contract Example {... */
   jump(tag_12)
 tag_2:
   dup3
@@ -572,7 +572,7 @@ tag_51:
   pop
   pop
   jump	// out
-    /* "example.sol":58:6785  contract Example {... */
+    /* "example.sol":57:6784  contract Example {... */
 tag_12:
   dataSize(sub_0)
   dup1
@@ -584,7 +584,7 @@ tag_12:
 stop
 
 sub_0: assembly {
-        /* "example.sol":58:6785  contract Example {... */
+        /* "example.sol":57:6784  contract Example {... */
       mstore(0x40, 0x80)
       jumpi(tag_1, lt(calldatasize, 0x04))
       shr(0xe0, calldataload(0x00))
@@ -735,7 +735,7 @@ sub_0: assembly {
       stop
     tag_2:
       revert(0x00, 0x00)
-        /* "example.sol":519:559  mapping(address => bool) public hasVoted */
+        /* "example.sol":518:558  mapping(address => bool) public hasVoted */
     tag_3:
       callvalue
       dup1
@@ -775,7 +775,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":260:288  uint256[p+10] public value_1 */
+        /* "example.sol":259:287  uint256[p+10] public value_1 */
     tag_4:
       callvalue
       dup1
@@ -815,7 +815,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":709:729  bool public isActive */
+        /* "example.sol":708:728  bool public isActive */
     tag_5:
       callvalue
       dup1
@@ -842,7 +842,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":6643:6748  function withdrawFunds() public onlyAdmin {... */
+        /* "example.sol":6642:6747  function withdrawFunds() public onlyAdmin {... */
     tag_6:
       callvalue
       dup1
@@ -857,7 +857,7 @@ sub_0: assembly {
       jump	// in
     tag_51:
       stop
-        /* "example.sol":464:513  mapping(bytes32 => uint256) public candidateVotes */
+        /* "example.sol":463:512  mapping(bytes32 => uint256) public candidateVotes */
     tag_7:
       callvalue
       dup1
@@ -897,7 +897,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":619:646  bytes32[] public candidates */
+        /* "example.sol":618:645  bytes32[] public candidates */
     tag_8:
       callvalue
       dup1
@@ -937,7 +937,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":4504:4817  function addCandidate(string memory name) public onlyAdmin contractActive {... */
+        /* "example.sol":4503:4816  function addCandidate(string memory name) public onlyAdmin contractActive {... */
     tag_9:
       callvalue
       dup1
@@ -965,7 +965,7 @@ sub_0: assembly {
       jump	// in
     tag_66:
       stop
-        /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+        /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
     tag_10:
       callvalue
       dup1
@@ -1005,7 +1005,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":565:613  mapping(address => bool) public authorizedVoters */
+        /* "example.sol":564:612  mapping(address => bool) public authorizedVoters */
     tag_11:
       callvalue
       dup1
@@ -1045,7 +1045,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":4144:4499  function add_value(... */
+        /* "example.sol":4143:4498  function add_value(... */
     tag_12:
       callvalue
       dup1
@@ -1085,7 +1085,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":6016:6384  function getAllResults()... */
+        /* "example.sol":6015:6383  function getAllResults()... */
     tag_13:
       callvalue
       dup1
@@ -1113,7 +1113,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":5597:6010  function getVotes(... */
+        /* "example.sol":5596:6009  function getVotes(... */
     tag_14:
       callvalue
       dup1
@@ -1153,7 +1153,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":679:703  uint256 public votingEnd */
+        /* "example.sol":678:702  uint256 public votingEnd */
     tag_15:
       callvalue
       dup1
@@ -1180,7 +1180,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":1131:3578  function loop() public pure returns (uint256, uint256) {... */
+        /* "example.sol":1130:3577  function loop() public pure returns (uint256, uint256) {... */
     tag_16:
       callvalue
       dup1
@@ -1208,7 +1208,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":6557:6637  function deactivateContract() public onlyAdmin {... */
+        /* "example.sol":6556:6636  function deactivateContract() public onlyAdmin {... */
     tag_17:
       callvalue
       dup1
@@ -1223,7 +1223,7 @@ sub_0: assembly {
       jump	// in
     tag_107:
       stop
-        /* "example.sol":337:391  uint256[p][l1][l1 + l2 + p - p + 1] public multi_array */
+        /* "example.sol":336:390  uint256[p][l1][l1 + l2 + p - p + 1] public multi_array */
     tag_18:
       callvalue
       dup1
@@ -1263,7 +1263,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":294:331  uint256[(((l1) + l2))] public value_2 */
+        /* "example.sol":293:330  uint256[(((l1) + l2))] public value_2 */
     tag_19:
       callvalue
       dup1
@@ -1303,7 +1303,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":3754:3915  function get_value(uint128 idx) public view returns (uint256) {... */
+        /* "example.sol":3753:3914  function get_value(uint128 idx) public view returns (uint256) {... */
     tag_20:
       callvalue
       dup1
@@ -1343,7 +1343,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":3921:4138  function replace_value(... */
+        /* "example.sol":3920:4137  function replace_value(... */
     tag_21:
       callvalue
       dup1
@@ -1383,7 +1383,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":3584:3748  function set_value(uint256 _value, uint128 idx) public {... */
+        /* "example.sol":3583:3747  function set_value(uint256 _value, uint128 idx) public {... */
     tag_22:
       callvalue
       dup1
@@ -1411,7 +1411,7 @@ sub_0: assembly {
       jump	// in
     tag_134:
       stop
-        /* "example.sol":6390:6551  function getRemainingTime() public view returns (uint256) {... */
+        /* "example.sol":6389:6550  function getRemainingTime() public view returns (uint256) {... */
     tag_23:
       callvalue
       dup1
@@ -1438,7 +1438,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":653:673  address public admin */
+        /* "example.sol":652:672  address public admin */
     tag_24:
       callvalue
       dup1
@@ -1465,7 +1465,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":4947:5591  function vote(string memory candidateName) public contractActive {... */
+        /* "example.sol":4946:5590  function vote(string memory candidateName) public contractActive {... */
     tag_25:
       callvalue
       dup1
@@ -1493,7 +1493,7 @@ sub_0: assembly {
       jump	// in
     tag_148:
       stop
-        /* "example.sol":4823:4941  function authorizeVoter(address voter) public onlyAdmin contractActive {... */
+        /* "example.sol":4822:4940  function authorizeVoter(address voter) public onlyAdmin contractActive {... */
     tag_26:
       callvalue
       dup1
@@ -1521,7 +1521,7 @@ sub_0: assembly {
       jump	// in
     tag_152:
       stop
-        /* "example.sol":519:559  mapping(address => bool) public hasVoted */
+        /* "example.sol":518:558  mapping(address => bool) public hasVoted */
     tag_36:
       mstore(0x20, 0x016a)
       dup1
@@ -1541,7 +1541,7 @@ sub_0: assembly {
       and
       dup2
       jump	// out
-        /* "example.sol":260:288  uint256[p+10] public value_1 */
+        /* "example.sol":259:287  uint256[p+10] public value_1 */
     tag_43:
       0x00
       dup2
@@ -1563,7 +1563,7 @@ sub_0: assembly {
       sload
       dup2
       jump	// out
-        /* "example.sol":709:729  bool public isActive */
+        /* "example.sol":708:728  bool public isActive */
     tag_48:
       0x016f
       0x00
@@ -1578,9 +1578,9 @@ sub_0: assembly {
       and
       dup2
       jump	// out
-        /* "example.sol":6643:6748  function withdrawFunds() public onlyAdmin {... */
+        /* "example.sol":6642:6747  function withdrawFunds() public onlyAdmin {... */
     tag_52:
-        /* "example.sol":961:966  admin */
+        /* "example.sol":960:965  admin */
       0x016d
       0x00
       swap1
@@ -1592,16 +1592,16 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:957  msg.sender */
+        /* "example.sol":946:956  msg.sender */
       caller
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       eq
-        /* "example.sol":939:1005  require(msg.sender == admin, "Only admin can perform this action") */
+        /* "example.sol":938:1004  require(msg.sender == admin, "Only admin can perform this action") */
       tag_158
       jumpi
       mload(0x40)
@@ -1622,7 +1622,7 @@ sub_0: assembly {
       swap1
       revert
     tag_158:
-        /* "example.sol":6703:6708  admin */
+        /* "example.sol":6702:6707  admin */
       0x016d
       0x00
       swap1
@@ -1634,14 +1634,14 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":6695:6718  payable(admin).transfer */
+        /* "example.sol":6694:6717  payable(admin).transfer */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":6695:6741  payable(admin).transfer(address(this).balance) */
+        /* "example.sol":6694:6740  payable(admin).transfer(address(this).balance) */
       0x08fc
-        /* "example.sol":6719:6740  address(this).balance */
+        /* "example.sol":6718:6739  address(this).balance */
       selfbalance
-        /* "example.sol":6695:6741  payable(admin).transfer(address(this).balance) */
+        /* "example.sol":6694:6740  payable(admin).transfer(address(this).balance) */
       swap1
       dup2
       iszero
@@ -1672,9 +1672,9 @@ sub_0: assembly {
       revert(0x00, returndatasize)
     tag_163:
       pop
-        /* "example.sol":6643:6748  function withdrawFunds() public onlyAdmin {... */
+        /* "example.sol":6642:6747  function withdrawFunds() public onlyAdmin {... */
       jump	// out
-        /* "example.sol":464:513  mapping(bytes32 => uint256) public candidateVotes */
+        /* "example.sol":463:512  mapping(bytes32 => uint256) public candidateVotes */
     tag_57:
       mstore(0x20, 0x0169)
       dup1
@@ -1689,7 +1689,7 @@ sub_0: assembly {
       sload
       dup2
       jump	// out
-        /* "example.sol":619:646  bytes32[] public candidates */
+        /* "example.sol":618:645  bytes32[] public candidates */
     tag_62:
       0x016c
       dup2
@@ -1716,9 +1716,9 @@ sub_0: assembly {
       sload
       dup2
       jump	// out
-        /* "example.sol":4504:4817  function addCandidate(string memory name) public onlyAdmin contractActive {... */
+        /* "example.sol":4503:4816  function addCandidate(string memory name) public onlyAdmin contractActive {... */
     tag_69:
-        /* "example.sol":961:966  admin */
+        /* "example.sol":960:965  admin */
       0x016d
       0x00
       swap1
@@ -1730,16 +1730,16 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:957  msg.sender */
+        /* "example.sol":946:956  msg.sender */
       caller
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       eq
-        /* "example.sol":939:1005  require(msg.sender == admin, "Only admin can perform this action") */
+        /* "example.sol":938:1004  require(msg.sender == admin, "Only admin can perform this action") */
       tag_167
       jumpi
       mload(0x40)
@@ -1760,7 +1760,7 @@ sub_0: assembly {
       swap1
       revert
     tag_167:
-        /* "example.sol":1073:1081  isActive */
+        /* "example.sol":1072:1080  isActive */
       0x016f
       0x00
       swap1
@@ -1772,7 +1772,7 @@ sub_0: assembly {
       div
       0xff
       and
-        /* "example.sol":1065:1108  require(isActive, "Contract is not active") */
+        /* "example.sol":1064:1107  require(isActive, "Contract is not active") */
       tag_170
       jumpi
       mload(0x40)
@@ -1793,11 +1793,11 @@ sub_0: assembly {
       swap1
       revert
     tag_170:
-        /* "example.sol":4588:4609  bytes32 candidateHash */
+        /* "example.sol":4587:4608  bytes32 candidateHash */
       0x00
-        /* "example.sol":4639:4643  name */
+        /* "example.sol":4638:4642  name */
       dup2
-        /* "example.sol":4622:4644  abi.encodePacked(name) */
+        /* "example.sol":4621:4643  abi.encodePacked(name) */
       add(0x20, mload(0x40))
       tag_174
       swap2
@@ -1816,25 +1816,25 @@ sub_0: assembly {
       swap1
       0x40
       mstore
-        /* "example.sol":4612:4645  keccak256(abi.encodePacked(name)) */
+        /* "example.sol":4611:4644  keccak256(abi.encodePacked(name)) */
       dup1
       mload
       swap1
       0x20
       add
       keccak256
-        /* "example.sol":4588:4645  bytes32 candidateHash = keccak256(abi.encodePacked(name)) */
+        /* "example.sol":4587:4644  bytes32 candidateHash = keccak256(abi.encodePacked(name)) */
       swap1
       pop
-        /* "example.sol":4696:4697  0 */
+        /* "example.sol":4695:4696  0 */
       0x00
-        /* "example.sol":4663:4677  candidateVotes */
+        /* "example.sol":4662:4676  candidateVotes */
       0x0169
-        /* "example.sol":4663:4692  candidateVotes[candidateHash] */
+        /* "example.sol":4662:4691  candidateVotes[candidateHash] */
       0x00
-        /* "example.sol":4678:4691  candidateHash */
+        /* "example.sol":4677:4690  candidateHash */
       dup4
-        /* "example.sol":4663:4692  candidateVotes[candidateHash] */
+        /* "example.sol":4662:4691  candidateVotes[candidateHash] */
       dup2
       mstore
       0x20
@@ -1847,9 +1847,9 @@ sub_0: assembly {
       0x00
       keccak256
       sload
-        /* "example.sol":4663:4697  candidateVotes[candidateHash] == 0 */
+        /* "example.sol":4662:4696  candidateVotes[candidateHash] == 0 */
       eq
-        /* "example.sol":4655:4726  require(candidateVotes[candidateHash] == 0, "Candidate already exists") */
+        /* "example.sol":4654:4725  require(candidateVotes[candidateHash] == 0, "Candidate already exists") */
       tag_176
       jumpi
       mload(0x40)
@@ -1870,11 +1870,11 @@ sub_0: assembly {
       swap1
       revert
     tag_176:
-        /* "example.sol":4737:4747  candidates */
+        /* "example.sol":4736:4746  candidates */
       0x016c
-        /* "example.sol":4753:4766  candidateHash */
+        /* "example.sol":4752:4765  candidateHash */
       dup2
-        /* "example.sol":4737:4767  candidates.push(candidateHash) */
+        /* "example.sol":4736:4766  candidates.push(candidateHash) */
       swap1
       dup1
       0x01
@@ -1905,15 +1905,15 @@ sub_0: assembly {
       swap2
       pop
       sstore
-        /* "example.sol":4809:4810  0 */
+        /* "example.sol":4808:4809  0 */
       0x00
-        /* "example.sol":4777:4791  candidateVotes */
+        /* "example.sol":4776:4790  candidateVotes */
       0x0169
-        /* "example.sol":4777:4806  candidateVotes[candidateHash] */
+        /* "example.sol":4776:4805  candidateVotes[candidateHash] */
       0x00
-        /* "example.sol":4792:4805  candidateHash */
+        /* "example.sol":4791:4804  candidateHash */
       dup4
-        /* "example.sol":4777:4806  candidateVotes[candidateHash] */
+        /* "example.sol":4776:4805  candidateVotes[candidateHash] */
       dup2
       mstore
       0x20
@@ -1925,17 +1925,17 @@ sub_0: assembly {
       add
       0x00
       keccak256
-        /* "example.sol":4777:4810  candidateVotes[candidateHash] = 0 */
+        /* "example.sol":4776:4809  candidateVotes[candidateHash] = 0 */
       dup2
       swap1
       sstore
       pop
-        /* "example.sol":4578:4817  {... */
+        /* "example.sol":4577:4816  {... */
       pop
-        /* "example.sol":4504:4817  function addCandidate(string memory name) public onlyAdmin contractActive {... */
+        /* "example.sol":4503:4816  function addCandidate(string memory name) public onlyAdmin contractActive {... */
       pop
       jump	// out
-        /* "example.sol":397:457  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+        /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
     tag_73:
       0x015f
       dup2
@@ -1957,7 +1957,7 @@ sub_0: assembly {
       sload
       dup2
       jump	// out
-        /* "example.sol":565:613  mapping(address => bool) public authorizedVoters */
+        /* "example.sol":564:612  mapping(address => bool) public authorizedVoters */
     tag_78:
       mstore(0x20, 0x016b)
       dup1
@@ -1977,67 +1977,67 @@ sub_0: assembly {
       and
       dup2
       jump	// out
-        /* "example.sol":4144:4499  function add_value(... */
+        /* "example.sol":4143:4498  function add_value(... */
     tag_84:
-        /* "example.sol":4236:4251  uint[11] memory */
+        /* "example.sol":4235:4250  uint[11] memory */
       tag_182
       tag_183
       jump	// in
     tag_182:
-        /* "example.sol":4263:4287  uint[11] memory new_data */
+        /* "example.sol":4262:4286  uint[11] memory new_data */
       tag_185
       tag_183
       jump	// in
     tag_185:
-        /* "example.sol":4303:4309  uint i */
+        /* "example.sol":4302:4308  uint i */
       0x00
-        /* "example.sol":4312:4313  0 */
+        /* "example.sol":4311:4312  0 */
       0x00
-        /* "example.sol":4303:4313  uint i = 0 */
+        /* "example.sol":4302:4312  uint i = 0 */
       swap1
       pop
-        /* "example.sol":4298:4414  for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {... */
+        /* "example.sol":4297:4413  for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {... */
     tag_186:
-        /* "example.sol":4338:4339  1 */
+        /* "example.sol":4337:4338  1 */
       0x01
-        /* "example.sol":4320:4335  new_data.length */
+        /* "example.sol":4319:4334  new_data.length */
       0x0b
-        /* "example.sol":4320:4339  new_data.length - 1 */
+        /* "example.sol":4319:4338  new_data.length - 1 */
       tag_189
       swap2
       swap1
       tag_190
       jump	// in
     tag_189:
-        /* "example.sol":4316:4317  i */
+        /* "example.sol":4315:4316  i */
       dup2
-        /* "example.sol":4316:4339  i < new_data.length - 1 */
+        /* "example.sol":4315:4338  i < new_data.length - 1 */
       lt
-        /* "example.sol":4315:4361  (i < new_data.length - 1) && (i < data.length) */
+        /* "example.sol":4314:4360  (i < new_data.length - 1) && (i < data.length) */
       dup1
       iszero
       tag_191
       jumpi
       pop
-        /* "example.sol":4349:4353  data */
+        /* "example.sol":4348:4352  data */
       dup5
-        /* "example.sol":4349:4360  data.length */
+        /* "example.sol":4348:4359  data.length */
       mload
-        /* "example.sol":4345:4346  i */
+        /* "example.sol":4344:4345  i */
       dup2
-        /* "example.sol":4345:4360  i < data.length */
+        /* "example.sol":4344:4359  i < data.length */
       lt
-        /* "example.sol":4315:4361  (i < new_data.length - 1) && (i < data.length) */
+        /* "example.sol":4314:4360  (i < new_data.length - 1) && (i < data.length) */
     tag_191:
-        /* "example.sol":4298:4414  for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {... */
+        /* "example.sol":4297:4413  for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {... */
       iszero
       tag_187
       jumpi
-        /* "example.sol":4396:4400  data */
+        /* "example.sol":4395:4399  data */
       dup5
-        /* "example.sol":4401:4402  i */
+        /* "example.sol":4400:4401  i */
       dup2
-        /* "example.sol":4396:4403  data[i] */
+        /* "example.sol":4395:4402  data[i] */
       dup2
       mload
       dup2
@@ -2055,11 +2055,11 @@ sub_0: assembly {
       add
       add
       mload
-        /* "example.sol":4382:4390  new_data */
+        /* "example.sol":4381:4389  new_data */
       dup3
-        /* "example.sol":4391:4392  i */
+        /* "example.sol":4390:4391  i */
       dup3
-        /* "example.sol":4382:4393  new_data[i] */
+        /* "example.sol":4381:4392  new_data[i] */
       0x0b
       dup2
       lt
@@ -2073,13 +2073,13 @@ sub_0: assembly {
       0x20
       mul
       add
-        /* "example.sol":4382:4403  new_data[i] = data[i] */
+        /* "example.sol":4381:4402  new_data[i] = data[i] */
       dup2
       dup2
       mstore
       pop
       pop
-        /* "example.sol":4363:4366  i++ */
+        /* "example.sol":4362:4365  i++ */
       dup1
       dup1
       tag_197
@@ -2090,15 +2090,15 @@ sub_0: assembly {
       swap2
       pop
       pop
-        /* "example.sol":4298:4414  for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {... */
+        /* "example.sol":4297:4413  for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {... */
       jump(tag_186)
     tag_187:
       pop
-        /* "example.sol":4455:4462  value_1 */
+        /* "example.sol":4454:4461  value_1 */
       0x00
-        /* "example.sol":4463:4466  idx */
+        /* "example.sol":4462:4465  idx */
       dup4
-        /* "example.sol":4455:4467  value_1[idx] */
+        /* "example.sol":4454:4466  value_1[idx] */
       0x0b
       dup2
       lt
@@ -2111,20 +2111,20 @@ sub_0: assembly {
     tag_199:
       add
       sload
-        /* "example.sol":4423:4431  new_data */
+        /* "example.sol":4422:4430  new_data */
       dup2
-        /* "example.sol":4450:4451  1 */
+        /* "example.sol":4449:4450  1 */
       0x01
-        /* "example.sol":4432:4447  new_data.length */
+        /* "example.sol":4431:4446  new_data.length */
       0x0b
-        /* "example.sol":4432:4451  new_data.length - 1 */
+        /* "example.sol":4431:4450  new_data.length - 1 */
       tag_202
       swap2
       swap1
       tag_190
       jump	// in
     tag_202:
-        /* "example.sol":4423:4452  new_data[new_data.length - 1] */
+        /* "example.sol":4422:4451  new_data[new_data.length - 1] */
       0x0b
       dup2
       lt
@@ -2138,31 +2138,31 @@ sub_0: assembly {
       0x20
       mul
       add
-        /* "example.sol":4423:4467  new_data[new_data.length - 1] = value_1[idx] */
+        /* "example.sol":4422:4466  new_data[new_data.length - 1] = value_1[idx] */
       dup2
       dup2
       mstore
       pop
       pop
-        /* "example.sol":4484:4492  new_data */
+        /* "example.sol":4483:4491  new_data */
       dup1
-        /* "example.sol":4477:4492  return new_data */
+        /* "example.sol":4476:4491  return new_data */
       swap2
       pop
       pop
-        /* "example.sol":4144:4499  function add_value(... */
+        /* "example.sol":4143:4498  function add_value(... */
       swap3
       swap2
       pop
       pop
       jump	// out
-        /* "example.sol":6016:6384  function getAllResults()... */
+        /* "example.sol":6015:6383  function getAllResults()... */
     tag_89:
-        /* "example.sol":6104:6120  bytes32[] memory */
+        /* "example.sol":6103:6119  bytes32[] memory */
       0x60
-        /* "example.sol":6122:6138  uint256[] memory */
+        /* "example.sol":6121:6137  uint256[] memory */
       dup1
-        /* "example.sol":961:966  admin */
+        /* "example.sol":960:965  admin */
       0x016d
       0x00
       swap1
@@ -2174,16 +2174,16 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:957  msg.sender */
+        /* "example.sol":946:956  msg.sender */
       caller
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       eq
-        /* "example.sol":939:1005  require(msg.sender == admin, "Only admin can perform this action") */
+        /* "example.sol":938:1004  require(msg.sender == admin, "Only admin can perform this action") */
       tag_206
       jumpi
       mload(0x40)
@@ -2204,16 +2204,16 @@ sub_0: assembly {
       swap1
       revert
     tag_206:
-        /* "example.sol":6154:6178  uint256[] memory results */
+        /* "example.sol":6153:6177  uint256[] memory results */
       0x00
-        /* "example.sol":6195:6205  candidates */
+        /* "example.sol":6194:6204  candidates */
       0x016c
-        /* "example.sol":6195:6212  candidates.length */
+        /* "example.sol":6194:6211  candidates.length */
       dup1
       sload
       swap1
       pop
-        /* "example.sol":6181:6213  new uint256[](candidates.length) */
+        /* "example.sol":6180:6212  new uint256[](candidates.length) */
       0xffffffffffffffff
       dup2
       gt
@@ -2263,42 +2263,42 @@ sub_0: assembly {
       pop
     tag_212:
       pop
-        /* "example.sol":6154:6213  uint256[] memory results = new uint256[](candidates.length) */
+        /* "example.sol":6153:6212  uint256[] memory results = new uint256[](candidates.length) */
       swap1
       pop
-        /* "example.sol":6229:6238  uint256 i */
+        /* "example.sol":6228:6237  uint256 i */
       0x00
-        /* "example.sol":6241:6242  0 */
+        /* "example.sol":6240:6241  0 */
       0x00
-        /* "example.sol":6229:6242  uint256 i = 0 */
+        /* "example.sol":6228:6241  uint256 i = 0 */
       swap1
       pop
-        /* "example.sol":6224:6339  for (uint256 i = 0; i < candidates.length; i++) {... */
+        /* "example.sol":6223:6338  for (uint256 i = 0; i < candidates.length; i++) {... */
     tag_213:
-        /* "example.sol":6248:6258  candidates */
+        /* "example.sol":6247:6257  candidates */
       0x016c
-        /* "example.sol":6248:6265  candidates.length */
+        /* "example.sol":6247:6264  candidates.length */
       dup1
       sload
       swap1
       pop
-        /* "example.sol":6244:6245  i */
+        /* "example.sol":6243:6244  i */
       dup2
-        /* "example.sol":6244:6265  i < candidates.length */
+        /* "example.sol":6243:6264  i < candidates.length */
       lt
-        /* "example.sol":6224:6339  for (uint256 i = 0; i < candidates.length; i++) {... */
+        /* "example.sol":6223:6338  for (uint256 i = 0; i < candidates.length; i++) {... */
       iszero
       tag_214
       jumpi
-        /* "example.sol":6299:6313  candidateVotes */
+        /* "example.sol":6298:6312  candidateVotes */
       0x0169
-        /* "example.sol":6299:6328  candidateVotes[candidates[i]] */
+        /* "example.sol":6298:6327  candidateVotes[candidates[i]] */
       0x00
-        /* "example.sol":6314:6324  candidates */
+        /* "example.sol":6313:6323  candidates */
       0x016c
-        /* "example.sol":6325:6326  i */
+        /* "example.sol":6324:6325  i */
       dup4
-        /* "example.sol":6314:6327  candidates[i] */
+        /* "example.sol":6313:6326  candidates[i] */
       dup2
       sload
       dup2
@@ -2316,7 +2316,7 @@ sub_0: assembly {
       keccak256(0x00, 0x20)
       add
       sload
-        /* "example.sol":6299:6328  candidateVotes[candidates[i]] */
+        /* "example.sol":6298:6327  candidateVotes[candidates[i]] */
       dup2
       mstore
       0x20
@@ -2329,11 +2329,11 @@ sub_0: assembly {
       0x00
       keccak256
       sload
-        /* "example.sol":6286:6293  results */
+        /* "example.sol":6285:6292  results */
       dup3
-        /* "example.sol":6294:6295  i */
+        /* "example.sol":6293:6294  i */
       dup3
-        /* "example.sol":6286:6296  results[i] */
+        /* "example.sol":6285:6295  results[i] */
       dup2
       mload
       dup2
@@ -2350,13 +2350,13 @@ sub_0: assembly {
       0x20
       add
       add
-        /* "example.sol":6286:6328  results[i] = candidateVotes[candidates[i]] */
+        /* "example.sol":6285:6327  results[i] = candidateVotes[candidates[i]] */
       dup2
       dup2
       mstore
       pop
       pop
-        /* "example.sol":6267:6270  i++ */
+        /* "example.sol":6266:6269  i++ */
       dup1
       dup1
       0x01
@@ -2364,15 +2364,15 @@ sub_0: assembly {
       swap2
       pop
       pop
-        /* "example.sol":6224:6339  for (uint256 i = 0; i < candidates.length; i++) {... */
+        /* "example.sol":6223:6338  for (uint256 i = 0; i < candidates.length; i++) {... */
       jump(tag_213)
     tag_214:
       pop
-        /* "example.sol":6357:6367  candidates */
+        /* "example.sol":6356:6366  candidates */
       0x016c
-        /* "example.sol":6369:6376  results */
+        /* "example.sol":6368:6375  results */
       dup2
-        /* "example.sol":6349:6377  return (candidates, results) */
+        /* "example.sol":6348:6376  return (candidates, results) */
       dup2
       dup1
       sload
@@ -2442,19 +2442,19 @@ sub_0: assembly {
       swap3
       pop
       pop
-        /* "example.sol":6016:6384  function getAllResults()... */
+        /* "example.sol":6015:6383  function getAllResults()... */
       swap1
       swap2
       jump	// out
-        /* "example.sol":5597:6010  function getVotes(... */
+        /* "example.sol":5596:6009  function getVotes(... */
     tag_95:
-        /* "example.sol":5679:5686  uint256 */
+        /* "example.sol":5678:5685  uint256 */
       0x00
-        /* "example.sol":5698:5719  bytes32 candidateHash */
+        /* "example.sol":5697:5718  bytes32 candidateHash */
       0x00
-        /* "example.sol":5749:5762  candidateName */
+        /* "example.sol":5748:5761  candidateName */
       dup3
-        /* "example.sol":5732:5763  abi.encodePacked(candidateName) */
+        /* "example.sol":5731:5762  abi.encodePacked(candidateName) */
       add(0x20, mload(0x40))
       tag_224
       swap2
@@ -2473,25 +2473,25 @@ sub_0: assembly {
       swap1
       0x40
       mstore
-        /* "example.sol":5722:5764  keccak256(abi.encodePacked(candidateName)) */
+        /* "example.sol":5721:5763  keccak256(abi.encodePacked(candidateName)) */
       dup1
       mload
       swap1
       0x20
       add
       keccak256
-        /* "example.sol":5698:5764  bytes32 candidateHash = keccak256(abi.encodePacked(candidateName)) */
+        /* "example.sol":5697:5763  bytes32 candidateHash = keccak256(abi.encodePacked(candidateName)) */
       swap1
       pop
-        /* "example.sol":5827:5828  0 */
+        /* "example.sol":5826:5827  0 */
       0x00
-        /* "example.sol":5795:5809  candidateVotes */
+        /* "example.sol":5794:5808  candidateVotes */
       0x0169
-        /* "example.sol":5795:5824  candidateVotes[candidateHash] */
+        /* "example.sol":5794:5823  candidateVotes[candidateHash] */
       0x00
-        /* "example.sol":5810:5823  candidateHash */
+        /* "example.sol":5809:5822  candidateHash */
       dup4
-        /* "example.sol":5795:5824  candidateVotes[candidateHash] */
+        /* "example.sol":5794:5823  candidateVotes[candidateHash] */
       dup2
       mstore
       0x20
@@ -2504,18 +2504,18 @@ sub_0: assembly {
       0x00
       keccak256
       sload
-        /* "example.sol":5795:5828  candidateVotes[candidateHash] > 0 */
+        /* "example.sol":5794:5827  candidateVotes[candidateHash] > 0 */
       gt
-        /* "example.sol":5795:5907  candidateVotes[candidateHash] > 0 ||... */
+        /* "example.sol":5794:5906  candidateVotes[candidateHash] > 0 ||... */
       dup1
       tag_225
       jumpi
       pop
-        /* "example.sol":5892:5902  candidates */
+        /* "example.sol":5891:5901  candidates */
       0x016c
-        /* "example.sol":5903:5904  0 */
+        /* "example.sol":5902:5903  0 */
       0x00
-        /* "example.sol":5892:5905  candidates[0] */
+        /* "example.sol":5891:5904  candidates[0] */
       dup2
       sload
       dup2
@@ -2533,7 +2533,7 @@ sub_0: assembly {
       keccak256(0x00, 0x20)
       add
       sload
-        /* "example.sol":5875:5906  abi.encodePacked(candidates[0]) */
+        /* "example.sol":5874:5905  abi.encodePacked(candidates[0]) */
       add(0x20, mload(0x40))
       tag_229
       swap2
@@ -2552,20 +2552,20 @@ sub_0: assembly {
       swap1
       0x40
       mstore
-        /* "example.sol":5865:5907  keccak256(abi.encodePacked(candidates[0])) */
+        /* "example.sol":5864:5906  keccak256(abi.encodePacked(candidates[0])) */
       dup1
       mload
       swap1
       0x20
       add
       keccak256
-        /* "example.sol":5848:5861  candidateHash */
+        /* "example.sol":5847:5860  candidateHash */
       dup2
-        /* "example.sol":5848:5907  candidateHash == keccak256(abi.encodePacked(candidates[0])) */
+        /* "example.sol":5847:5906  candidateHash == keccak256(abi.encodePacked(candidates[0])) */
       eq
-        /* "example.sol":5795:5907  candidateVotes[candidateHash] > 0 ||... */
+        /* "example.sol":5794:5906  candidateVotes[candidateHash] > 0 ||... */
     tag_225:
-        /* "example.sol":5774:5957  require(... */
+        /* "example.sol":5773:5956  require(... */
       tag_231
       jumpi
       mload(0x40)
@@ -2586,13 +2586,13 @@ sub_0: assembly {
       swap1
       revert
     tag_231:
-        /* "example.sol":5974:5988  candidateVotes */
+        /* "example.sol":5973:5987  candidateVotes */
       0x0169
-        /* "example.sol":5974:6003  candidateVotes[candidateHash] */
+        /* "example.sol":5973:6002  candidateVotes[candidateHash] */
       0x00
-        /* "example.sol":5989:6002  candidateHash */
+        /* "example.sol":5988:6001  candidateHash */
       dup3
-        /* "example.sol":5974:6003  candidateVotes[candidateHash] */
+        /* "example.sol":5973:6002  candidateVotes[candidateHash] */
       dup2
       mstore
       0x20
@@ -2605,111 +2605,111 @@ sub_0: assembly {
       0x00
       keccak256
       sload
-        /* "example.sol":5967:6003  return candidateVotes[candidateHash] */
+        /* "example.sol":5966:6002  return candidateVotes[candidateHash] */
       swap2
       pop
       pop
-        /* "example.sol":5597:6010  function getVotes(... */
+        /* "example.sol":5596:6009  function getVotes(... */
       swap2
       swap1
       pop
       jump	// out
-        /* "example.sol":679:703  uint256 public votingEnd */
+        /* "example.sol":678:702  uint256 public votingEnd */
     tag_99:
       sload(0x016e)
       dup2
       jump	// out
-        /* "example.sol":1131:3578  function loop() public pure returns (uint256, uint256) {... */
+        /* "example.sol":1130:3577  function loop() public pure returns (uint256, uint256) {... */
     tag_103:
-        /* "example.sol":1168:1175  uint256 */
+        /* "example.sol":1167:1174  uint256 */
       0x00
-        /* "example.sol":1177:1184  uint256 */
+        /* "example.sol":1176:1183  uint256 */
       0x00
-        /* "example.sol":1216:1225  uint256 s */
+        /* "example.sol":1215:1224  uint256 s */
       0x00
-        /* "example.sol":1228:1229  1 */
+        /* "example.sol":1227:1228  1 */
       0x01
-        /* "example.sol":1216:1229  uint256 s = 1 */
+        /* "example.sol":1215:1228  uint256 s = 1 */
       swap1
       pop
-        /* "example.sol":1254:1271  uint256 state_var */
+        /* "example.sol":1253:1270  uint256 state_var */
       0x00
-        /* "example.sol":1274:1275  0 */
+        /* "example.sol":1273:1274  0 */
       0x00
-        /* "example.sol":1254:1275  uint256 state_var = 0 */
+        /* "example.sol":1253:1274  uint256 state_var = 0 */
       swap1
       pop
-        /* "example.sol":1345:1354  uint256 i */
+        /* "example.sol":1344:1353  uint256 i */
       0x00
-        /* "example.sol":1357:1358  0 */
+        /* "example.sol":1356:1357  0 */
       0x00
-        /* "example.sol":1345:1358  uint256 i = 0 */
+        /* "example.sol":1344:1357  uint256 i = 0 */
       swap1
       pop
-        /* "example.sol":1372:2318  while (true) {... */
+        /* "example.sol":1371:2317  while (true) {... */
     tag_235:
-        /* "example.sol":1379:1383  true */
+        /* "example.sol":1378:1382  true */
       0x01
-        /* "example.sol":1372:2318  while (true) {... */
+        /* "example.sol":1371:2317  while (true) {... */
       iszero
       tag_236
       jumpi
-        /* "example.sol":1420:1421  0 */
+        /* "example.sol":1419:1420  0 */
       0x00
-        /* "example.sol":1407:1416  state_var */
+        /* "example.sol":1406:1415  state_var */
       dup3
-        /* "example.sol":1407:1421  state_var == 0 */
+        /* "example.sol":1406:1420  state_var == 0 */
       sub
-        /* "example.sol":1403:2304  if (state_var == 0) {... */
+        /* "example.sol":1402:2303  if (state_var == 0) {... */
       tag_237
       jumpi
-        /* "example.sol":1461:1463  10 */
+        /* "example.sol":1460:1462  10 */
       0x0a
-        /* "example.sol":1457:1458  i */
+        /* "example.sol":1456:1457  i */
       dup2
-        /* "example.sol":1457:1463  i < 10 */
+        /* "example.sol":1456:1462  i < 10 */
       lt
-        /* "example.sol":1457:1471  i < 10 ? 1 : 2 */
+        /* "example.sol":1456:1470  i < 10 ? 1 : 2 */
       tag_238
       jumpi
-        /* "example.sol":1470:1471  2 */
+        /* "example.sol":1469:1470  2 */
       0x02
-        /* "example.sol":1457:1471  i < 10 ? 1 : 2 */
+        /* "example.sol":1456:1470  i < 10 ? 1 : 2 */
       jump(tag_239)
     tag_238:
-        /* "example.sol":1466:1467  1 */
+        /* "example.sol":1465:1466  1 */
       0x01
-        /* "example.sol":1457:1471  i < 10 ? 1 : 2 */
+        /* "example.sol":1456:1470  i < 10 ? 1 : 2 */
     tag_239:
-        /* "example.sol":1445:1471  state_var = i < 10 ? 1 : 2 */
+        /* "example.sol":1444:1470  state_var = i < 10 ? 1 : 2 */
       0xff
       and
       swap2
       pop
-        /* "example.sol":1403:2304  if (state_var == 0) {... */
+        /* "example.sol":1402:2303  if (state_var == 0) {... */
       jump(tag_240)
     tag_237:
-        /* "example.sol":1513:1514  1 */
+        /* "example.sol":1512:1513  1 */
       0x01
-        /* "example.sol":1500:1509  state_var */
+        /* "example.sol":1499:1508  state_var */
       dup3
-        /* "example.sol":1500:1514  state_var == 1 */
+        /* "example.sol":1499:1513  state_var == 1 */
       sub
-        /* "example.sol":1496:2304  if (state_var == 1) {... */
+        /* "example.sol":1495:2303  if (state_var == 1) {... */
       tag_241
       jumpi
-        /* "example.sol":1583:1584  3 */
+        /* "example.sol":1582:1583  3 */
       0x03
-        /* "example.sol":1578:1579  i */
+        /* "example.sol":1577:1578  i */
       dup2
-        /* "example.sol":1578:1584  i == 3 */
+        /* "example.sol":1577:1583  i == 3 */
       sub
-        /* "example.sol":1574:2026  if (i == 3) {... */
+        /* "example.sol":1573:2025  if (i == 3) {... */
       tag_242
       jumpi
-        /* "example.sol":1617:1618  i */
+        /* "example.sol":1616:1617  i */
       dup1
-        /* "example.sol":1612:1618  s += i */
+        /* "example.sol":1611:1617  s += i */
       dup4
       tag_243
       swap2
@@ -2719,27 +2719,27 @@ sub_0: assembly {
     tag_243:
       swap3
       pop
-        /* "example.sol":1700:1701  0 */
+        /* "example.sol":1699:1700  0 */
       0x00
-        /* "example.sol":1688:1701  state_var = 0 */
+        /* "example.sol":1687:1700  state_var = 0 */
       swap2
       pop
-        /* "example.sol":1727:1735  continue */
+        /* "example.sol":1726:1734  continue */
       jump(tag_235)
-        /* "example.sol":1574:2026  if (i == 3) {... */
+        /* "example.sol":1573:2025  if (i == 3) {... */
     tag_242:
-        /* "example.sol":1815:1816  5 */
+        /* "example.sol":1814:1815  5 */
       0x05
-        /* "example.sol":1810:1811  i */
+        /* "example.sol":1809:1810  i */
       dup2
-        /* "example.sol":1810:1816  i == 5 */
+        /* "example.sol":1809:1815  i == 5 */
       sub
-        /* "example.sol":1806:2026  if (i == 5) {... */
+        /* "example.sol":1805:2025  if (i == 5) {... */
       tag_246
       jumpi
-        /* "example.sol":1849:1850  i */
+        /* "example.sol":1848:1849  i */
       dup1
-        /* "example.sol":1844:1850  s -= i */
+        /* "example.sol":1843:1849  s -= i */
       dup4
       tag_247
       swap2
@@ -2749,45 +2749,45 @@ sub_0: assembly {
     tag_247:
       swap3
       pop
-        /* "example.sol":1929:1930  2 */
+        /* "example.sol":1928:1929  2 */
       0x02
-        /* "example.sol":1917:1930  state_var = 2 */
+        /* "example.sol":1916:1929  state_var = 2 */
       swap2
       pop
-        /* "example.sol":1956:1964  continue */
+        /* "example.sol":1955:1963  continue */
       jump(tag_235)
-        /* "example.sol":1806:2026  if (i == 5) {... */
+        /* "example.sol":1805:2025  if (i == 5) {... */
     tag_246:
-        /* "example.sol":2107:2108  3 */
+        /* "example.sol":2106:2107  3 */
       0x03
-        /* "example.sol":2095:2108  state_var = 3 */
+        /* "example.sol":2094:2107  state_var = 3 */
       swap2
       pop
-        /* "example.sol":1496:2304  if (state_var == 1) {... */
+        /* "example.sol":1495:2303  if (state_var == 1) {... */
       jump(tag_248)
     tag_241:
-        /* "example.sol":2150:2151  2 */
+        /* "example.sol":2149:2150  2 */
       0x02
-        /* "example.sol":2137:2146  state_var */
+        /* "example.sol":2136:2145  state_var */
       dup3
-        /* "example.sol":2137:2151  state_var == 2 */
+        /* "example.sol":2136:2150  state_var == 2 */
       sub
-        /* "example.sol":2133:2304  if (state_var == 2) {... */
+        /* "example.sol":2132:2303  if (state_var == 2) {... */
       iszero
-        /* "example.sol":2175:2180  break */
+        /* "example.sol":2174:2179  break */
       tag_236
-        /* "example.sol":2133:2304  if (state_var == 2) {... */
+        /* "example.sol":2132:2303  if (state_var == 2) {... */
       jumpi
-        /* "example.sol":2222:2223  3 */
+        /* "example.sol":2221:2222  3 */
       0x03
-        /* "example.sol":2209:2218  state_var */
+        /* "example.sol":2208:2217  state_var */
       dup3
-        /* "example.sol":2209:2223  state_var == 3 */
+        /* "example.sol":2208:2222  state_var == 3 */
       sub
-        /* "example.sol":2205:2304  if (state_var == 3) {... */
+        /* "example.sol":2204:2303  if (state_var == 3) {... */
       tag_251
       jumpi
-        /* "example.sol":2247:2250  i++ */
+        /* "example.sol":2246:2249  i++ */
       dup1
       dup1
       tag_252
@@ -2798,36 +2798,36 @@ sub_0: assembly {
       swap2
       pop
       pop
-        /* "example.sol":2284:2285  0 */
+        /* "example.sol":2283:2284  0 */
       0x00
-        /* "example.sol":2272:2285  state_var = 0 */
+        /* "example.sol":2271:2284  state_var = 0 */
       swap2
       pop
-        /* "example.sol":2205:2304  if (state_var == 3) {... */
+        /* "example.sol":2204:2303  if (state_var == 3) {... */
     tag_251:
-        /* "example.sol":1496:2304  if (state_var == 1) {... */
+        /* "example.sol":1495:2303  if (state_var == 1) {... */
     tag_248:
-        /* "example.sol":1403:2304  if (state_var == 0) {... */
+        /* "example.sol":1402:2303  if (state_var == 0) {... */
     tag_240:
-        /* "example.sol":1372:2318  while (true) {... */
+        /* "example.sol":1371:2317  while (true) {... */
       jump(tag_235)
     tag_236:
-        /* "example.sol":1240:2328  {... */
+        /* "example.sol":1239:2327  {... */
       pop
       pop
-        /* "example.sol":2346:2347  5 */
+        /* "example.sol":2345:2346  5 */
       0x05
-        /* "example.sol":2342:2343  s */
+        /* "example.sol":2341:2342  s */
       dup2
-        /* "example.sol":2342:2347  s > 5 */
+        /* "example.sol":2341:2346  s > 5 */
       gt
-        /* "example.sol":2338:2380  if (s > 5) {... */
+        /* "example.sol":2337:2379  if (s > 5) {... */
       iszero
       tag_253
       jumpi
-        /* "example.sol":2368:2369  5 */
+        /* "example.sol":2367:2368  5 */
       0x05
-        /* "example.sol":2363:2369  s -= 5 */
+        /* "example.sol":2362:2368  s -= 5 */
       dup2
       tag_254
       swap2
@@ -2837,76 +2837,76 @@ sub_0: assembly {
     tag_254:
       swap1
       pop
-        /* "example.sol":2338:2380  if (s > 5) {... */
+        /* "example.sol":2337:2379  if (s > 5) {... */
     tag_253:
-        /* "example.sol":2390:2399  uint256 j */
+        /* "example.sol":2389:2398  uint256 j */
       0x00
-        /* "example.sol":2402:2403  0 */
+        /* "example.sol":2401:2402  0 */
       0x00
-        /* "example.sol":2390:2403  uint256 j = 0 */
+        /* "example.sol":2389:2402  uint256 j = 0 */
       swap1
       pop
-        /* "example.sol":2449:2466  uint256 state_var */
+        /* "example.sol":2448:2465  uint256 state_var */
       0x00
-        /* "example.sol":2469:2470  0 */
+        /* "example.sol":2468:2469  0 */
       0x00
-        /* "example.sol":2449:2470  uint256 state_var = 0 */
+        /* "example.sol":2448:2469  uint256 state_var = 0 */
       swap1
       pop
-        /* "example.sol":2529:2839  while (true) {... */
+        /* "example.sol":2528:2838  while (true) {... */
     tag_255:
-        /* "example.sol":2536:2540  true */
+        /* "example.sol":2535:2539  true */
       0x01
-        /* "example.sol":2529:2839  while (true) {... */
+        /* "example.sol":2528:2838  while (true) {... */
       iszero
       tag_256
       jumpi
-        /* "example.sol":2577:2578  0 */
+        /* "example.sol":2576:2577  0 */
       0x00
-        /* "example.sol":2564:2573  state_var */
+        /* "example.sol":2563:2572  state_var */
       dup2
-        /* "example.sol":2564:2578  state_var == 0 */
+        /* "example.sol":2563:2577  state_var == 0 */
       sub
-        /* "example.sol":2560:2825  if (state_var == 0) {... */
+        /* "example.sol":2559:2824  if (state_var == 0) {... */
       tag_257
       jumpi
-        /* "example.sol":2619:2621  10 */
+        /* "example.sol":2618:2620  10 */
       0x0a
-        /* "example.sol":2614:2615  j */
+        /* "example.sol":2613:2614  j */
       dup3
-        /* "example.sol":2614:2621  j <= 10 */
+        /* "example.sol":2613:2620  j <= 10 */
       gt
       iszero
-        /* "example.sol":2614:2629  j <= 10 ? 1 : 2 */
+        /* "example.sol":2613:2628  j <= 10 ? 1 : 2 */
       tag_258
       jumpi
-        /* "example.sol":2628:2629  2 */
+        /* "example.sol":2627:2628  2 */
       0x02
-        /* "example.sol":2614:2629  j <= 10 ? 1 : 2 */
+        /* "example.sol":2613:2628  j <= 10 ? 1 : 2 */
       jump(tag_259)
     tag_258:
-        /* "example.sol":2624:2625  1 */
+        /* "example.sol":2623:2624  1 */
       0x01
-        /* "example.sol":2614:2629  j <= 10 ? 1 : 2 */
+        /* "example.sol":2613:2628  j <= 10 ? 1 : 2 */
     tag_259:
-        /* "example.sol":2602:2629  state_var = j <= 10 ? 1 : 2 */
+        /* "example.sol":2601:2628  state_var = j <= 10 ? 1 : 2 */
       0xff
       and
       swap1
       pop
-        /* "example.sol":2560:2825  if (state_var == 0) {... */
+        /* "example.sol":2559:2824  if (state_var == 0) {... */
       jump(tag_260)
     tag_257:
-        /* "example.sol":2671:2672  1 */
+        /* "example.sol":2670:2671  1 */
       0x01
-        /* "example.sol":2658:2667  state_var */
+        /* "example.sol":2657:2666  state_var */
       dup2
-        /* "example.sol":2658:2672  state_var == 1 */
+        /* "example.sol":2657:2671  state_var == 1 */
       sub
-        /* "example.sol":2654:2825  if (state_var == 1) {... */
+        /* "example.sol":2653:2824  if (state_var == 1) {... */
       tag_261
       jumpi
-        /* "example.sol":2696:2699  j++ */
+        /* "example.sol":2695:2698  j++ */
       dup2
       dup1
       tag_262
@@ -2917,103 +2917,103 @@ sub_0: assembly {
       swap3
       pop
       pop
-        /* "example.sol":2733:2734  0 */
+        /* "example.sol":2732:2733  0 */
       0x00
-        /* "example.sol":2721:2734  state_var = 0 */
+        /* "example.sol":2720:2733  state_var = 0 */
       swap1
       pop
-        /* "example.sol":2654:2825  if (state_var == 1) {... */
+        /* "example.sol":2653:2824  if (state_var == 1) {... */
       jump(tag_263)
     tag_261:
-        /* "example.sol":2776:2777  2 */
+        /* "example.sol":2775:2776  2 */
       0x02
-        /* "example.sol":2763:2772  state_var */
+        /* "example.sol":2762:2771  state_var */
       dup2
-        /* "example.sol":2763:2777  state_var == 2 */
+        /* "example.sol":2762:2776  state_var == 2 */
       sub
-        /* "example.sol":2759:2825  if (state_var == 2) {... */
+        /* "example.sol":2758:2824  if (state_var == 2) {... */
       iszero
-        /* "example.sol":2801:2806  break */
+        /* "example.sol":2800:2805  break */
       tag_256
-        /* "example.sol":2759:2825  if (state_var == 2) {... */
+        /* "example.sol":2758:2824  if (state_var == 2) {... */
       jumpi
-        /* "example.sol":2654:2825  if (state_var == 1) {... */
+        /* "example.sol":2653:2824  if (state_var == 1) {... */
     tag_263:
-        /* "example.sol":2560:2825  if (state_var == 0) {... */
+        /* "example.sol":2559:2824  if (state_var == 0) {... */
     tag_260:
-        /* "example.sol":2529:2839  while (true) {... */
+        /* "example.sol":2528:2838  while (true) {... */
       jump(tag_255)
     tag_256:
-        /* "example.sol":2435:2849  {... */
+        /* "example.sol":2434:2848  {... */
       pop
-        /* "example.sol":2884:2893  uint256 k */
+        /* "example.sol":2883:2892  uint256 k */
       0x00
-        /* "example.sol":2896:2897  0 */
+        /* "example.sol":2895:2896  0 */
       0x00
-        /* "example.sol":2884:2897  uint256 k = 0 */
+        /* "example.sol":2883:2896  uint256 k = 0 */
       swap1
       pop
-        /* "example.sol":2921:2938  uint256 state_var */
+        /* "example.sol":2920:2937  uint256 state_var */
       0x00
-        /* "example.sol":2941:2942  1 */
+        /* "example.sol":2940:2941  1 */
       0x01
-        /* "example.sol":2921:2942  uint256 state_var = 1 */
+        /* "example.sol":2920:2941  uint256 state_var = 1 */
       swap1
       pop
-        /* "example.sol":3000:3310  while (true) {... */
+        /* "example.sol":2999:3309  while (true) {... */
     tag_265:
-        /* "example.sol":3007:3011  true */
+        /* "example.sol":3006:3010  true */
       0x01
-        /* "example.sol":3000:3310  while (true) {... */
+        /* "example.sol":2999:3309  while (true) {... */
       iszero
       tag_266
       jumpi
-        /* "example.sol":3048:3049  0 */
+        /* "example.sol":3047:3048  0 */
       0x00
-        /* "example.sol":3035:3044  state_var */
+        /* "example.sol":3034:3043  state_var */
       dup2
-        /* "example.sol":3035:3049  state_var == 0 */
+        /* "example.sol":3034:3048  state_var == 0 */
       sub
-        /* "example.sol":3031:3296  if (state_var == 0) {... */
+        /* "example.sol":3030:3295  if (state_var == 0) {... */
       tag_267
       jumpi
-        /* "example.sol":3090:3092  20 */
+        /* "example.sol":3089:3091  20 */
       0x14
-        /* "example.sol":3085:3086  k */
+        /* "example.sol":3084:3085  k */
       dup3
-        /* "example.sol":3085:3092  k <= 20 */
+        /* "example.sol":3084:3091  k <= 20 */
       gt
       iszero
-        /* "example.sol":3085:3100  k <= 20 ? 1 : 2 */
+        /* "example.sol":3084:3099  k <= 20 ? 1 : 2 */
       tag_268
       jumpi
-        /* "example.sol":3099:3100  2 */
+        /* "example.sol":3098:3099  2 */
       0x02
-        /* "example.sol":3085:3100  k <= 20 ? 1 : 2 */
+        /* "example.sol":3084:3099  k <= 20 ? 1 : 2 */
       jump(tag_269)
     tag_268:
-        /* "example.sol":3095:3096  1 */
+        /* "example.sol":3094:3095  1 */
       0x01
-        /* "example.sol":3085:3100  k <= 20 ? 1 : 2 */
+        /* "example.sol":3084:3099  k <= 20 ? 1 : 2 */
     tag_269:
-        /* "example.sol":3073:3100  state_var = k <= 20 ? 1 : 2 */
+        /* "example.sol":3072:3099  state_var = k <= 20 ? 1 : 2 */
       0xff
       and
       swap1
       pop
-        /* "example.sol":3031:3296  if (state_var == 0) {... */
+        /* "example.sol":3030:3295  if (state_var == 0) {... */
       jump(tag_270)
     tag_267:
-        /* "example.sol":3142:3143  1 */
+        /* "example.sol":3141:3142  1 */
       0x01
-        /* "example.sol":3129:3138  state_var */
+        /* "example.sol":3128:3137  state_var */
       dup2
-        /* "example.sol":3129:3143  state_var == 1 */
+        /* "example.sol":3128:3142  state_var == 1 */
       sub
-        /* "example.sol":3125:3296  if (state_var == 1) {... */
+        /* "example.sol":3124:3295  if (state_var == 1) {... */
       tag_271
       jumpi
-        /* "example.sol":3167:3170  k++ */
+        /* "example.sol":3166:3169  k++ */
       dup2
       dup1
       tag_272
@@ -3024,47 +3024,47 @@ sub_0: assembly {
       swap3
       pop
       pop
-        /* "example.sol":3204:3205  0 */
+        /* "example.sol":3203:3204  0 */
       0x00
-        /* "example.sol":3192:3205  state_var = 0 */
+        /* "example.sol":3191:3204  state_var = 0 */
       swap1
       pop
-        /* "example.sol":3125:3296  if (state_var == 1) {... */
+        /* "example.sol":3124:3295  if (state_var == 1) {... */
       jump(tag_273)
     tag_271:
-        /* "example.sol":3247:3248  2 */
+        /* "example.sol":3246:3247  2 */
       0x02
-        /* "example.sol":3234:3243  state_var */
+        /* "example.sol":3233:3242  state_var */
       dup2
-        /* "example.sol":3234:3248  state_var == 2 */
+        /* "example.sol":3233:3247  state_var == 2 */
       sub
-        /* "example.sol":3230:3296  if (state_var == 2) {... */
+        /* "example.sol":3229:3295  if (state_var == 2) {... */
       iszero
-        /* "example.sol":3272:3277  break */
+        /* "example.sol":3271:3276  break */
       tag_266
-        /* "example.sol":3230:3296  if (state_var == 2) {... */
+        /* "example.sol":3229:3295  if (state_var == 2) {... */
       jumpi
-        /* "example.sol":3125:3296  if (state_var == 1) {... */
+        /* "example.sol":3124:3295  if (state_var == 1) {... */
     tag_273:
-        /* "example.sol":3031:3296  if (state_var == 0) {... */
+        /* "example.sol":3030:3295  if (state_var == 0) {... */
     tag_270:
-        /* "example.sol":3000:3310  while (true) {... */
+        /* "example.sol":2999:3309  while (true) {... */
       jump(tag_265)
     tag_266:
-        /* "example.sol":2907:3320  {... */
+        /* "example.sol":2906:3319  {... */
       pop
-        /* "example.sol":3392:3394  20 */
+        /* "example.sol":3391:3393  20 */
       0x14
-        /* "example.sol":3387:3388  j */
+        /* "example.sol":3386:3387  j */
       dup3
-        /* "example.sol":3387:3394  j >= 20 */
+        /* "example.sol":3386:3393  j >= 20 */
       lt
-        /* "example.sol":3383:3538  if (j >= 20) {... */
+        /* "example.sol":3382:3537  if (j >= 20) {... */
       tag_275
       jumpi
-        /* "example.sol":3419:3420  9 */
+        /* "example.sol":3418:3419  9 */
       0x09
-        /* "example.sol":3414:3420  j += 9 */
+        /* "example.sol":3413:3419  j += 9 */
       dup3
       tag_276
       swap2
@@ -3074,21 +3074,21 @@ sub_0: assembly {
     tag_276:
       swap2
       pop
-        /* "example.sol":3383:3538  if (j >= 20) {... */
+        /* "example.sol":3382:3537  if (j >= 20) {... */
       jump(tag_277)
     tag_275:
-        /* "example.sol":3450:3452  10 */
+        /* "example.sol":3449:3451  10 */
       0x0a
-        /* "example.sol":3445:3446  j */
+        /* "example.sol":3444:3445  j */
       dup3
-        /* "example.sol":3445:3452  j >= 10 */
+        /* "example.sol":3444:3451  j >= 10 */
       lt
-        /* "example.sol":3441:3538  if (j >= 10) {... */
+        /* "example.sol":3440:3537  if (j >= 10) {... */
       tag_278
       jumpi
-        /* "example.sol":3477:3478  5 */
+        /* "example.sol":3476:3477  5 */
       0x05
-        /* "example.sol":3472:3478  j += 5 */
+        /* "example.sol":3471:3477  j += 5 */
       dup3
       tag_279
       swap2
@@ -3098,12 +3098,12 @@ sub_0: assembly {
     tag_279:
       swap2
       pop
-        /* "example.sol":3441:3538  if (j >= 10) {... */
+        /* "example.sol":3440:3537  if (j >= 10) {... */
       jump(tag_280)
     tag_278:
-        /* "example.sol":3522:3523  1 */
+        /* "example.sol":3521:3522  1 */
       0x01
-        /* "example.sol":3517:3523  j += 1 */
+        /* "example.sol":3516:3522  j += 1 */
       dup3
       tag_281
       swap2
@@ -3113,15 +3113,15 @@ sub_0: assembly {
     tag_281:
       swap2
       pop
-        /* "example.sol":3441:3538  if (j >= 10) {... */
+        /* "example.sol":3440:3537  if (j >= 10) {... */
     tag_280:
-        /* "example.sol":3383:3538  if (j >= 20) {... */
+        /* "example.sol":3382:3537  if (j >= 20) {... */
     tag_277:
-        /* "example.sol":3566:3567  s */
+        /* "example.sol":3565:3566  s */
       dup3
-        /* "example.sol":3569:3570  j */
+        /* "example.sol":3568:3569  j */
       dup3
-        /* "example.sol":3558:3571  return (s, j) */
+        /* "example.sol":3557:3570  return (s, j) */
       swap5
       pop
       swap5
@@ -3129,13 +3129,13 @@ sub_0: assembly {
       pop
       pop
       pop
-        /* "example.sol":1131:3578  function loop() public pure returns (uint256, uint256) {... */
+        /* "example.sol":1130:3577  function loop() public pure returns (uint256, uint256) {... */
       swap1
       swap2
       jump	// out
-        /* "example.sol":6557:6637  function deactivateContract() public onlyAdmin {... */
+        /* "example.sol":6556:6636  function deactivateContract() public onlyAdmin {... */
     tag_108:
-        /* "example.sol":961:966  admin */
+        /* "example.sol":960:965  admin */
       0x016d
       0x00
       swap1
@@ -3147,16 +3147,16 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:957  msg.sender */
+        /* "example.sol":946:956  msg.sender */
       caller
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       eq
-        /* "example.sol":939:1005  require(msg.sender == admin, "Only admin can perform this action") */
+        /* "example.sol":938:1004  require(msg.sender == admin, "Only admin can perform this action") */
       tag_283
       jumpi
       mload(0x40)
@@ -3177,12 +3177,12 @@ sub_0: assembly {
       swap1
       revert
     tag_283:
-        /* "example.sol":6625:6630  false */
+        /* "example.sol":6624:6629  false */
       0x00
-        /* "example.sol":6614:6622  isActive */
+        /* "example.sol":6613:6621  isActive */
       0x016f
       0x00
-        /* "example.sol":6614:6630  isActive = false */
+        /* "example.sol":6613:6629  isActive = false */
       0x0100
       exp
       dup2
@@ -3201,9 +3201,9 @@ sub_0: assembly {
       swap1
       sstore
       pop
-        /* "example.sol":6557:6637  function deactivateContract() public onlyAdmin {... */
+        /* "example.sol":6556:6636  function deactivateContract() public onlyAdmin {... */
       jump	// out
-        /* "example.sol":337:391  uint256[p][l1][l1 + l2 + p - p + 1] public multi_array */
+        /* "example.sol":336:390  uint256[p][l1][l1 + l2 + p - p + 1] public multi_array */
     tag_113:
       0x29
       dup4
@@ -3251,7 +3251,7 @@ sub_0: assembly {
       sload
       dup2
       jump	// out
-        /* "example.sol":294:331  uint256[(((l1) + l2))] public value_2 */
+        /* "example.sol":293:330  uint256[(((l1) + l2))] public value_2 */
     tag_118:
       0x0b
       dup2
@@ -3273,36 +3273,36 @@ sub_0: assembly {
       sload
       dup2
       jump	// out
-        /* "example.sol":3754:3915  function get_value(uint128 idx) public view returns (uint256) {... */
+        /* "example.sol":3753:3914  function get_value(uint128 idx) public view returns (uint256) {... */
     tag_124:
-        /* "example.sol":3807:3814  uint256 */
+        /* "example.sol":3806:3813  uint256 */
       0x00
-        /* "example.sol":3847:3848  5 */
+        /* "example.sol":3846:3847  5 */
       0x05
-        /* "example.sol":3830:3844  value_3.length */
+        /* "example.sol":3829:3843  value_3.length */
       0x0a
-        /* "example.sol":3830:3848  value_3.length > 5 */
+        /* "example.sol":3829:3847  value_3.length > 5 */
       gt
-        /* "example.sol":3826:3908  if (value_3.length > 5) return value_1[idx] * l3;... */
+        /* "example.sol":3825:3907  if (value_3.length > 5) return value_1[idx] * l3;... */
       iszero
       tag_295
       jumpi
-        /* "example.sol":133:135  20 */
+        /* "example.sol":132:134  20 */
       0x14
-        /* "example.sol":103:105  10 */
+        /* "example.sol":102:104  10 */
       0x0a
-        /* "example.sol":163:170  l1 / l2 */
+        /* "example.sol":162:169  l1 / l2 */
       tag_296
       swap2
       swap1
       tag_297
       jump	// in
     tag_296:
-        /* "example.sol":3857:3864  value_1 */
+        /* "example.sol":3856:3863  value_1 */
       0x00
-        /* "example.sol":3865:3868  idx */
+        /* "example.sol":3864:3867  idx */
       dup4
-        /* "example.sol":3857:3869  value_1[idx] */
+        /* "example.sol":3856:3868  value_1[idx] */
       0xffffffffffffffffffffffffffffffff
       and
       0x0b
@@ -3317,24 +3317,24 @@ sub_0: assembly {
     tag_298:
       add
       sload
-        /* "example.sol":3857:3874  value_1[idx] * l3 */
+        /* "example.sol":3856:3873  value_1[idx] * l3 */
       tag_301
       swap2
       swap1
       tag_302
       jump	// in
     tag_301:
-        /* "example.sol":3850:3874  return value_1[idx] * l3 */
+        /* "example.sol":3849:3873  return value_1[idx] * l3 */
       swap1
       pop
       jump(tag_294)
-        /* "example.sol":3826:3908  if (value_3.length > 5) return value_1[idx] * l3;... */
+        /* "example.sol":3825:3907  if (value_3.length > 5) return value_1[idx] * l3;... */
     tag_295:
-        /* "example.sol":3896:3903  value_1 */
+        /* "example.sol":3895:3902  value_1 */
       0x00
-        /* "example.sol":3904:3907  idx */
+        /* "example.sol":3903:3906  idx */
       dup3
-        /* "example.sol":3896:3908  value_1[idx] */
+        /* "example.sol":3895:3907  value_1[idx] */
       0xffffffffffffffffffffffffffffffff
       and
       0x0b
@@ -3349,27 +3349,27 @@ sub_0: assembly {
     tag_304:
       add
       sload
-        /* "example.sol":3889:3908  return value_1[idx] */
+        /* "example.sol":3888:3907  return value_1[idx] */
       swap1
       pop
-        /* "example.sol":3754:3915  function get_value(uint128 idx) public view returns (uint256) {... */
+        /* "example.sol":3753:3914  function get_value(uint128 idx) public view returns (uint256) {... */
     tag_294:
       swap2
       swap1
       pop
       jump	// out
-        /* "example.sol":3921:4138  function replace_value(... */
+        /* "example.sol":3920:4137  function replace_value(... */
     tag_130:
-        /* "example.sol":4014:4032  uint256[10] memory */
+        /* "example.sol":4013:4031  uint256[10] memory */
       tag_307
       tag_308
       jump	// in
     tag_307:
-        /* "example.sol":4059:4063  data */
+        /* "example.sol":4058:4062  data */
       dup3
-        /* "example.sol":4064:4067  idx */
+        /* "example.sol":4063:4066  idx */
       dup3
-        /* "example.sol":4059:4068  data[idx] */
+        /* "example.sol":4058:4067  data[idx] */
       0x0a
       dup2
       lt
@@ -3384,11 +3384,11 @@ sub_0: assembly {
       mul
       add
       mload
-        /* "example.sol":4044:4051  value_1 */
+        /* "example.sol":4043:4050  value_1 */
       0x00
-        /* "example.sol":4052:4055  idx */
+        /* "example.sol":4051:4054  idx */
       dup4
-        /* "example.sol":4044:4056  value_1[idx] */
+        /* "example.sol":4043:4055  value_1[idx] */
       0x0b
       dup2
       lt
@@ -3400,25 +3400,25 @@ sub_0: assembly {
     tag_313:
     tag_312:
       add
-        /* "example.sol":4044:4068  value_1[idx] = data[idx] */
+        /* "example.sol":4043:4067  value_1[idx] = data[idx] */
       dup2
       swap1
       sstore
       pop
-        /* "example.sol":4094:4101  value_1 */
+        /* "example.sol":4093:4100  value_1 */
       0x00
-        /* "example.sol":4108:4109  1 */
+        /* "example.sol":4107:4108  1 */
       0x01
-        /* "example.sol":4102:4105  idx */
+        /* "example.sol":4101:4104  idx */
       dup4
-        /* "example.sol":4102:4109  idx - 1 */
+        /* "example.sol":4101:4108  idx - 1 */
       tag_315
       swap2
       swap1
       tag_190
       jump	// in
     tag_315:
-        /* "example.sol":4094:4110  value_1[idx - 1] */
+        /* "example.sol":4093:4109  value_1[idx - 1] */
       0x0b
       dup2
       lt
@@ -3431,20 +3431,20 @@ sub_0: assembly {
     tag_316:
       add
       sload
-        /* "example.sol":4078:4082  data */
+        /* "example.sol":4077:4081  data */
       dup4
-        /* "example.sol":4089:4090  1 */
+        /* "example.sol":4088:4089  1 */
       0x01
-        /* "example.sol":4083:4086  idx */
+        /* "example.sol":4082:4085  idx */
       dup5
-        /* "example.sol":4083:4090  idx - 1 */
+        /* "example.sol":4082:4089  idx - 1 */
       tag_319
       swap2
       swap1
       tag_190
       jump	// in
     tag_319:
-        /* "example.sol":4078:4091  data[idx - 1] */
+        /* "example.sol":4077:4090  data[idx - 1] */
       0x0a
       dup2
       lt
@@ -3458,51 +3458,51 @@ sub_0: assembly {
       0x20
       mul
       add
-        /* "example.sol":4078:4110  data[idx - 1] = value_1[idx - 1] */
+        /* "example.sol":4077:4109  data[idx - 1] = value_1[idx - 1] */
       dup2
       dup2
       mstore
       pop
       pop
-        /* "example.sol":4127:4131  data */
+        /* "example.sol":4126:4130  data */
       dup3
-        /* "example.sol":4120:4131  return data */
+        /* "example.sol":4119:4130  return data */
       swap1
       pop
-        /* "example.sol":3921:4138  function replace_value(... */
+        /* "example.sol":3920:4137  function replace_value(... */
       swap3
       swap2
       pop
       pop
       jump	// out
-        /* "example.sol":3584:3748  function set_value(uint256 _value, uint128 idx) public {... */
+        /* "example.sol":3583:3747  function set_value(uint256 _value, uint128 idx) public {... */
     tag_137:
-        /* "example.sol":3676:3677  1 */
+        /* "example.sol":3675:3676  1 */
       0x01
-        /* "example.sol":3659:3673  value_1.length */
+        /* "example.sol":3658:3672  value_1.length */
       0x0b
-        /* "example.sol":3659:3677  value_1.length - 1 */
+        /* "example.sol":3658:3676  value_1.length - 1 */
       tag_323
       swap2
       swap1
       tag_190
       jump	// in
     tag_323:
-        /* "example.sol":3653:3656  idx */
+        /* "example.sol":3652:3655  idx */
       dup2
-        /* "example.sol":3653:3677  idx < value_1.length - 1 */
+        /* "example.sol":3652:3676  idx < value_1.length - 1 */
       0xffffffffffffffffffffffffffffffff
       and
       lt
-        /* "example.sol":3649:3742  if (idx < value_1.length - 1) {... */
+        /* "example.sol":3648:3741  if (idx < value_1.length - 1) {... */
       iszero
       tag_324
       jumpi
-        /* "example.sol":3721:3728  value_3 */
+        /* "example.sol":3720:3727  value_3 */
       0x015f
-        /* "example.sol":3729:3730  4 */
+        /* "example.sol":3728:3729  4 */
       0x04
-        /* "example.sol":3721:3731  value_3[4] */
+        /* "example.sol":3720:3730  value_3[4] */
       0x0a
       dup2
       lt
@@ -3515,74 +3515,74 @@ sub_0: assembly {
     tag_325:
       add
       sload
-        /* "example.sol":133:135  20 */
+        /* "example.sol":132:134  20 */
       0x14
-        /* "example.sol":103:105  10 */
+        /* "example.sol":102:104  10 */
       0x0a
-        /* "example.sol":163:170  l1 / l2 */
+        /* "example.sol":162:169  l1 / l2 */
       tag_328
       swap2
       swap1
       tag_297
       jump	// in
     tag_328:
-        /* "example.sol":216:217  3 */
+        /* "example.sol":215:216  3 */
       0x03
-        /* "example.sol":216:223  3 ** l3 */
+        /* "example.sol":215:222  3 ** l3 */
       tag_329
       swap2
       swap1
       tag_330
       jump	// in
     tag_329:
-        /* "example.sol":210:212  20 */
+        /* "example.sol":209:211  20 */
       0x14
-        /* "example.sol":133:135  20 */
+        /* "example.sol":132:134  20 */
       dup1
-        /* "example.sol":103:105  10 */
+        /* "example.sol":102:104  10 */
       0x0a
-        /* "example.sol":199:206  l1 * l2 */
+        /* "example.sol":198:205  l1 * l2 */
       tag_331
       swap2
       swap1
       tag_302
       jump	// in
     tag_331:
-        /* "example.sol":198:212  (l1 * l2) % 20 */
+        /* "example.sol":197:211  (l1 * l2) % 20 */
       tag_332
       swap2
       swap1
       tag_333
       jump	// in
     tag_332:
-        /* "example.sol":197:223  ((l1 * l2) % 20) + 3 ** l3 */
+        /* "example.sol":196:222  ((l1 * l2) % 20) + 3 ** l3 */
       tag_334
       swap2
       swap1
       tag_244
       jump	// in
     tag_334:
-        /* "example.sol":3708:3714  _value */
+        /* "example.sol":3707:3713  _value */
       dup4
-        /* "example.sol":3708:3718  _value + p */
+        /* "example.sol":3707:3717  _value + p */
       tag_335
       swap2
       swap1
       tag_244
       jump	// in
     tag_335:
-        /* "example.sol":3708:3731  _value + p + value_3[4] */
+        /* "example.sol":3707:3730  _value + p + value_3[4] */
       tag_336
       swap2
       swap1
       tag_244
       jump	// in
     tag_336:
-        /* "example.sol":3693:3700  value_1 */
+        /* "example.sol":3692:3699  value_1 */
       0x00
-        /* "example.sol":3701:3704  idx */
+        /* "example.sol":3700:3703  idx */
       dup3
-        /* "example.sol":3693:3705  value_1[idx] */
+        /* "example.sol":3692:3704  value_1[idx] */
       0xffffffffffffffffffffffffffffffff
       and
       0x0b
@@ -3596,57 +3596,57 @@ sub_0: assembly {
     tag_338:
     tag_337:
       add
-        /* "example.sol":3693:3731  value_1[idx] = _value + p + value_3[4] */
+        /* "example.sol":3692:3730  value_1[idx] = _value + p + value_3[4] */
       dup2
       swap1
       sstore
       pop
-        /* "example.sol":3649:3742  if (idx < value_1.length - 1) {... */
+        /* "example.sol":3648:3741  if (idx < value_1.length - 1) {... */
     tag_324:
-        /* "example.sol":3584:3748  function set_value(uint256 _value, uint128 idx) public {... */
+        /* "example.sol":3583:3747  function set_value(uint256 _value, uint128 idx) public {... */
       pop
       pop
       jump	// out
-        /* "example.sol":6390:6551  function getRemainingTime() public view returns (uint256) {... */
+        /* "example.sol":6389:6550  function getRemainingTime() public view returns (uint256) {... */
     tag_140:
-        /* "example.sol":6439:6446  uint256 */
+        /* "example.sol":6438:6445  uint256 */
       0x00
-        /* "example.sol":6481:6490  votingEnd */
+        /* "example.sol":6480:6489  votingEnd */
       sload(0x016e)
-        /* "example.sol":6462:6477  block.timestamp */
+        /* "example.sol":6461:6476  block.timestamp */
       timestamp
-        /* "example.sol":6462:6490  block.timestamp >= votingEnd */
+        /* "example.sol":6461:6489  block.timestamp >= votingEnd */
       lt
-        /* "example.sol":6458:6500  if (block.timestamp >= votingEnd) return 0 */
+        /* "example.sol":6457:6499  if (block.timestamp >= votingEnd) return 0 */
       tag_341
       jumpi
-        /* "example.sol":6499:6500  0 */
+        /* "example.sol":6498:6499  0 */
       0x00
-        /* "example.sol":6492:6500  return 0 */
+        /* "example.sol":6491:6499  return 0 */
       swap1
       pop
       jump(tag_340)
-        /* "example.sol":6458:6500  if (block.timestamp >= votingEnd) return 0 */
+        /* "example.sol":6457:6499  if (block.timestamp >= votingEnd) return 0 */
     tag_341:
-        /* "example.sol":6529:6544  block.timestamp */
+        /* "example.sol":6528:6543  block.timestamp */
       timestamp
-        /* "example.sol":6517:6526  votingEnd */
+        /* "example.sol":6516:6525  votingEnd */
       sload(0x016e)
-        /* "example.sol":6517:6544  votingEnd - block.timestamp */
+        /* "example.sol":6516:6543  votingEnd - block.timestamp */
       tag_342
       swap2
       swap1
       tag_190
       jump	// in
     tag_342:
-        /* "example.sol":6510:6544  return votingEnd - block.timestamp */
+        /* "example.sol":6509:6543  return votingEnd - block.timestamp */
       swap1
       pop
-        /* "example.sol":6390:6551  function getRemainingTime() public view returns (uint256) {... */
+        /* "example.sol":6389:6550  function getRemainingTime() public view returns (uint256) {... */
     tag_340:
       swap1
       jump	// out
-        /* "example.sol":653:673  address public admin */
+        /* "example.sol":652:672  address public admin */
     tag_144:
       0x016d
       0x00
@@ -3661,9 +3661,9 @@ sub_0: assembly {
       and
       dup2
       jump	// out
-        /* "example.sol":4947:5591  function vote(string memory candidateName) public contractActive {... */
+        /* "example.sol":4946:5590  function vote(string memory candidateName) public contractActive {... */
     tag_150:
-        /* "example.sol":1073:1081  isActive */
+        /* "example.sol":1072:1080  isActive */
       0x016f
       0x00
       swap1
@@ -3675,7 +3675,7 @@ sub_0: assembly {
       div
       0xff
       and
-        /* "example.sol":1065:1108  require(isActive, "Contract is not active") */
+        /* "example.sol":1064:1107  require(isActive, "Contract is not active") */
       tag_344
       jumpi
       mload(0x40)
@@ -3696,13 +3696,13 @@ sub_0: assembly {
       swap1
       revert
     tag_344:
-        /* "example.sol":5048:5057  votingEnd */
+        /* "example.sol":5047:5056  votingEnd */
       sload(0x016e)
-        /* "example.sol":5030:5045  block.timestamp */
+        /* "example.sol":5029:5044  block.timestamp */
       timestamp
-        /* "example.sol":5030:5057  block.timestamp < votingEnd */
+        /* "example.sol":5029:5056  block.timestamp < votingEnd */
       lt
-        /* "example.sol":5022:5085  require(block.timestamp < votingEnd, "Voting period has ended") */
+        /* "example.sol":5021:5084  require(block.timestamp < votingEnd, "Voting period has ended") */
       tag_347
       jumpi
       mload(0x40)
@@ -3723,13 +3723,13 @@ sub_0: assembly {
       swap1
       revert
     tag_347:
-        /* "example.sol":5103:5119  authorizedVoters */
+        /* "example.sol":5102:5118  authorizedVoters */
       0x016b
-        /* "example.sol":5103:5131  authorizedVoters[msg.sender] */
+        /* "example.sol":5102:5130  authorizedVoters[msg.sender] */
       0x00
-        /* "example.sol":5120:5130  msg.sender */
+        /* "example.sol":5119:5129  msg.sender */
       caller
-        /* "example.sol":5103:5131  authorizedVoters[msg.sender] */
+        /* "example.sol":5102:5130  authorizedVoters[msg.sender] */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       0xffffffffffffffffffffffffffffffffffffffff
@@ -3755,7 +3755,7 @@ sub_0: assembly {
       div
       0xff
       and
-        /* "example.sol":5095:5166  require(authorizedVoters[msg.sender], "You are not authorized to vote") */
+        /* "example.sol":5094:5165  require(authorizedVoters[msg.sender], "You are not authorized to vote") */
       tag_350
       jumpi
       mload(0x40)
@@ -3776,13 +3776,13 @@ sub_0: assembly {
       swap1
       revert
     tag_350:
-        /* "example.sol":5185:5193  hasVoted */
+        /* "example.sol":5184:5192  hasVoted */
       0x016a
-        /* "example.sol":5185:5205  hasVoted[msg.sender] */
+        /* "example.sol":5184:5204  hasVoted[msg.sender] */
       0x00
-        /* "example.sol":5194:5204  msg.sender */
+        /* "example.sol":5193:5203  msg.sender */
       caller
-        /* "example.sol":5185:5205  hasVoted[msg.sender] */
+        /* "example.sol":5184:5204  hasVoted[msg.sender] */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       0xffffffffffffffffffffffffffffffffffffffff
@@ -3808,9 +3808,9 @@ sub_0: assembly {
       div
       0xff
       and
-        /* "example.sol":5184:5205  !hasVoted[msg.sender] */
+        /* "example.sol":5183:5204  !hasVoted[msg.sender] */
       iszero
-        /* "example.sol":5176:5232  require(!hasVoted[msg.sender], "You have already voted") */
+        /* "example.sol":5175:5231  require(!hasVoted[msg.sender], "You have already voted") */
       tag_353
       jumpi
       mload(0x40)
@@ -3831,11 +3831,11 @@ sub_0: assembly {
       swap1
       revert
     tag_353:
-        /* "example.sol":5243:5264  bytes32 candidateHash */
+        /* "example.sol":5242:5263  bytes32 candidateHash */
       0x00
-        /* "example.sol":5294:5307  candidateName */
+        /* "example.sol":5293:5306  candidateName */
       dup2
-        /* "example.sol":5277:5308  abi.encodePacked(candidateName) */
+        /* "example.sol":5276:5307  abi.encodePacked(candidateName) */
       add(0x20, mload(0x40))
       tag_356
       swap2
@@ -3854,25 +3854,25 @@ sub_0: assembly {
       swap1
       0x40
       mstore
-        /* "example.sol":5267:5309  keccak256(abi.encodePacked(candidateName)) */
+        /* "example.sol":5266:5308  keccak256(abi.encodePacked(candidateName)) */
       dup1
       mload
       swap1
       0x20
       add
       keccak256
-        /* "example.sol":5243:5309  bytes32 candidateHash = keccak256(abi.encodePacked(candidateName)) */
+        /* "example.sol":5242:5308  bytes32 candidateHash = keccak256(abi.encodePacked(candidateName)) */
       swap1
       pop
-        /* "example.sol":5372:5373  0 */
+        /* "example.sol":5371:5372  0 */
       0x00
-        /* "example.sol":5340:5354  candidateVotes */
+        /* "example.sol":5339:5353  candidateVotes */
       0x0169
-        /* "example.sol":5340:5369  candidateVotes[candidateHash] */
+        /* "example.sol":5339:5368  candidateVotes[candidateHash] */
       0x00
-        /* "example.sol":5355:5368  candidateHash */
+        /* "example.sol":5354:5367  candidateHash */
       dup4
-        /* "example.sol":5340:5369  candidateVotes[candidateHash] */
+        /* "example.sol":5339:5368  candidateVotes[candidateHash] */
       dup2
       mstore
       0x20
@@ -3885,18 +3885,18 @@ sub_0: assembly {
       0x00
       keccak256
       sload
-        /* "example.sol":5340:5373  candidateVotes[candidateHash] > 0 */
+        /* "example.sol":5339:5372  candidateVotes[candidateHash] > 0 */
       gt
-        /* "example.sol":5340:5452  candidateVotes[candidateHash] > 0 ||... */
+        /* "example.sol":5339:5451  candidateVotes[candidateHash] > 0 ||... */
       dup1
       tag_357
       jumpi
       pop
-        /* "example.sol":5437:5447  candidates */
+        /* "example.sol":5436:5446  candidates */
       0x016c
-        /* "example.sol":5448:5449  0 */
+        /* "example.sol":5447:5448  0 */
       0x00
-        /* "example.sol":5437:5450  candidates[0] */
+        /* "example.sol":5436:5449  candidates[0] */
       dup2
       sload
       dup2
@@ -3914,7 +3914,7 @@ sub_0: assembly {
       keccak256(0x00, 0x20)
       add
       sload
-        /* "example.sol":5420:5451  abi.encodePacked(candidates[0]) */
+        /* "example.sol":5419:5450  abi.encodePacked(candidates[0]) */
       add(0x20, mload(0x40))
       tag_361
       swap2
@@ -3933,20 +3933,20 @@ sub_0: assembly {
       swap1
       0x40
       mstore
-        /* "example.sol":5410:5452  keccak256(abi.encodePacked(candidates[0])) */
+        /* "example.sol":5409:5451  keccak256(abi.encodePacked(candidates[0])) */
       dup1
       mload
       swap1
       0x20
       add
       keccak256
-        /* "example.sol":5393:5406  candidateHash */
+        /* "example.sol":5392:5405  candidateHash */
       dup2
-        /* "example.sol":5393:5452  candidateHash == keccak256(abi.encodePacked(candidates[0])) */
+        /* "example.sol":5392:5451  candidateHash == keccak256(abi.encodePacked(candidates[0])) */
       eq
-        /* "example.sol":5340:5452  candidateVotes[candidateHash] > 0 ||... */
+        /* "example.sol":5339:5451  candidateVotes[candidateHash] > 0 ||... */
     tag_357:
-        /* "example.sol":5319:5502  require(... */
+        /* "example.sol":5318:5501  require(... */
       tag_362
       jumpi
       mload(0x40)
@@ -3967,15 +3967,15 @@ sub_0: assembly {
       swap1
       revert
     tag_362:
-        /* "example.sol":5546:5547  1 */
+        /* "example.sol":5545:5546  1 */
       0x01
-        /* "example.sol":5513:5527  candidateVotes */
+        /* "example.sol":5512:5526  candidateVotes */
       0x0169
-        /* "example.sol":5513:5542  candidateVotes[candidateHash] */
+        /* "example.sol":5512:5541  candidateVotes[candidateHash] */
       0x00
-        /* "example.sol":5528:5541  candidateHash */
+        /* "example.sol":5527:5540  candidateHash */
       dup4
-        /* "example.sol":5513:5542  candidateVotes[candidateHash] */
+        /* "example.sol":5512:5541  candidateVotes[candidateHash] */
       dup2
       mstore
       0x20
@@ -3988,7 +3988,7 @@ sub_0: assembly {
       0x00
       keccak256
       0x00
-        /* "example.sol":5513:5547  candidateVotes[candidateHash] += 1 */
+        /* "example.sol":5512:5546  candidateVotes[candidateHash] += 1 */
       dup3
       dup3
       sload
@@ -4005,15 +4005,15 @@ sub_0: assembly {
       swap1
       sstore
       pop
-        /* "example.sol":5580:5584  true */
+        /* "example.sol":5579:5583  true */
       0x01
-        /* "example.sol":5557:5565  hasVoted */
+        /* "example.sol":5556:5564  hasVoted */
       0x016a
-        /* "example.sol":5557:5577  hasVoted[msg.sender] */
+        /* "example.sol":5556:5576  hasVoted[msg.sender] */
       0x00
-        /* "example.sol":5566:5576  msg.sender */
+        /* "example.sol":5565:5575  msg.sender */
       caller
-        /* "example.sol":5557:5577  hasVoted[msg.sender] */
+        /* "example.sol":5556:5576  hasVoted[msg.sender] */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       0xffffffffffffffffffffffffffffffffffffffff
@@ -4030,7 +4030,7 @@ sub_0: assembly {
       0x00
       keccak256
       0x00
-        /* "example.sol":5557:5584  hasVoted[msg.sender] = true */
+        /* "example.sol":5556:5583  hasVoted[msg.sender] = true */
       0x0100
       exp
       dup2
@@ -4049,14 +4049,14 @@ sub_0: assembly {
       swap1
       sstore
       pop
-        /* "example.sol":5012:5591  {... */
+        /* "example.sol":5011:5590  {... */
       pop
-        /* "example.sol":4947:5591  function vote(string memory candidateName) public contractActive {... */
+        /* "example.sol":4946:5590  function vote(string memory candidateName) public contractActive {... */
       pop
       jump	// out
-        /* "example.sol":4823:4941  function authorizeVoter(address voter) public onlyAdmin contractActive {... */
+        /* "example.sol":4822:4940  function authorizeVoter(address voter) public onlyAdmin contractActive {... */
     tag_154:
-        /* "example.sol":961:966  admin */
+        /* "example.sol":960:965  admin */
       0x016d
       0x00
       swap1
@@ -4068,16 +4068,16 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":947:957  msg.sender */
+        /* "example.sol":946:956  msg.sender */
       caller
-        /* "example.sol":947:966  msg.sender == admin */
+        /* "example.sol":946:965  msg.sender == admin */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       eq
-        /* "example.sol":939:1005  require(msg.sender == admin, "Only admin can perform this action") */
+        /* "example.sol":938:1004  require(msg.sender == admin, "Only admin can perform this action") */
       tag_366
       jumpi
       mload(0x40)
@@ -4098,7 +4098,7 @@ sub_0: assembly {
       swap1
       revert
     tag_366:
-        /* "example.sol":1073:1081  isActive */
+        /* "example.sol":1072:1080  isActive */
       0x016f
       0x00
       swap1
@@ -4110,7 +4110,7 @@ sub_0: assembly {
       div
       0xff
       and
-        /* "example.sol":1065:1108  require(isActive, "Contract is not active") */
+        /* "example.sol":1064:1107  require(isActive, "Contract is not active") */
       tag_369
       jumpi
       mload(0x40)
@@ -4131,15 +4131,15 @@ sub_0: assembly {
       swap1
       revert
     tag_369:
-        /* "example.sol":4930:4934  true */
+        /* "example.sol":4929:4933  true */
       0x01
-        /* "example.sol":4904:4920  authorizedVoters */
+        /* "example.sol":4903:4919  authorizedVoters */
       0x016b
-        /* "example.sol":4904:4927  authorizedVoters[voter] */
+        /* "example.sol":4903:4926  authorizedVoters[voter] */
       0x00
-        /* "example.sol":4921:4926  voter */
+        /* "example.sol":4920:4925  voter */
       dup4
-        /* "example.sol":4904:4927  authorizedVoters[voter] */
+        /* "example.sol":4903:4926  authorizedVoters[voter] */
       0xffffffffffffffffffffffffffffffffffffffff
       and
       0xffffffffffffffffffffffffffffffffffffffff
@@ -4156,7 +4156,7 @@ sub_0: assembly {
       0x00
       keccak256
       0x00
-        /* "example.sol":4904:4934  authorizedVoters[voter] = true */
+        /* "example.sol":4903:4933  authorizedVoters[voter] = true */
       0x0100
       exp
       dup2
@@ -4175,7 +4175,7 @@ sub_0: assembly {
       swap1
       sstore
       pop
-        /* "example.sol":4823:4941  function authorizeVoter(address voter) public onlyAdmin contractActive {... */
+        /* "example.sol":4822:4940  function authorizeVoter(address voter) public onlyAdmin contractActive {... */
       pop
       jump	// out
     tag_183:
@@ -8904,5 +8904,5 @@ sub_0: assembly {
       pop
       jump	// out
 
-    auxdata: 0xa264697066735822122060721fab28863acf26a70773f731283413c2cde76142eef6a4738f01ecb9de8864736f6c634300081c0033
+    auxdata: 0xa2646970667358221220213123a45e107a45958fb3f504434600e6f5909102104d4560a6255ff90bd73a64736f6c634300081c0033
 }

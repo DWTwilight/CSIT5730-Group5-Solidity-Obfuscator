@@ -1,8 +1,7 @@
 from functools import reduce
 import re
 import utils
-
-# s
+import argparse
 
 
 def get_array_length(node, constant_dict):
@@ -237,14 +236,10 @@ def test_split_array(sol_file, ast_file):
     print(array_list)
 
 
-if __name__ == "__main__":
-    sol_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/examples/example.sol"
-    ast_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/examples/output/example.sol_json.ast"
-    save_path = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols"
-    filename = "new.sol"
+def main(args):
     # test_split_array(sol_file, ast_file)
-    content = utils.load_sol_lines(sol_file)
-    ast_json = utils.load_json(ast_file)
+    content = utils.load_sol_lines(args.sol_file)
+    ast_json = utils.load_json(args.ast_file)
     array_list, constant_dict = utils.find_array(ast_json)
     for array in array_list:
         name = list(array.keys())[0]
@@ -252,4 +247,21 @@ if __name__ == "__main__":
         content = squeeze_array(content, name, length)
     content = split_array(content, array_list)
     content = split_constant_array(content, array_list)
-    utils.save_sol_lines(content, save_path, filename)
+    utils.save_sol_lines(content, args.save_path, args.filename)
+
+
+if __name__ == "__main__":
+    args = argparse.ArgumentParser()
+    args.add_argument(
+        "--sol_file",
+        "--sol",
+        type=str,
+    )
+    args.add_argument("--ast_file", "--ast", type=str)
+    args.add_argument("--new_path", "--np", type=str, default="./tmp")
+    args.add_argument("--new_filename", "--nf", type=str, default="split_array.sol")
+    args.add_argument(
+        "--new_output_path", "--nop", type=str, default="./tmp/solc_output"
+    )
+    args = args.parse_args()
+    main(args)
