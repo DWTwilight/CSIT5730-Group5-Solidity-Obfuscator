@@ -273,3 +273,75 @@ def get_array_length_by_typeString(node):
         if array_name and lengths:
             return {array_name: lengths}
     return None
+
+
+def format_if_else(content):
+    """
+    Formats `if` and `else` statements in a file by adding braces and new lines if they are missing.
+
+    Args:
+        content: file content read by lines
+    """
+
+    formatted_content = []
+    i = 0
+    while i < len(content):
+        line = content[i]
+        stripped = line.strip()
+
+        # Check for single-line if without braces
+        if (
+            stripped.startswith("if")
+            and "return" in stripped
+            and not stripped.endswith("{")
+        ):
+            # Extract condition and statement
+            condition, statement = stripped.split("return", 1)
+            formatted_content.append(condition.strip() + " {")  # Add opening brace
+            formatted_content.append(
+                " " * 4 + "return " + statement.strip()
+            )  # Indented return statement
+            formatted_content.append("}")  # Add closing brace
+            i += 1  # Skip to the next line
+            continue
+
+        # Check for single-line else without braces
+        elif (
+            stripped.startswith("else")
+            and "return" in stripped
+            and not stripped.endswith("{")
+        ):
+            _, statement = stripped.split("return", 1)
+            formatted_content.append("else {")  # Add opening brace
+            formatted_content.append(
+                " " * 4 + "return " + statement.strip()
+            )  # Indented return statement
+            formatted_content.append("}")  # Add closing brace
+            i += 1  # Skip to the next line
+            continue
+
+        # Check for multi-line if/else without braces
+        elif stripped.startswith("if") and not stripped.endswith("{"):
+            formatted_content.append(stripped + " {")  # Add opening brace
+            i += 1
+            while i < len(content) and content[i].strip():  # Copy all following content
+                formatted_content.append(" " * 4 + content[i].strip())
+                i += 1
+            formatted_content.append("}")  # Add closing brace
+            continue
+
+        elif stripped.startswith("else") and not stripped.endswith("{"):
+            formatted_content.append("else {")  # Add opening brace
+            i += 1
+            while i < len(content) and content[i].strip():  # Copy all following content
+                formatted_content.append(" " * 4 + content[i].strip())
+                i += 1
+            formatted_content.append("}")  # Add closing brace
+            continue
+
+        # Otherwise, copy the line as is
+        formatted_content.append(line.rstrip())
+        i += 1
+    for i in range(len(formatted_content)):
+        formatted_content[i] += "\n"
+    return formatted_content
