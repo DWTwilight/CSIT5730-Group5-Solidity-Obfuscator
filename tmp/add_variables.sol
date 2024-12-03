@@ -3,16 +3,19 @@ pragma solidity ^0.8.0;
 
 contract Example {
     uint256 constant l1 = 10;
-bool dd50def4f0c2 = true;
     uint256 constant l2 = 20;
     uint256 constant l3 = l1 / l2;
     uint256 constant p = ((l1 * l2) % 20) + 3 ** l3;
     bool constant abcd = true;
-    uint256[p+10] public value_1;
-    uint256[(((l1) + l2))] public value_2;
-    uint256[p][l1][l1 + l2 + p - p + 1] public multi_array;
-    uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-uint128 yf9f6 = 157943;
+uint256[5] public value_1Part1;
+uint256[6] public value_1Part2;
+ uint256[15] public value_2Part1;
+uint256[15] public value_2Part2;
+ uint256[155] public multi_arrayPart1;
+uint256[155] public multi_arrayPart2;
+     uint256[5] public value_3Part1 = [1, 2, 3, 4, 5];
+int256 re20aa87939 = 740972;
+    uint256[5] public value_3Part2 = [6, 7, 8, 9, 10];
 
     mapping(bytes32 => uint256) public candidateVotes;
     mapping(address => bool) public hasVoted;
@@ -24,8 +27,10 @@ uint128 yf9f6 = 157943;
     bool public isActive;
 
     constructor(uint256 durationMinutes) {
+bool j45027009 = true;
         admin = msg.sender;
         votingEnd = block.timestamp + (durationMinutes * 1 minutes);
+j45027009 = !j45027009;
         isActive = true;
     }
 
@@ -77,8 +82,6 @@ uint128 yf9f6 = 157943;
         if (s > 5) {
             s -= 5;
         }
-bool cc9b718a91b59 = true;
-int128 f8bb5 = 706976;
 
         uint256 j = 0;
         // while loop
@@ -113,6 +116,7 @@ int128 f8bb5 = 706976;
             }
         }
 
+uint128 lfba20ed3723a = 751584;
         // multiple if-else statements
         {
             if (j >= 20) {
@@ -121,31 +125,79 @@ int128 f8bb5 = 706976;
                 j += 5;
             } else {
                 j += 1;
+int256 k98a68e996e = 832189;
             }
         }
-cc9b718a91b59 = !cc9b718a91b59;
-f8bb5 = int128(1597 * 93 * 3482 + 9200);
+lfba20ed3723a = uint128(7933 + 5350 * 89 * 2785);
 
         return (s, j);
     }
 
     function set_value(uint256 _value, uint128 idx) public {
-        if (idx < value_1.length - 1) {
-            value_1[idx] = _value + p + value_3[4];
+        if (idx < (value_1Part1.length+value_1Part2.length) - 1) {
+uint256 value_3PartValue;
+if(4 < value_3Part1.length)
+{
+value_3PartValue = value_3Part1[4];
+}
+else
+{
+value_3PartValue = value_3Part2[4-value_3Part1.length];
+}
+if(idx < value_1Part1.length)
+{
+            value_1Part1[idx] = _value + p + value_3PartValue;
+}
+else
+{
+            value_1Part2[idx-value_1Part1.length] = _value + p + value_3PartValue;
+}
         }
     }
 
     function get_value(uint128 idx) public view returns (uint256) {
-        if (value_3.length > 5) return value_1[idx] * l3;
-        else return value_1[idx];
+if ((value_3Part1.length+value_3Part2.length) > 5) {
+if(idx < value_1Part1.length)
+{
+    return value_1Part1[idx] * l3;
+}
+else
+{
+    return value_1Part2[idx-value_1Part1.length] * l3;
+}
+}
+else {
+if(idx < value_1Part1.length)
+{
+    return value_1Part1[idx];
+}
+else
+{
+    return value_1Part2[idx-value_1Part1.length];
+}
+}
     }
 
     function replace_value(
         uint[10] memory data,
         uint idx
     ) public returns (uint256[10] memory) {
-        value_1[idx] = data[idx];
-        data[idx - 1] = value_1[idx - 1];
+if(idx < value_1Part1.length)
+{
+        value_1Part1[idx] = data[idx];
+}
+else
+{
+        value_1Part2[idx-value_1Part1.length] = data[idx];
+}
+if(idx - 1 < value_1Part1.length)
+{
+        data[idx - 1] = value_1Part1[idx - 1];
+}
+else
+{
+        data[idx - 1] = value_1Part2[idx - 1-value_1Part1.length];
+}
         return data;
     }
 
@@ -158,16 +210,20 @@ f8bb5 = int128(1597 * 93 * 3482 + 9200);
         for (uint i = 0; (i < new_data.length - 1) && (i < data.length); i++) {
             new_data[i] = data[i];
         }
-        new_data[new_data.length - 1] = value_1[idx];
+if(idx < value_1Part1.length)
+{
+        new_data[new_data.length - 1] = value_1Part1[idx];
+}
+else
+{
+        new_data[new_data.length - 1] = value_1Part2[idx-value_1Part1.length];
+}
         return new_data;
     }
     function addCandidate(string memory name) public onlyAdmin contractActive {
         bytes32 candidateHash = keccak256(abi.encodePacked(name));
         require(candidateVotes[candidateHash] == 0, "Candidate already exists");
 
-uint256 j98860d2025350 = l2 + l2;
-j98860d2025350 = uint256(l2 * l1 * l3 * l2);
-dd50def4f0c2 = !dd50def4f0c2;
         candidates.push(candidateHash);
         candidateVotes[candidateHash] = 0;
     }
@@ -189,6 +245,7 @@ dd50def4f0c2 = !dd50def4f0c2;
         );
 
         candidateVotes[candidateHash] += 1;
+re20aa87939 = int256(re20aa87939 + re20aa87939);
         hasVoted[msg.sender] = true;
     }
 
@@ -204,10 +261,10 @@ dd50def4f0c2 = !dd50def4f0c2;
         return candidateVotes[candidateHash];
     }
 
-    function getAllResults() 
-    public 
-    view 
-    onlyAdmin 
+    function getAllResults()
+    public
+    view
+    onlyAdmin
     returns (bytes32[] memory, uint256[] memory)
     {
         uint256[] memory results = new uint256[](candidates.length);
@@ -220,11 +277,15 @@ dd50def4f0c2 = !dd50def4f0c2;
     }
 
     function getRemainingTime() public view returns (uint256) {
-        if (block.timestamp >= votingEnd) return 0;
+if (block.timestamp >= votingEnd) {
+    return 0;
+}
         return votingEnd - block.timestamp;
     }
 
     function deactivateContract() public onlyAdmin {
+int128 ca282901a6edfda7 = 650507;
+ca282901a6edfda7 = int128(6506 * 5648 + 5657 * 30);
         isActive = false;
     }
 
