@@ -17,6 +17,8 @@ contract MyContract{
     }
 
     function get_trash() public view returns (uint256){
+        uint104 x = 8;
+        x = 8+8;
         return trash;
     }
 }

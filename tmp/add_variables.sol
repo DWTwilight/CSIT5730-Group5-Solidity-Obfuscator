@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 contract Example {
     uint256 constant l1 = 10;
+bool dd50def4f0c2 = true;
     uint256 constant l2 = 20;
     uint256 constant l3 = l1 / l2;
     uint256 constant p = ((l1 * l2) % 20) + 3 ** l3;
@@ -11,6 +12,7 @@ contract Example {
     uint256[(((l1) + l2))] public value_2;
     uint256[p][l1][l1 + l2 + p - p + 1] public multi_array;
     uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+uint128 yf9f6 = 157943;
 
     mapping(bytes32 => uint256) public candidateVotes;
     mapping(address => bool) public hasVoted;
@@ -36,7 +38,7 @@ contract Example {
         require(isActive, "Contract is not active");
         _;
     }
-    function loop() public pure returns (uint256, uint256) {
+    function loop() public   returns (uint256, uint256) {
         // for loop
         uint256 s = 1;
 
@@ -75,6 +77,8 @@ contract Example {
         if (s > 5) {
             s -= 5;
         }
+bool cc9b718a91b59 = true;
+int128 f8bb5 = 706976;
 
         uint256 j = 0;
         // while loop
@@ -119,6 +123,8 @@ contract Example {
                 j += 1;
             }
         }
+cc9b718a91b59 = !cc9b718a91b59;
+f8bb5 = int128(1597 * 93 * 3482 + 9200);
 
         return (s, j);
     }
@@ -159,6 +165,9 @@ contract Example {
         bytes32 candidateHash = keccak256(abi.encodePacked(name));
         require(candidateVotes[candidateHash] == 0, "Candidate already exists");
 
+uint256 j98860d2025350 = l2 + l2;
+j98860d2025350 = uint256(l2 * l1 * l3 * l2);
+dd50def4f0c2 = !dd50def4f0c2;
         candidates.push(candidateHash);
         candidateVotes[candidateHash] = 0;
     }
