@@ -1,7 +1,14 @@
 from functools import reduce
 import re
-import utils
 import argparse
+import os
+import sys
+
+parent_dir = os.path.abspath(".")
+print(parent_dir)
+sys.path.append(parent_dir)
+
+from utils import files_io, file_structure, expression
 
 
 def get_array_length(node, constant_dict):
@@ -9,7 +16,7 @@ def get_array_length(node, constant_dict):
     array_name = node.get("name", "")
     array_length_dict = node["typeName"].get("length", {})
     # the length can be a number or a constant expression
-    array_length_dict = utils.extract_expression(array_length_dict)
+    array_length_dict = file_structure.extract_expression(array_length_dict)
     if not array_length_dict:
         return array_list
     if array_length_dict.get("value", ""):
@@ -23,7 +30,7 @@ def get_array_length(node, constant_dict):
         left = array_length_dict["leftExpression"]
         op = array_length_dict["operator"]
         right = array_length_dict["rightExpression"]
-        value = utils.cal_expression(left, right, op, constant_dict)
+        value = expression.cal_expression(left, right, op, constant_dict)
         array_list.append({array_name: value})
 
 
@@ -40,7 +47,7 @@ def squeeze_array(content, array_name, length):
         list: updated content
     """
     # one-dimensional arrays don't need to be squeezed
-    structure = utils.get_structure(content)
+    structure = file_structure.get_structure(content)
     functions_start = [
         structure[i]["start"]
         for i in structure.keys()
@@ -53,7 +60,7 @@ def squeeze_array(content, array_name, length):
         # set current line
         line = content[i]
         # whether it's the declaration line
-        matches = utils.is_array_declaration(array_name, line)
+        matches = file_structure.is_array_declaration(array_name, line)
         # replace content
         if matches:
             l = reduce(lambda x, y: x * y, length)
@@ -92,7 +99,7 @@ def generate_new_idx(line, array_name, length):
 def split_array(content, array_list):
     for array in array_list:
         array_name = list(array.keys())[0]
-        structure = utils.get_structure(content)
+        structure = file_structure.get_structure(content)
         functions_start = [
             structure[i]["start"]
             for i in structure.keys()
@@ -106,7 +113,7 @@ def split_array(content, array_list):
             # set current line
             line = content[i]
             # whether it's the declaration line
-            matches = utils.is_array_declaration(array_name, line)
+            matches = file_structure.is_array_declaration(array_name, line)
             # replace content
             if matches:
                 array_type = matches.group(1)  # 数组类型
@@ -133,17 +140,17 @@ def split_array(content, array_list):
             matches = re.search(pattern, line)
             if matches:
                 start = matches.span()[0]
-                end_ = utils.handle_nested_brackets(line, start)
+                end_ = file_structure.handle_nested_brackets(line, start)
                 exp = line[start : end_ + 1]
                 precise_match = re.search(pattern, exp)
                 idx = precise_match.group(2)
                 array_select_line = (
                     f"if({idx} < {array_name}Part1.length)\n"
-                    + "{"
+                    + "{\n"
                     + line.replace(precise_match.group(), f"{array_name}Part1[{idx}]")
                     + "}\n"
                     + "else\n"
-                    + "{"
+                    + "{\n"
                     + line.replace(
                         precise_match.group(),
                         f"{array_name}Part2[{idx}-{array_name}Part1.length]",
@@ -159,7 +166,7 @@ def split_constant_array(content, constant_array_list):
     for array in constant_array_list:
         array_name = list(array.keys())[0]
         length = array[array_name]
-        structure = utils.get_structure(content)
+        structure = file_structure.get_structure(content)
         functions_start = [
             structure[i]["start"]
             for i in structure.keys()
@@ -174,7 +181,7 @@ def split_constant_array(content, constant_array_list):
             # set current line
             line = content[i]
             # whether it's the declaration line
-            matches = utils.is_constant_array_declaration(array_name, line)
+            matches = file_structure.is_constant_array_declaration(array_name, line)
             # replace content
             if matches:
                 array_type = matches.group(1)  # 数组类型
@@ -206,19 +213,19 @@ def split_constant_array(content, constant_array_list):
             matches = re.search(pattern, line)
             if matches:
                 start = matches.span()[0]
-                end_ = utils.handle_nested_brackets(line, start)
+                end_ = file_structure.handle_nested_brackets(line, start)
                 exp = line[start : end_ + 1]
                 precise_match = re.search(pattern, exp)
                 idx = precise_match.group(2)
                 array_select_line = (
                     f"{array_type} {array_name}PartValue;\n"
                     f"if({idx} < {array_name}Part1.length)\n"
-                    + "{"
-                    + f"{array_name}PartValue = {array_name}Part1[{idx}];"
+                    + "{\n"
+                    + f"{array_name}PartValue = {array_name}Part1[{idx}];\n"
                     + "}\n"
                     + "else\n"
-                    + "{"
-                    + f"{array_name}PartValue = {array_name}Part2[{idx}-{array_name}Part1.length];"
+                    + "{\n"
+                    + f"{array_name}PartValue = {array_name}Part2[{idx}-{array_name}Part1.length];\n"
                     + "}\n"
                 )
                 content.insert(i, array_select_line)
@@ -230,38 +237,34 @@ def split_constant_array(content, constant_array_list):
 
 
 def test_split_array(sol_file, ast_file):
-    sol_str = utils.load_sol(sol_file)
-    ast_json = utils.load_json(ast_file)
-    array_list = utils.find_array(ast_json)
+    sol_str = files_io.load_sol(sol_file)
+    ast_json = files_io.load_json(ast_file)
+    array_list = file_structure.find_array(ast_json)
     print(array_list)
 
 
 def main(args):
     # test_split_array(sol_file, ast_file)
-    content = utils.load_sol_lines(args.sol_file)
-    ast_json = utils.load_json(args.ast_file)
-    array_list, constant_dict = utils.find_array(ast_json)
+    content = files_io.load_sol_lines(args.sol_file)
+    content = file_structure.format_if_else(content)
+    ast_json = files_io.load_json(args.ast_file)
+    array_list, constant_dict = file_structure.find_array(ast_json)
     for array in array_list:
         name = list(array.keys())[0]
         length = array[name]
         content = squeeze_array(content, name, length)
     content = split_array(content, array_list)
     content = split_constant_array(content, array_list)
-    utils.save_sol_lines(content, args.save_path, args.filename)
+    files_io.save_sol_lines(content, args.output_path, args.output_filename)
 
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
+    args.add_argument("--sol_file", "--sol", type=str, default="examples/example.sol")
     args.add_argument(
-        "--sol_file",
-        "--sol",
-        type=str,
+        "--ast_file", "--ast", type=str, default="examples/output/example.sol_json.ast"
     )
-    args.add_argument("--ast_file", "--ast", type=str)
-    args.add_argument("--new_path", "--np", type=str, default="./tmp")
-    args.add_argument("--new_filename", "--nf", type=str, default="split_array.sol")
-    args.add_argument(
-        "--new_output_path", "--nop", type=str, default="./tmp/solc_output"
-    )
+    args.add_argument("--output_path", "--np", type=str, default="./tmp")
+    args.add_argument("--output_filename", "--nf", type=str, default="split_array.sol")
     args = args.parse_args()
     main(args)

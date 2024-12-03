@@ -1,4 +1,4 @@
-    /* "example.sol":57:6784  contract Example {... */
+    /* "example.sol":57:6772  contract Example {... */
   mstore(0x40, 0x80)
     /* "example.sol":396:456  uint256[10] public value_3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
   mload(0x40)
@@ -214,7 +214,7 @@ tag_10:
   pop
     /* "example.sol":735:901  constructor(uint256 durationMinutes) {... */
   pop
-    /* "example.sol":57:6784  contract Example {... */
+    /* "example.sol":57:6772  contract Example {... */
   jump(tag_12)
 tag_2:
   dup3
@@ -572,7 +572,7 @@ tag_51:
   pop
   pop
   jump	// out
-    /* "example.sol":57:6784  contract Example {... */
+    /* "example.sol":57:6772  contract Example {... */
 tag_12:
   dataSize(sub_0)
   dup1
@@ -584,7 +584,7 @@ tag_12:
 stop
 
 sub_0: assembly {
-        /* "example.sol":57:6784  contract Example {... */
+        /* "example.sol":57:6772  contract Example {... */
       mstore(0x40, 0x80)
       jumpi(tag_1, lt(calldatasize, 0x04))
       shr(0xe0, calldataload(0x00))
@@ -842,7 +842,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":6642:6747  function withdrawFunds() public onlyAdmin {... */
+        /* "example.sol":6630:6735  function withdrawFunds() public onlyAdmin {... */
     tag_6:
       callvalue
       dup1
@@ -1085,7 +1085,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":6015:6383  function getAllResults()... */
+        /* "example.sol":6015:6371  function getAllResults() ... */
     tag_13:
       callvalue
       dup1
@@ -1208,7 +1208,7 @@ sub_0: assembly {
       sub
       swap1
       return
-        /* "example.sol":6556:6636  function deactivateContract() public onlyAdmin {... */
+        /* "example.sol":6544:6624  function deactivateContract() public onlyAdmin {... */
     tag_17:
       callvalue
       dup1
@@ -1411,7 +1411,7 @@ sub_0: assembly {
       jump	// in
     tag_134:
       stop
-        /* "example.sol":6389:6550  function getRemainingTime() public view returns (uint256) {... */
+        /* "example.sol":6377:6538  function getRemainingTime() public view returns (uint256) {... */
     tag_23:
       callvalue
       dup1
@@ -1578,7 +1578,7 @@ sub_0: assembly {
       and
       dup2
       jump	// out
-        /* "example.sol":6642:6747  function withdrawFunds() public onlyAdmin {... */
+        /* "example.sol":6630:6735  function withdrawFunds() public onlyAdmin {... */
     tag_52:
         /* "example.sol":960:965  admin */
       0x016d
@@ -1622,7 +1622,7 @@ sub_0: assembly {
       swap1
       revert
     tag_158:
-        /* "example.sol":6702:6707  admin */
+        /* "example.sol":6690:6695  admin */
       0x016d
       0x00
       swap1
@@ -1634,14 +1634,14 @@ sub_0: assembly {
       div
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":6694:6717  payable(admin).transfer */
+        /* "example.sol":6682:6705  payable(admin).transfer */
       0xffffffffffffffffffffffffffffffffffffffff
       and
-        /* "example.sol":6694:6740  payable(admin).transfer(address(this).balance) */
+        /* "example.sol":6682:6728  payable(admin).transfer(address(this).balance) */
       0x08fc
-        /* "example.sol":6718:6739  address(this).balance */
+        /* "example.sol":6706:6727  address(this).balance */
       selfbalance
-        /* "example.sol":6694:6740  payable(admin).transfer(address(this).balance) */
+        /* "example.sol":6682:6728  payable(admin).transfer(address(this).balance) */
       swap1
       dup2
       iszero
@@ -1672,7 +1672,7 @@ sub_0: assembly {
       revert(0x00, returndatasize)
     tag_163:
       pop
-        /* "example.sol":6642:6747  function withdrawFunds() public onlyAdmin {... */
+        /* "example.sol":6630:6735  function withdrawFunds() public onlyAdmin {... */
       jump	// out
         /* "example.sol":463:512  mapping(bytes32 => uint256) public candidateVotes */
     tag_57:
@@ -2156,11 +2156,11 @@ sub_0: assembly {
       pop
       pop
       jump	// out
-        /* "example.sol":6015:6383  function getAllResults()... */
+        /* "example.sol":6015:6371  function getAllResults() ... */
     tag_89:
-        /* "example.sol":6103:6119  bytes32[] memory */
+        /* "example.sol":6091:6107  bytes32[] memory */
       0x60
-        /* "example.sol":6121:6137  uint256[] memory */
+        /* "example.sol":6109:6125  uint256[] memory */
       dup1
         /* "example.sol":960:965  admin */
       0x016d
@@ -2204,16 +2204,16 @@ sub_0: assembly {
       swap1
       revert
     tag_206:
-        /* "example.sol":6153:6177  uint256[] memory results */
+        /* "example.sol":6141:6165  uint256[] memory results */
       0x00
-        /* "example.sol":6194:6204  candidates */
+        /* "example.sol":6182:6192  candidates */
       0x016c
-        /* "example.sol":6194:6211  candidates.length */
+        /* "example.sol":6182:6199  candidates.length */
       dup1
       sload
       swap1
       pop
-        /* "example.sol":6180:6212  new uint256[](candidates.length) */
+        /* "example.sol":6168:6200  new uint256[](candidates.length) */
       0xffffffffffffffff
       dup2
       gt
@@ -2263,42 +2263,42 @@ sub_0: assembly {
       pop
     tag_212:
       pop
-        /* "example.sol":6153:6212  uint256[] memory results = new uint256[](candidates.length) */
+        /* "example.sol":6141:6200  uint256[] memory results = new uint256[](candidates.length) */
       swap1
       pop
-        /* "example.sol":6228:6237  uint256 i */
+        /* "example.sol":6216:6225  uint256 i */
       0x00
-        /* "example.sol":6240:6241  0 */
+        /* "example.sol":6228:6229  0 */
       0x00
-        /* "example.sol":6228:6241  uint256 i = 0 */
+        /* "example.sol":6216:6229  uint256 i = 0 */
       swap1
       pop
-        /* "example.sol":6223:6338  for (uint256 i = 0; i < candidates.length; i++) {... */
+        /* "example.sol":6211:6326  for (uint256 i = 0; i < candidates.length; i++) {... */
     tag_213:
-        /* "example.sol":6247:6257  candidates */
+        /* "example.sol":6235:6245  candidates */
       0x016c
-        /* "example.sol":6247:6264  candidates.length */
+        /* "example.sol":6235:6252  candidates.length */
       dup1
       sload
       swap1
       pop
-        /* "example.sol":6243:6244  i */
+        /* "example.sol":6231:6232  i */
       dup2
-        /* "example.sol":6243:6264  i < candidates.length */
+        /* "example.sol":6231:6252  i < candidates.length */
       lt
-        /* "example.sol":6223:6338  for (uint256 i = 0; i < candidates.length; i++) {... */
+        /* "example.sol":6211:6326  for (uint256 i = 0; i < candidates.length; i++) {... */
       iszero
       tag_214
       jumpi
-        /* "example.sol":6298:6312  candidateVotes */
+        /* "example.sol":6286:6300  candidateVotes */
       0x0169
-        /* "example.sol":6298:6327  candidateVotes[candidates[i]] */
+        /* "example.sol":6286:6315  candidateVotes[candidates[i]] */
       0x00
-        /* "example.sol":6313:6323  candidates */
+        /* "example.sol":6301:6311  candidates */
       0x016c
-        /* "example.sol":6324:6325  i */
+        /* "example.sol":6312:6313  i */
       dup4
-        /* "example.sol":6313:6326  candidates[i] */
+        /* "example.sol":6301:6314  candidates[i] */
       dup2
       sload
       dup2
@@ -2316,7 +2316,7 @@ sub_0: assembly {
       keccak256(0x00, 0x20)
       add
       sload
-        /* "example.sol":6298:6327  candidateVotes[candidates[i]] */
+        /* "example.sol":6286:6315  candidateVotes[candidates[i]] */
       dup2
       mstore
       0x20
@@ -2329,11 +2329,11 @@ sub_0: assembly {
       0x00
       keccak256
       sload
-        /* "example.sol":6285:6292  results */
+        /* "example.sol":6273:6280  results */
       dup3
-        /* "example.sol":6293:6294  i */
+        /* "example.sol":6281:6282  i */
       dup3
-        /* "example.sol":6285:6295  results[i] */
+        /* "example.sol":6273:6283  results[i] */
       dup2
       mload
       dup2
@@ -2350,13 +2350,13 @@ sub_0: assembly {
       0x20
       add
       add
-        /* "example.sol":6285:6327  results[i] = candidateVotes[candidates[i]] */
+        /* "example.sol":6273:6315  results[i] = candidateVotes[candidates[i]] */
       dup2
       dup2
       mstore
       pop
       pop
-        /* "example.sol":6266:6269  i++ */
+        /* "example.sol":6254:6257  i++ */
       dup1
       dup1
       0x01
@@ -2364,15 +2364,15 @@ sub_0: assembly {
       swap2
       pop
       pop
-        /* "example.sol":6223:6338  for (uint256 i = 0; i < candidates.length; i++) {... */
+        /* "example.sol":6211:6326  for (uint256 i = 0; i < candidates.length; i++) {... */
       jump(tag_213)
     tag_214:
       pop
-        /* "example.sol":6356:6366  candidates */
+        /* "example.sol":6344:6354  candidates */
       0x016c
-        /* "example.sol":6368:6375  results */
+        /* "example.sol":6356:6363  results */
       dup2
-        /* "example.sol":6348:6376  return (candidates, results) */
+        /* "example.sol":6336:6364  return (candidates, results) */
       dup2
       dup1
       sload
@@ -2442,7 +2442,7 @@ sub_0: assembly {
       swap3
       pop
       pop
-        /* "example.sol":6015:6383  function getAllResults()... */
+        /* "example.sol":6015:6371  function getAllResults() ... */
       swap1
       swap2
       jump	// out
@@ -3133,7 +3133,7 @@ sub_0: assembly {
       swap1
       swap2
       jump	// out
-        /* "example.sol":6556:6636  function deactivateContract() public onlyAdmin {... */
+        /* "example.sol":6544:6624  function deactivateContract() public onlyAdmin {... */
     tag_108:
         /* "example.sol":960:965  admin */
       0x016d
@@ -3177,12 +3177,12 @@ sub_0: assembly {
       swap1
       revert
     tag_283:
-        /* "example.sol":6624:6629  false */
+        /* "example.sol":6612:6617  false */
       0x00
-        /* "example.sol":6613:6621  isActive */
+        /* "example.sol":6601:6609  isActive */
       0x016f
       0x00
-        /* "example.sol":6613:6629  isActive = false */
+        /* "example.sol":6601:6617  isActive = false */
       0x0100
       exp
       dup2
@@ -3201,7 +3201,7 @@ sub_0: assembly {
       swap1
       sstore
       pop
-        /* "example.sol":6556:6636  function deactivateContract() public onlyAdmin {... */
+        /* "example.sol":6544:6624  function deactivateContract() public onlyAdmin {... */
       jump	// out
         /* "example.sol":336:390  uint256[p][l1][l1 + l2 + p - p + 1] public multi_array */
     tag_113:
@@ -3607,42 +3607,42 @@ sub_0: assembly {
       pop
       pop
       jump	// out
-        /* "example.sol":6389:6550  function getRemainingTime() public view returns (uint256) {... */
+        /* "example.sol":6377:6538  function getRemainingTime() public view returns (uint256) {... */
     tag_140:
-        /* "example.sol":6438:6445  uint256 */
+        /* "example.sol":6426:6433  uint256 */
       0x00
-        /* "example.sol":6480:6489  votingEnd */
+        /* "example.sol":6468:6477  votingEnd */
       sload(0x016e)
-        /* "example.sol":6461:6476  block.timestamp */
+        /* "example.sol":6449:6464  block.timestamp */
       timestamp
-        /* "example.sol":6461:6489  block.timestamp >= votingEnd */
+        /* "example.sol":6449:6477  block.timestamp >= votingEnd */
       lt
-        /* "example.sol":6457:6499  if (block.timestamp >= votingEnd) return 0 */
+        /* "example.sol":6445:6487  if (block.timestamp >= votingEnd) return 0 */
       tag_341
       jumpi
-        /* "example.sol":6498:6499  0 */
+        /* "example.sol":6486:6487  0 */
       0x00
-        /* "example.sol":6491:6499  return 0 */
+        /* "example.sol":6479:6487  return 0 */
       swap1
       pop
       jump(tag_340)
-        /* "example.sol":6457:6499  if (block.timestamp >= votingEnd) return 0 */
+        /* "example.sol":6445:6487  if (block.timestamp >= votingEnd) return 0 */
     tag_341:
-        /* "example.sol":6528:6543  block.timestamp */
+        /* "example.sol":6516:6531  block.timestamp */
       timestamp
-        /* "example.sol":6516:6525  votingEnd */
+        /* "example.sol":6504:6513  votingEnd */
       sload(0x016e)
-        /* "example.sol":6516:6543  votingEnd - block.timestamp */
+        /* "example.sol":6504:6531  votingEnd - block.timestamp */
       tag_342
       swap2
       swap1
       tag_190
       jump	// in
     tag_342:
-        /* "example.sol":6509:6543  return votingEnd - block.timestamp */
+        /* "example.sol":6497:6531  return votingEnd - block.timestamp */
       swap1
       pop
-        /* "example.sol":6389:6550  function getRemainingTime() public view returns (uint256) {... */
+        /* "example.sol":6377:6538  function getRemainingTime() public view returns (uint256) {... */
     tag_340:
       swap1
       jump	// out
@@ -8904,5 +8904,5 @@ sub_0: assembly {
       pop
       jump	// out
 
-    auxdata: 0xa2646970667358221220213123a45e107a45958fb3f504434600e6f5909102104d4560a6255ff90bd73a64736f6c634300081c0033
+    auxdata: 0xa264697066735822122066260f59f094b38756dd77d7ac539106e2210ccca33c370008e928d732c3e53964736f6c634300081c0033
 }

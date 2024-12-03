@@ -1,2 +1,4 @@
 new_sols
 __pycache__
+.solhint.json
+.prettierrc
