@@ -164,7 +164,7 @@ def insert_codes(content):
         content, use_line = use_new_variables(
             content, before_block, new_variable, assign_line
         )
-        print("declaration:", assign_line, "use:", use_line)
+        # print("declaration:", assign_line, "use:", use_line)
     return flag, content
 
 
@@ -226,4 +226,5 @@ if __name__ == "__main__":
     # )
     args.add_argument("--n", type=int, help="number of new variables", default=5)
     args = args.parse_args()
+    print(f"Processing File: {args.sol_file}")
     main(args)
