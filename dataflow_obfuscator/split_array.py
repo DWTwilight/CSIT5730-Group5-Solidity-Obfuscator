@@ -260,11 +260,12 @@ def main(args):
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
-    args.add_argument("--sol_file", "--sol", type=str, default="examples/example.sol")
+    args.add_argument("--sol_file", "--sol", type=str)
     args.add_argument(
         "--ast_file", "--ast", type=str, default="examples/output/example.sol_json.ast"
     )
     args.add_argument("--output_path", "--np", type=str, default="./tmp")
     args.add_argument("--output_filename", "--nf", type=str, default="split_array.sol")
     args = args.parse_args()
+    print(f"Processing File: {args.sol_file}")
     main(args)

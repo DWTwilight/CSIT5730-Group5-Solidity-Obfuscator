@@ -97,7 +97,7 @@ def replace_var(sol_file: str, var_list: list):
         new_var = expression.generate_random_var()
         while new_var in new_var_list:
             new_var = expression.generate_random_var()
-        print(new_var)
+        # print(new_var)
         new_var_list.append(new_var)
     for i in range(n):
         var = var_list[i]
@@ -114,7 +114,7 @@ def main(args):
     ast_json = files_io.load_json(args.ast_file)
     var_dict = find_var(ast_json)
     array_list, constant_dict = file_structure.find_array(ast_json)
-    print(f"Find Variables:{var_dict}, Find Arrays: {array_list}")
+    # print(f"Find Variables:{var_dict}, Find Arrays: {array_list}")
     new_file = replace_var(
         sol_str, list(var_dict.keys()) + [list(array.keys())[0] for array in array_list]
     )
@@ -136,4 +136,5 @@ if __name__ == "__main__":
     # )
     args.add_argument("--n", type=int, help="number of new variables", default=5)
     args = args.parse_args()
+    print(f"Processing File: {args.sol_file}")
     main(args)
