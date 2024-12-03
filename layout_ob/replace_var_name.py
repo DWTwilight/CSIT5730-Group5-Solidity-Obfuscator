@@ -1,8 +1,13 @@
+import argparse
 import re
-import random
-import hashlib
-import string
-import utils
+import os
+import sys
+
+parent_dir = os.path.abspath(".")
+print(parent_dir)
+sys.path.append(parent_dir)
+
+from utils import files_io, file_structure, expression
 
 
 value_types = ["uint", "int"]
@@ -64,7 +69,7 @@ def find_var_in_function(func):
 
 def find_var(json_dict):
     var_dict = {}
-    useful_nodes = utils.find_useful_nodes(json_dict)
+    useful_nodes = file_structure.find_useful_nodes(json_dict)
     # print(useful_nodes["function_nodes"])
     for node in useful_nodes["var_nodes"]:
         var = find_var_in_node(node)
@@ -77,7 +82,7 @@ def find_var(json_dict):
         var = find_var_in_function(node)
         if var:
             if var_dict:
-                var_dict = var_dict.update(var)
+                var_dict.update(var)
             else:
                 var_dict = var
     return var_dict
@@ -89,9 +94,9 @@ def replace_var(sol_file: str, var_list: list):
     # get new variables list.
     # make sure there are no repeated variables
     for i in range(n):
-        new_var = utils.generate_random_var()
+        new_var = expression.generate_random_var()
         while new_var in new_var_list:
-            new_var = utils.generate_random_var()
+            new_var = expression.generate_random_var()
         print(new_var)
         new_var_list.append(new_var)
     for i in range(n):
@@ -104,18 +109,31 @@ def replace_var(sol_file: str, var_list: list):
     return sol_file
 
 
-if __name__ == "__main__":
-    sol_file = (
-        "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/new.sol"
-    )
-    ast_file = "/home/jyh/win_projects/CSIT5730-Group5-Solidity-Obfuscator/new_sols/output/new.sol_json.ast"
-
-    sol_str = utils.load_sol(sol_file)
-    ast_json = utils.load_json(ast_file)
+def main(args):
+    sol_str = files_io.load_sol(args.sol_file)
+    ast_json = files_io.load_json(args.ast_file)
     var_dict = find_var(ast_json)
-    array_list, constant_dict = utils.find_array(ast_json)
+    array_list, constant_dict = file_structure.find_array(ast_json)
     print(f"Find Variables:{var_dict}, Find Arrays: {array_list}")
     new_file = replace_var(
         sol_str, list(var_dict.keys()) + [list(array.keys())[0] for array in array_list]
     )
-    utils.save_sol(new_file, "new_sols", "new.sol")
+    files_io.save_sol(new_file, args.output_path, args.output_filename)
+
+
+if __name__ == "__main__":
+    args = argparse.ArgumentParser()
+    args.add_argument("--sol_file", "--sol", type=str, default="examples/example.sol")
+    args.add_argument(
+        "--ast_file", "--ast", type=str, default="examples/output/example.sol_json.ast"
+    )
+    args.add_argument("--output_path", "--np", type=str, default="./tmp")
+    args.add_argument(
+        "--output_filename", "--nf", type=str, default="replace_variables.sol"
+    )
+    # args.add_argument(
+    #     "--new_output_path", "--nop", type=str, default="./tmp/solc_output"
+    # )
+    args.add_argument("--n", type=int, help="number of new variables", default=5)
+    args = args.parse_args()
+    main(args)
