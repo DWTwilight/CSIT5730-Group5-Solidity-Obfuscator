@@ -2,6 +2,7 @@
 
 ## Requirements
 
+- solc ^0.8.28
 - node.js ^18.19.1
 - python ^3.12
 - npm ^9.2.0 (for testing)
