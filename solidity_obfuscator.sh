@@ -18,33 +18,33 @@ solc --bin $1 | tail -1 >"output/${base_name}.bin"
 # dataflow obfuscation - Jiang Yihang Part
 solc -o tmp/build --bin --ast-compact-json --asm examples/${base_name} --overwrite
 python dataflow_obfuscator/split_array.py \
-        --sol examples/${base_name} \
-        --ast tmp/build/${base_name}_json.ast \
-        --output_path ./tmp \
-        --output_filename ${base_name_pure}_split_array.sol
+    --sol examples/${base_name} \
+    --ast tmp/build/${base_name}_json.ast \
+    --output_path ./tmp \
+    --output_filename ${base_name_pure}_split_array.sol
 solc -o tmp/build --bin --ast-compact-json --asm ./tmp/${base_name_pure}_split_array.sol --overwrite
 wait
 
 # layout obfuscation - Jiang Yihang Part
 # add variables
 python layout_obfuscator/add_variables.py \
-        --sol tmp/${base_name_pure}_split_array.sol \
-        --ast tmp/build/${base_name_pure}_split_array.sol_json.ast \
-        --output_path ./tmp \
-        --output_filename ${base_name_pure}_add_variables.sol
+    --sol tmp/${base_name_pure}_split_array.sol \
+    --ast tmp/build/${base_name_pure}_split_array.sol_json.ast \
+    --output_path ./tmp \
+    --output_filename ${base_name_pure}_add_variables.sol
 solc -o tmp/build --bin --ast-compact-json --asm ./tmp/${base_name_pure}_add_variables.sol --overwrite
 wait
 # replace variable names
 python layout_obfuscator/replace_var_name.py \
-        --sol tmp/${base_name_pure}_add_variables.sol \
-        --ast tmp/build/${base_name_pure}_add_variables.sol_json.ast \
-        --output_path ./tmp \
-        --output_filename ${base_name_pure}_replace_var_name.sol
+    --sol tmp/${base_name_pure}_add_variables.sol \
+    --ast tmp/build/${base_name_pure}_add_variables.sol_json.ast \
+    --output_path ./tmp \
+    --output_filename ${base_name_pure}_replace_var_name.sol
 
 # CURRENT OUTPUT: ./tmp/${base_name_pure}_replace_var_name.sol
 
 # bytecode obfuscation
-solc --asm-json --overwrite $1 | tail -1 >"./tmp/${base_name}.asm.json"
+solc --asm-json --overwrite "./tmp/${base_name_pure}_replace_var_name.sol" | tail -1 >"./tmp/${base_name}.asm.json"
 
 node bytecode-obfuscator/instruction_insersion.js "./tmp/${base_name}.asm.json" "./tmp/${base_name}_ii.asm.json" 0.2
 node bytecode-obfuscator/opaque_predicate.js "./tmp/${base_name}_ii.asm.json" "./tmp/${base_name}_op.asm.json" 1
@@ -52,4 +52,3 @@ node bytecode-obfuscator/random_jump.js "./tmp/${base_name}_op.asm.json" "./tmp/
 
 solc --import-asm-json --bin-runtime "./tmp/${base_name}_rj.asm.json" | tail -1 >"output/${base_name}_obfuscated.bin.runtime"
 solc --import-asm-json --bin "./tmp/${base_name}_rj.asm.json" | tail -1 >"output/${base_name}_obfuscated.bin"
-
