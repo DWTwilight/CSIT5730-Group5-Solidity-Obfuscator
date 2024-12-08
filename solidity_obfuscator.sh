@@ -52,7 +52,7 @@ python layout_and_dataflow_obfuscator/obfuscate_solidity.py ./tmp/${base_name_pu
 # CURRENT OUTPUT: ./tmp/${base_name_pure}_obfuscate.sol
 
 # bytecode obfuscation
-solc --asm-json --overwrite "./tmp/${base_name_pure}_replace_var_name.sol" | tail -1 >"./tmp/${base_name}.asm.json"
+solc --asm-json --overwrite "./tmp/${base_name_pure}_obfuscate.sol" | tail -1 >"./tmp/${base_name}.asm.json"
 
 node bytecode-obfuscator/instruction_insersion.js "./tmp/${base_name}.asm.json" "./tmp/${base_name}_ii.asm.json" 0.2
 node bytecode-obfuscator/opaque_predicate.js "./tmp/${base_name}_ii.asm.json" "./tmp/${base_name}_op.asm.json" 1
