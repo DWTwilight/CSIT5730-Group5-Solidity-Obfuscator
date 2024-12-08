@@ -47,6 +47,10 @@ python layout_and_data_obfuscation/combination.py ./tmp/${base_name_pure}_replac
 
 # CURRENT OUTPUT: ./tmp/${base_name_pure}_ob.sol
 
+python layout_and_dataflow_obfuscator/obfuscate_solidity.py ./tmp/${base_name_pure}_ob.sol ./tmp/${base_name_pure}_obfuscate.sol
+
+# CURRENT OUTPUT: ./tmp/${base_name_pure}_obfuscate.sol
+
 # bytecode obfuscation
 solc --asm-json --overwrite "./tmp/${base_name_pure}_replace_var_name.sol" | tail -1 >"./tmp/${base_name}.asm.json"
 
