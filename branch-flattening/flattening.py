@@ -1,6 +1,6 @@
 import re
 import random
-
+import argparse
 from utils import gen_distinct_labels, gen_random_identifier
 
 
@@ -208,3 +208,18 @@ class FlatteningContext:
         self.src = self.flatten_do_while()
         self.src = self.flatten_for()
         return self.license + "\n" + self.src
+    
+
+if __name__ == "__main__":
+    args = argparse.ArgumentParser()
+    args.add_argument("sol_file")
+    args.add_argument("-o", "--output", required=True)
+    args = args.parse_args()
+
+    ctx = FlatteningContext(args.sol_file)
+    # create path if not exists
+    import os
+    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+
+    with open(args.output, "w") as f:
+        f.write(ctx.flatten())
