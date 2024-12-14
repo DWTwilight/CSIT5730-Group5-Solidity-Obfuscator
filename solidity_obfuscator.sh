@@ -64,4 +64,4 @@ solc --import-asm-json --bin "./tmp/${base_name}_rj.asm.json" | tail -1 >"output
 
 echo "obfuscated sorce code: ./output/${base_name_pure}_obfuscated.sol"
 echo "obfuscated bytecode: ./output/${base_name}_obfuscated.bin"
-echo "obfuscated runtime bytecode: output/${base_name}_obfuscated.bin.runtime"
+echo "obfuscated runtime bytecode: ./output/${base_name}_obfuscated.bin.runtime"
