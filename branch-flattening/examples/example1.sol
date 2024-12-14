@@ -7,12 +7,10 @@ contract ControlFlowExample {
         uint256 s = 1;
         for (uint256 i = 0; i < 10; i++) {
             if (i == 3) {
-                // Skip to next iteration with continue
                 s += i;
                 continue;
             }
             if (i == 5) {
-                // Exit loop with break
                 s -= i;
                 break;
             }

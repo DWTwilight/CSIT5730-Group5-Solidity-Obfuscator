@@ -15,11 +15,15 @@ solc --bin $1 | tail -1 >"output/${base_name}.bin"
 # python3 b/b.py "tmp/${base_name}_a.sol" > "tmp/${base_name}_b.sol"
 
 # CURRENT INPUT FILE: examples/${base_name}
+
+# branch flattening - LIU Yishan Part
+python branch-flattening/flattening.py $1 -o tmp/${base_name_pure}_flattened.sol
+
 # dataflow obfuscation - Jiang Yihang Part
-solc -o tmp/build --bin --ast-compact-json --asm examples/${base_name} --overwrite
+solc -o tmp/build --bin --ast-compact-json --asm tmp/${base_name_pure}_flattened.sol --overwrite
 python dataflow_obfuscator/split_array.py \
-    --sol examples/${base_name} \
-    --ast tmp/build/${base_name}_json.ast \
+    --sol tmp/${base_name_pure}_flattened.sol \
+    --ast tmp/build/${base_name_pure}_flattened.sol_json.ast \
     --output_path ./tmp \
     --output_filename ${base_name_pure}_split_array.sol
 solc -o tmp/build --bin --ast-compact-json --asm ./tmp/${base_name_pure}_split_array.sol --overwrite
@@ -34,6 +38,7 @@ python layout_obfuscator/add_variables.py \
     --output_filename ${base_name_pure}_add_variables.sol
 solc -o tmp/build --bin --ast-compact-json --asm ./tmp/${base_name_pure}_add_variables.sol --overwrite
 wait
+
 # replace variable names
 python layout_obfuscator/replace_var_name.py \
     --sol tmp/${base_name_pure}_add_variables.sol \

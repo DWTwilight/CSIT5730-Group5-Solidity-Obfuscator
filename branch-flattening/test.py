@@ -1,8 +1,12 @@
 from flattening import FlatteningContext
 
-ctx = FlatteningContext('./branch-flattening/examples/example1_ast.json')
+ctx = FlatteningContext('./branch-flattening/examples/example1.sol')
 
-print(ctx.max_id)
+output = ctx.flatten()
+
+# write to file
+with open('./branch-flattening/examples/example1_flattened.sol', 'w') as f:
+    f.write(output)
 
 
 
