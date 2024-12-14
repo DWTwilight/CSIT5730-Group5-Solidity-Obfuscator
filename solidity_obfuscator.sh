@@ -15,15 +15,11 @@ solc --bin $1 | tail -1 >"output/${base_name}.bin"
 # python3 b/b.py "tmp/${base_name}_a.sol" > "tmp/${base_name}_b.sol"
 
 # CURRENT INPUT FILE: examples/${base_name}
-
-# branch flattening - LIU Yishan Part
-python branch-flattening/flattening.py $1 -o tmp/${base_name_pure}_flattened.sol
-
 # dataflow obfuscation - Jiang Yihang Part
-solc -o tmp/build --bin --ast-compact-json --asm tmp/${base_name_pure}_flattened.sol --overwrite
+solc -o tmp/build --bin --ast-compact-json --asm examples/${base_name} --overwrite
 python dataflow_obfuscator/split_array.py \
-    --sol tmp/${base_name_pure}_flattened.sol \
-    --ast tmp/build/${base_name_pure}_flattened.sol_json.ast \
+    --sol examples/${base_name} \
+    --ast tmp/build/${base_name}_json.ast \
     --output_path ./tmp \
     --output_filename ${base_name_pure}_split_array.sol
 solc -o tmp/build --bin --ast-compact-json --asm ./tmp/${base_name_pure}_split_array.sol --overwrite
@@ -38,7 +34,6 @@ python layout_obfuscator/add_variables.py \
     --output_filename ${base_name_pure}_add_variables.sol
 solc -o tmp/build --bin --ast-compact-json --asm ./tmp/${base_name_pure}_add_variables.sol --overwrite
 wait
-
 # replace variable names
 python layout_obfuscator/replace_var_name.py \
     --sol tmp/${base_name_pure}_add_variables.sol \
@@ -52,12 +47,13 @@ python layout_and_data_obfuscation/combination.py ./tmp/${base_name_pure}_replac
 
 # CURRENT OUTPUT: ./tmp/${base_name_pure}_ob.sol
 
-python layout_and_dataflow_obfuscator/obfuscate_solidity.py ./tmp/${base_name_pure}_replace_var_name.sol ./output/${base_name_pure}_obfuscate.sol
+python layout_and_dataflow_obfuscator/obfuscate_solidity.py ./tmp/${base_name_pure}_replace_var_name.sol ./tmp/${base_name_pure}_obfuscate.sol
 
-# CURRENT OUTPUT: ./output/${base_name_pure}_obfuscate.sol
+# CURRENT OUTPUT: ./tmp/${base_name_pure}_obfuscate.sol
+python branch-flattening/flattening.py ./tmp/${base_name_pure}_obfuscate.sol -o output/${base_name_pure}_obfuscated.sol
 
 # bytecode obfuscation
-solc --asm-json --overwrite "./output/${base_name_pure}_obfuscate.sol" | tail -1 >"./tmp/${base_name}.asm.json"
+solc --asm-json --overwrite "./output/${base_name_pure}_obfuscated.sol" | tail -1 >"./tmp/${base_name}.asm.json"
 
 node bytecode-obfuscator/instruction_insersion.js "./tmp/${base_name}.asm.json" "./tmp/${base_name}_ii.asm.json" 0.2
 node bytecode-obfuscator/opaque_predicate.js "./tmp/${base_name}_ii.asm.json" "./tmp/${base_name}_op.asm.json" 1
@@ -65,3 +61,7 @@ node bytecode-obfuscator/random_jump.js "./tmp/${base_name}_op.asm.json" "./tmp/
 
 solc --import-asm-json --bin-runtime "./tmp/${base_name}_rj.asm.json" | tail -1 >"output/${base_name}_obfuscated.bin.runtime"
 solc --import-asm-json --bin "./tmp/${base_name}_rj.asm.json" | tail -1 >"output/${base_name}_obfuscated.bin"
+
+echo "obfuscated sorce code: ./output/${base_name_pure}_obfuscated.sol"
+echo "obfuscated bytecode: ./output/${base_name}_obfuscated.bin"
+echo "obfuscated runtime bytecode: output/${base_name}_obfuscated.bin.runtime"

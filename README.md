@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ./solidity_obfuscator.sh ${.sol filePath}
 ```
 
-- obfuscated source code: `/output/${fileName}_obfusacte.sol`
+- obfuscated source code: `/output/${fileName}_obfusacted.sol`
 - obfuscated binary: `/output/${fileName}.sol_obfuscated.bin`
 - obfuscated runtime binary: `/output/${fileName}.sol_obfuscated.bin.runtime`
 
